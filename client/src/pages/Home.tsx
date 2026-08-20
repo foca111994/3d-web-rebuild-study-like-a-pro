@@ -76,7 +76,7 @@ export default function Home() {
       <div className="content-column" id="top">
         <section className="identity-block" aria-labelledby="page-title">
           <div className="logo-plaque">
-            <img src="/manus-storage/study-like-a-pro-logo_9dcc83cb.webp" alt="Study Like a Pro" />
+            <img src="/manus-storage/study-like-a-pro-sky_86076399.png" alt="Study Like a Pro" />
           </div>
           <div className="identity-meta">
             <p className="eyebrow">HOT LINKS / 2026</p>
@@ -118,11 +118,11 @@ export default function Home() {
         </section>
 
         <footer className="footer-block">
-          <div className="footer-brand"><img src="/manus-storage/slp-mark_c07e1198.png" alt="" /><span>Study Like a Pro</span></div>
+          <div className="footer-brand"><img src="/manus-storage/high-res-logo_a5feb20b.png" alt="Study Like a Pro" /><span>Study Like a Pro</span></div>
           <p>Actualizamos los hot links cada una o dos semanas.<br />Volvé cuando quieras ver qué skill sigue.</p>
           <div className="footer-bottom">
             <span>© 2026 SLP / Sin humo</span>
-            <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram de Study Like a Pro"><Instagram size={17} /></a>
+            <a href="https://www.instagram.com/studylikeapro.art/" target="_blank" rel="noreferrer" aria-label="Instagram de Study Like a Pro"><Instagram size={17} /></a>
           </div>
         </footer>
       </div>

@@ -45,8 +45,8 @@ button { cursor: pointer; }
 
 .content-column { position: relative; z-index: 2; width: min(100% - 48px, 720px); margin: 0 auto; padding: 48px 0 34px; }
 .identity-block { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 74px; }
-.logo-plaque { width: min(83%, 340px); padding: 12px 17px 9px; background: var(--paper-soft); border: 1px solid var(--ink); box-shadow: 7px 7px 0 rgba(166, 46, 46, .92); transform: rotate(-1.4deg); }
-.logo-plaque img { width: 100%; display: block; }
+.logo-plaque { width: min(94%, 470px); padding: 0; overflow: hidden; background: #b73535; border: 1px solid var(--ink); box-shadow: 8px 8px 0 var(--red); transform: rotate(-1.4deg); }
+.logo-plaque img { width: 100%; aspect-ratio: 1535 / 449; object-fit: cover; display: block; }
 .identity-meta { color: var(--paper-soft); text-align: right; }
 .eyebrow, .course-category, .count-label, .course-status, .section-kicker, .edition { font: 500 10px/1.4 "IBM Plex Mono", monospace; letter-spacing: .1em; text-transform: uppercase; }
 .identity-meta .eyebrow { color: #e8a66e; margin: 0 0 10px; }
@@ -80,9 +80,9 @@ h3 { margin: 0; max-width: 490px; font-size: clamp(1.3rem, 4vw, 1.85rem); line-h
 .course-card:hover .course-arrow, .course-card:focus-visible .course-arrow { transform: translate(3px, -3px); background: var(--red); color: var(--paper-soft); border-color: var(--red); }
 
 .footer-block { margin: 122px 0 0; padding-top: 22px; border-top: 2px solid var(--red); color: var(--paper-soft); }
-.footer-brand { display: flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 600; }
-.footer-brand img { width: 28px; height: 28px; object-fit: contain; filter: drop-shadow(2px 2px 0 var(--red)); }
-.footer-block > p { margin: 20px 0 32px; font: 11px/1.6 "IBM Plex Mono", monospace; opacity: .72; }
+.footer-brand { display: flex; align-items: center; gap: 14px; font-size: 14px; font-weight: 600; }
+.footer-brand img { width: 82px; height: 82px; object-fit: cover; border: 1px solid var(--ink); box-shadow: 5px 5px 0 var(--red); transform: rotate(-2deg); }
+.footer-block > p { margin: 18px 0 32px; font: 11px/1.6 "IBM Plex Mono", monospace; opacity: .72; }
 .footer-bottom { display: flex; align-items: center; justify-content: space-between; font: 10px "IBM Plex Mono", monospace; opacity: .64; }
 .footer-bottom a { display: grid; place-items: center; width: 30px; height: 30px; border: 1px solid rgba(251, 248, 241, .5); border-radius: 50%; transition: background .18s var(--ease-out), color .18s var(--ease-out); }
 .footer-bottom a:hover { background: var(--paper-soft); color: var(--blue-deep); }
@@ -90,4 +90,4 @@ h3 { margin: 0; max-width: 490px; font-size: clamp(1.3rem, 4vw, 1.85rem); line-h
 @keyframes menu-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
 @media (prefers-reduced-motion: no-preference) { .identity-block, .intro-block, .course-card, .footer-block { animation: reveal .55s var(--ease-out) both; } .intro-block { animation-delay: .08s; } .course-card:nth-child(1) { animation-delay: .12s; } .course-card:nth-child(2) { animation-delay: .17s; } .course-card:nth-child(3) { animation-delay: .22s; } .course-card:nth-child(4) { animation-delay: .27s; } .course-card:nth-child(5) { animation-delay: .32s; } .footer-block { animation-delay: .38s; } }
 @keyframes reveal { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
-@media (max-width: 620px) { .topbar, .content-column { width: min(100% - 32px, 720px); } .content-column { padding-top: 29px; } .identity-block { align-items: flex-start; flex-direction: column; gap: 23px; margin-bottom: 61px; } .identity-meta { text-align: left; padding-left: 8px; } .logo-plaque { width: min(90%, 330px); } .intro-block { margin-left: 0; } .courses-section { margin-top: 87px; } .course-card, .course-card:nth-child(even), .course-card:nth-child(3), .course-card:nth-child(5) { transform: none; } .course-card:nth-child(even):hover, .course-card:nth-child(even):focus-visible, .course-card:nth-child(3):hover, .course-card:nth-child(3):focus-visible, .course-card:nth-child(5):hover, .course-card:nth-child(5):focus-visible { transform: translate(-3px, -4px); } .course-card { grid-template-columns: 28px 1fr 30px; gap: 10px; padding-right: 12px; } .course-description { font-size: 11px; } .footer-block { margin-top: 92px; } }
+@media (max-width: 620px) { .topbar, .content-column { width: min(100% - 32px, 720px); } .content-column { padding-top: 29px; } .identity-block { align-items: flex-start; flex-direction: column; gap: 23px; margin-bottom: 61px; } .identity-meta { text-align: left; padding-left: 8px; } .logo-plaque { width: min(100%, 470px); } .intro-block { margin-left: 0; } .courses-section { margin-top: 87px; } .course-card, .course-card:nth-child(even), .course-card:nth-child(3), .course-card:nth-child(5) { transform: none; } .course-card:nth-child(even):hover, .course-card:nth-child(even):focus-visible, .course-card:nth-child(3):hover, .course-card:nth-child(3):focus-visible, .course-card:nth-child(5):hover, .course-card:nth-child(5):focus-visible { transform: translate(-3px, -4px); } .course-card { grid-template-columns: 28px 1fr 30px; gap: 10px; padding-right: 12px; } .course-description { font-size: 11px; } .footer-block { margin-top: 92px; } }
