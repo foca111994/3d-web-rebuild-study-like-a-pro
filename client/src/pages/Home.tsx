@@ -69,7 +69,7 @@ export default function Home() {
           <nav className="quick-menu" aria-label="Navegación rápida">
             <a href="#cursos" onClick={() => setMenuOpen(false)}>Cursos del Modo 1</a>
             <a href="https://studylikeapro.art/cursos-courses" target="_blank" rel="noreferrer">Catálogo completo <ExternalLink size={13} /></a>
-            <a href="https://studylikeapro.art/" target="_blank" rel="noreferrer">SLP - Skills get'em. <ExternalLink size={13} /></a>
+            <a href="https://studylikeapro.art/" target="_blank" rel="noreferrer">SLP - Skills? Get 'em. <ExternalLink size={13} /></a>
           </nav>
         )}
       </header>
