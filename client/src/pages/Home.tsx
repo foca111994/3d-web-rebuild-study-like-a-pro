@@ -69,15 +69,16 @@ export default function Home() {
           <nav className="quick-menu" aria-label="Navegación rápida">
             <a href="#cursos" onClick={() => setMenuOpen(false)}>Cursos del Modo 1</a>
             <a href="https://studylikeapro.art/cursos-courses" target="_blank" rel="noreferrer">Catálogo completo <ExternalLink size={13} /></a>
+            <a href="https://studylikeapro.art/" target="_blank" rel="noreferrer">SLP - Skills get'em. <ExternalLink size={13} /></a>
           </nav>
         )}
       </header>
 
       <div className="content-column" id="top">
         <section className="identity-block" aria-labelledby="page-title">
-          <div className="logo-plaque">
+          <a className="logo-plaque" href="https://playlikeapro.art/" target="_blank" rel="noreferrer" aria-label="Visitar Play Like a Pro">
             <img src="/manus-storage/study-like-a-pro-sky_86076399.png" alt="Study Like a Pro" />
-          </div>
+          </a>
           <div className="identity-meta">
             <p className="eyebrow">HOT LINKS / 2026</p>
             <p className="edition">Modo 1 — Start Smart<br />/ Empezá Pro</p>
@@ -118,7 +119,7 @@ export default function Home() {
         </section>
 
         <footer className="footer-block">
-          <div className="footer-brand"><img src="/manus-storage/high-res-logo_a5feb20b.png" alt="Study Like a Pro" /><span>Study Like a Pro</span></div>
+          <a className="footer-brand" href="https://studylikeapro.art/" target="_blank" rel="noreferrer" aria-label="Visitar la website de Study Like a Pro"><img src="/manus-storage/high-res-logo_a5feb20b.png" alt="Study Like a Pro" /><span>Study Like a Pro</span></a>
           <p>Actualizamos los hot links cada una o dos semanas.<br />Volvé cuando quieras ver qué skill sigue.</p>
           <div className="footer-bottom">
             <span>© 2026 SLP / Sin humo</span>

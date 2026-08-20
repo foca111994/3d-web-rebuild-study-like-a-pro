@@ -1,8 +1,7 @@
-# Actualización solicitada
+# Actualización de navegación solicitada
 
-- [x] Enlazar el ícono de Instagram del footer a https://www.instagram.com/studylikeapro.art/
-- [x] Reemplazar el símbolo pequeño del footer por HighRes-Logo.png
-- [x] Usar StudyLikeAProLettersWSky2.png en el bloque superior
-- [x] Mantener el fondo rojo desplazado detrás del nuevo logo superior
-- [x] Verificar la composición en escritorio y móvil
-- [ ] Guardar un checkpoint de la actualización
+- [x] Hacer clicable el logo superior hacia https://studylikeapro.art/
+- [x] Añadir en Índice la tercera opción “SLP - Skills get'em.” hacia https://studylikeapro.art/
+- [x] Hacer clicable la imagen superior hacia https://playlikeapro.art/
+- [x] Verificar navegación y vista actualizada
+- [ ] Guardar checkpoint de la actualización
