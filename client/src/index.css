@@ -1,177 +1,93 @@
+/*
+ * Style direction: Editorial de Taller — azul fotográfico, marfil de papel,
+ * rojo ladrillo y composición vertical de portada con textura sutil.
+ */
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
-@theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-}
-
 :root {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-600);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --radius: 0.65rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.235 0.015 65);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.235 0.015 65);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.235 0.015 65);
-  --secondary: oklch(0.98 0.001 286.375);
-  --secondary-foreground: oklch(0.4 0.015 65);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.141 0.005 285.823);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.623 0.214 259.815);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.235 0.015 65);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.623 0.214 259.815);
+  --ink: #171514;
+  --paper: #f2ede4;
+  --paper-soft: #fbf8f1;
+  --red: #a62e2e;
+  --red-dark: #762020;
+  --blue: #1d4e75;
+  --blue-deep: #123b5d;
+  --line: rgba(23, 21, 20, 0.18);
+  --shadow: 0 20px 48px rgba(5, 23, 36, 0.22);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.dark {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-500);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --background: oklch(0.141 0.005 285.823);
-  --foreground: oklch(0.85 0.005 65);
-  --card: oklch(0.21 0.006 285.885);
-  --card-foreground: oklch(0.85 0.005 65);
-  --popover: oklch(0.21 0.006 285.885);
-  --popover-foreground: oklch(0.85 0.005 65);
-  --secondary: oklch(0.24 0.006 286.033);
-  --secondary-foreground: oklch(0.7 0.005 65);
-  --muted: oklch(0.274 0.006 286.033);
-  --muted-foreground: oklch(0.705 0.015 286.067);
-  --accent: oklch(0.274 0.006 286.033);
-  --accent-foreground:  oklch(0.92 0.005 65);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.488 0.243 264.376);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --sidebar: oklch(0.21 0.006 285.885);
-  --sidebar-foreground: oklch(0.85 0.005 65);
-  --sidebar-accent: oklch(0.274 0.006 286.033);
-  --sidebar-accent-foreground:  oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.488 0.243 264.376);
-}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--blue-deep); color: var(--ink); font-family: "Space Grotesk", sans-serif; }
+button, a { font: inherit; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-  button:not(:disabled),
-  [role="button"]:not([aria-disabled="true"]),
-  [type="button"]:not(:disabled),
-  [type="submit"]:not(:disabled),
-  [type="reset"]:not(:disabled),
-  a[href],
-  select:not(:disabled),
-  input[type="checkbox"]:not(:disabled),
-  input[type="radio"]:not(:disabled) {
-    @apply cursor-pointer;
-  }
-}
+.site-shell { min-height: 100svh; position: relative; overflow: hidden; background: var(--blue-deep); }
+.photo-layer, .blueprint-layer, .grain-layer { position: fixed; inset: 0; pointer-events: none; }
+.photo-layer { background: linear-gradient(180deg, rgba(15, 55, 83, .04), rgba(15, 42, 62, .18)), url("/manus-storage/slp-hand-no-cap.png") center top / cover no-repeat; filter: saturate(.92) contrast(1.06); }
+.blueprint-layer { opacity: .18; background: url("/manus-storage/slp-blue-grid_59cc4f95.png") center / 640px auto repeat; mix-blend-mode: screen; }
+.grain-layer { opacity: .2; background-image: url("/manus-storage/slp-paper-texture_41da47da.png"); mix-blend-mode: soft-light; }
 
-@layer components {
-  /**
-   * Custom container utility that centers content and adds responsive padding.
-   *
-   * This overrides Tailwind's default container behavior to:
-   * - Auto-center content (mx-auto)
-   * - Add responsive horizontal padding
-   * - Set max-width for large screens
-   *
-   * Usage: <div className="container">...</div>
-   *
-   * For custom widths, use max-w-* utilities directly:
-   * <div className="max-w-6xl mx-auto px-4">...</div>
-   */
-  .container {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1rem; /* 16px - mobile padding */
-    padding-right: 1rem;
-  }
+.topbar { position: relative; z-index: 5; width: min(100% - 48px, 1120px); margin: 0 auto; padding: 25px 0; display: flex; justify-content: space-between; align-items: center; color: var(--paper-soft); }
+.mini-mark { display: inline-flex; align-items: center; gap: 8px; font: 500 11px/1 "IBM Plex Mono", monospace; letter-spacing: .12em; }
+.mini-mark b { color: #e3a05b; font-weight: 400; }
+.menu-button { display: inline-flex; align-items: center; gap: 9px; border: 1px solid rgba(242, 237, 228, .42); color: var(--paper-soft); background: rgba(10, 34, 52, .24); padding: 9px 12px; font: 500 10px "IBM Plex Mono", monospace; letter-spacing: .08em; text-transform: uppercase; transition: background .18s var(--ease-out), border-color .18s var(--ease-out); }
+.menu-button:hover, .menu-button:focus-visible { background: var(--red); border-color: var(--red); outline: none; }
+.quick-menu { position: absolute; right: 0; top: 70px; min-width: 230px; padding: 8px; background: var(--paper-soft); color: var(--ink); box-shadow: var(--shadow); border: 1px solid var(--ink); animation: menu-in .2s var(--ease-out) both; }
+.quick-menu a { display: flex; align-items: center; justify-content: space-between; padding: 12px 11px; font: 500 11px "IBM Plex Mono", monospace; border-bottom: 1px solid var(--line); }
+.quick-menu a:last-child { border-bottom: 0; }
+.quick-menu a:hover { background: #e8dfd1; color: var(--red-dark); }
 
-  .flex {
-    min-height: 0;
-    min-width: 0;
-  }
+.content-column { position: relative; z-index: 2; width: min(100% - 48px, 720px); margin: 0 auto; padding: 48px 0 34px; }
+.identity-block { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 74px; }
+.logo-plaque { width: min(83%, 340px); padding: 12px 17px 9px; background: var(--paper-soft); border: 1px solid var(--ink); box-shadow: 7px 7px 0 rgba(166, 46, 46, .92); transform: rotate(-1.4deg); }
+.logo-plaque img { width: 100%; display: block; }
+.identity-meta { color: var(--paper-soft); text-align: right; }
+.eyebrow, .course-category, .count-label, .course-status, .section-kicker, .edition { font: 500 10px/1.4 "IBM Plex Mono", monospace; letter-spacing: .1em; text-transform: uppercase; }
+.identity-meta .eyebrow { color: #e8a66e; margin: 0 0 10px; }
+.edition { line-height: 1.6; margin: 0; opacity: .8; }
+.intro-block { max-width: 600px; margin-left: 5%; color: var(--paper-soft); }
+.section-kicker { color: #d94a42; margin: 0 0 17px; }
+h1, h2, h3, p { margin-top: 0; }
+h1 { font-size: clamp(3.3rem, 11vw, 6.1rem); line-height: .84; letter-spacing: -.075em; margin: 0; font-weight: 700; }
+h1 em { color: var(--red); font-style: normal; font-weight: 600; text-shadow: 1px 1px 0 rgba(242, 237, 228, .1); }
+.intro-copy { max-width: 420px; margin: 28px 0 25px; color: rgba(251, 248, 241, .82); font-size: 14px; line-height: 1.55; }
+.intro-rule { display: flex; gap: 10px; align-items: center; color: rgba(251, 248, 241, .7); }
+.intro-rule span { width: 47px; height: 3px; background: var(--red); display: block; }
+.intro-rule small { font: 500 10px "IBM Plex Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
 
-  @media (min-width: 640px) {
-    .container {
-      padding-left: 1.5rem; /* 24px - tablet padding */
-      padding-right: 1.5rem;
-    }
-  }
+.courses-section { margin-top: 116px; }
+.section-heading { display: flex; justify-content: space-between; align-items: end; color: var(--paper-soft); border-bottom: 2px solid var(--red); padding-bottom: 13px; margin-bottom: 14px; } .section-heading-main { position: relative; } .stamp-mark { position: absolute; width: 50px; height: 50px; object-fit: contain; right: -61px; top: -26px; opacity: .9; transform: rotate(12deg); mix-blend-mode: screen; }
+.section-heading .eyebrow { color: #d94a42; margin: 0 0 8px; }
+h2 { font-size: clamp(2.45rem, 8vw, 4.3rem); line-height: .84; letter-spacing: -.07em; margin: 0; }
+.count-label { opacity: .7; padding-bottom: 4px; }
+.course-list { display: grid; gap: 13px; }
+.course-card { position: relative; display: grid; isolation: isolate; grid-template-columns: 46px 1fr 34px; gap: 16px; align-items: start; min-height: 154px; padding: 20px 19px 19px 14px; background: linear-gradient(110deg, rgba(251, 248, 241, .98), rgba(242, 237, 228, .93)), url("/manus-storage/slp-paper-texture_41da47da.png"); background-blend-mode: normal, multiply; border: 1px solid var(--ink); box-shadow: 0 5px 0 var(--red); transition: transform .18s var(--ease-out), box-shadow .18s var(--ease-out), background .18s var(--ease-out); }
+.course-card:nth-child(even) { transform: translateX(14px) rotate(.35deg); } .course-card:nth-child(3) { transform: translateX(-6px) rotate(-.25deg); } .course-card:nth-child(5) { transform: translateX(9px) rotate(-.45deg); }
+.course-card:hover, .course-card:focus-visible { transform: translate(-3px, -4px); box-shadow: 0 10px 0 var(--red-dark), var(--shadow); background: var(--paper-soft); outline: none; }
+.course-card:nth-child(even):hover, .course-card:nth-child(even):focus-visible { transform: translate(11px, -4px) rotate(.35deg); } .course-card:nth-child(3):hover, .course-card:nth-child(3):focus-visible { transform: translate(-9px, -4px) rotate(-.25deg); } .course-card:nth-child(5):hover, .course-card:nth-child(5):focus-visible { transform: translate(6px, -4px) rotate(-.45deg); }
+.course-index { font: 500 12px "IBM Plex Mono", monospace; color: var(--red); padding-top: 2px; border-left: 3px solid var(--red); padding-left: 8px; }
+.course-category { margin: 0 0 10px; color: var(--red-dark); font-size: 9px; }
+h3 { margin: 0; max-width: 490px; font-size: clamp(1.3rem, 4vw, 1.85rem); line-height: .96; letter-spacing: -.045em; }
+.course-description { margin: 13px 0 10px; max-width: 470px; font-size: 12px; line-height: 1.45; color: rgba(23, 21, 20, .68); }
+.course-status { color: var(--red); font-size: 9px; letter-spacing: .05em; }
+.course-arrow { display: flex; align-items: center; justify-content: center; width: 31px; height: 31px; border: 1px solid var(--ink); border-radius: 50%; transition: transform .18s var(--ease-out), background .18s var(--ease-out), color .18s var(--ease-out); }
+.course-card:hover .course-arrow, .course-card:focus-visible .course-arrow { transform: translate(3px, -3px); background: var(--red); color: var(--paper-soft); border-color: var(--red); }
 
-  @media (min-width: 1024px) {
-    .container {
-      padding-left: 2rem; /* 32px - desktop padding */
-      padding-right: 2rem;
-      max-width: 1280px; /* Standard content width */
-    }
-  }
-}
+.footer-block { margin: 122px 0 0; padding-top: 22px; border-top: 2px solid var(--red); color: var(--paper-soft); }
+.footer-brand { display: flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 600; }
+.footer-brand img { width: 28px; height: 28px; object-fit: contain; filter: drop-shadow(2px 2px 0 var(--red)); }
+.footer-block > p { margin: 20px 0 32px; font: 11px/1.6 "IBM Plex Mono", monospace; opacity: .72; }
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; font: 10px "IBM Plex Mono", monospace; opacity: .64; }
+.footer-bottom a { display: grid; place-items: center; width: 30px; height: 30px; border: 1px solid rgba(251, 248, 241, .5); border-radius: 50%; transition: background .18s var(--ease-out), color .18s var(--ease-out); }
+.footer-bottom a:hover { background: var(--paper-soft); color: var(--blue-deep); }
+
+@keyframes menu-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: no-preference) { .identity-block, .intro-block, .course-card, .footer-block { animation: reveal .55s var(--ease-out) both; } .intro-block { animation-delay: .08s; } .course-card:nth-child(1) { animation-delay: .12s; } .course-card:nth-child(2) { animation-delay: .17s; } .course-card:nth-child(3) { animation-delay: .22s; } .course-card:nth-child(4) { animation-delay: .27s; } .course-card:nth-child(5) { animation-delay: .32s; } .footer-block { animation-delay: .38s; } }
+@keyframes reveal { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 620px) { .topbar, .content-column { width: min(100% - 32px, 720px); } .content-column { padding-top: 29px; } .identity-block { align-items: flex-start; flex-direction: column; gap: 23px; margin-bottom: 61px; } .identity-meta { text-align: left; padding-left: 8px; } .logo-plaque { width: min(90%, 330px); } .intro-block { margin-left: 0; } .courses-section { margin-top: 87px; } .course-card, .course-card:nth-child(even), .course-card:nth-child(3), .course-card:nth-child(5) { transform: none; } .course-card:nth-child(even):hover, .course-card:nth-child(even):focus-visible, .course-card:nth-child(3):hover, .course-card:nth-child(3):focus-visible, .course-card:nth-child(5):hover, .course-card:nth-child(5):focus-visible { transform: translate(-3px, -4px); } .course-card { grid-template-columns: 28px 1fr 30px; gap: 10px; padding-right: 12px; } .course-description { font-size: 11px; } .footer-block { margin-top: 92px; } }
