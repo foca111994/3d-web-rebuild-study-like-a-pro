@@ -27,23 +27,27 @@ const ITEMS: Record<Language, ObjectItem[]> = {
     { id: "computer", number: "02", label: "COURSES", title: "La computadora", accent: "abre la ruta.", description: "El punto de entrada al catálogo: cursos, programas y skills para elegir con criterio.", micro: "Cursos / catálogo / compra", action: "Explorar cursos", href: "https://studylikeapro.art/cursos-courses", icon: "computer" },
     { id: "smart", number: "03", label: "MODE 01", title: "Study Smart", accent: "sin humo.", description: "Aprendé con foco, una ruta clara y herramientas que te acompañan hasta el próximo resultado.", micro: "Start Smart / Empezá Pro", action: "Ver modo 1", href: "#modo-1", icon: "smart" },
     { id: "ninja", number: "04", label: "MODE 02", title: "Ninja Mode", accent: "subí de nivel.", description: "Skills tácticas para meterte de lleno, practicar y salir con una herramienta dominada.", micro: "Ninja / práctica / dominio", action: "Ver modo 2", href: "#modo-2", icon: "ninja" },
-    { id: "discman", number: "05", label: "LOOP", title: "Study Loop", accent: "poné play.", description: "El ritual sonoro de la marca: estudiar, concentrarte y sostener el ritmo. Un contexto para aprender mejor.", micro: "Música / ritual / concentración", action: "Abrir concepto", icon: "discman" },
+    { id: "study-lab", number: "05", label: "STUDY LAB", title: "Study Lab", accent: "poné play.", description: "El laboratorio de concentración de la marca: sonido, ritual y contexto para sostener el ritmo mientras aprendés.", micro: "Música / ritual / concentración", action: "Abrir concepto", icon: "discman" },
   ],
   en: [
     { id: "student", number: "01", label: "YOU", title: "The student", accent: "who starts.", description: "A curious, focused person ready to learn something they can use in the real world.", micro: "Identity / focus / curiosity", action: "Meet the idea", icon: "student" },
     { id: "computer", number: "02", label: "COURSES", title: "The computer", accent: "opens the route.", description: "The entrance to the catalog: courses, programs and skills to choose with intention.", micro: "Courses / catalog / purchase", action: "Explore courses", href: "https://studylikeapro.art/cursos-courses", icon: "computer" },
     { id: "smart", number: "03", label: "MODE 01", title: "Study Smart", accent: "without noise.", description: "Learn with focus, a clear route and tools that carry you toward your next result.", micro: "Start Smart / clear route", action: "View mode 1", href: "#modo-1", icon: "smart" },
     { id: "ninja", number: "04", label: "MODE 02", title: "Ninja Mode", accent: "level up.", description: "Tactical skills to go deep, practice and leave with a tool you truly own.", micro: "Ninja / practice / mastery", action: "View mode 2", href: "#modo-2", icon: "ninja" },
-    { id: "discman", number: "05", label: "LOOP", title: "Study Loop", accent: "press play.", description: "The brand's sound ritual: study, focus and keep your rhythm. Context for better learning.", micro: "Music / ritual / concentration", action: "Open concept", icon: "discman" },
+    { id: "study-lab", number: "05", label: "STUDY LAB", title: "Study Lab", accent: "press play.", description: "The brand's focus lab: sound, ritual and context to keep your rhythm while you learn.", micro: "Music / ritual / concentration", action: "Open concept", icon: "discman" },
   ],
 };
 
+const OBJECT_ASSETS: Record<ObjectItem["icon"], string> = {
+  student: "/manus-storage/student-render_a932cb44.png",
+  computer: "/manus-storage/course-computer-render_1e992c81.png",
+  smart: "/manus-storage/study-smart-render_889b0043.png",
+  ninja: "/manus-storage/ninja-mode-render_24cd8bb9.png",
+  discman: "/manus-storage/study-lab-render_03d5812e.png",
+};
+
 function ObjectIcon({ type }: { type: ObjectItem["icon"] }) {
-  if (type === "student") return <UserRound size={74} strokeWidth={1.1} />;
-  if (type === "computer") return <Laptop size={80} strokeWidth={1.1} />;
-  if (type === "smart") return <span className="object-stack-icon"><Headphones size={68} strokeWidth={1.1} /><BookOpen size={55} strokeWidth={1.1} /></span>;
-  if (type === "ninja") return <span className="object-stack-icon object-stack-icon--ninja"><Swords size={82} strokeWidth={1.05} /><BookOpen size={48} strokeWidth={1.1} /></span>;
-  return <span className="discman-icon"><span className="discman-disc" /><Play size={18} fill="currentColor" /></span>;
+  return <img className="object-render" src={OBJECT_ASSETS[type]} alt="" />;
 }
 
 const LOGO_SKY = "/manus-storage/logo-sky_37c3df06.png";

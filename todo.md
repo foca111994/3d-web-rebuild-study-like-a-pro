@@ -1,9 +1,10 @@
-# Prototipo horizontal interactivo
+# Home compacta — Study Like a Pro
 
-- [x] Definir los cinco objetos y sus metadatos de navegación
-- [x] Implementar carril horizontal con objeto central en foco
-- [x] Añadir rueda, trackpad, flechas, teclado y swipe
-- [x] Añadir panel de detalle al hacer clic
-- [x] Conservar rutas de cursos y CTAs oficiales
-- [x] Verificar desktop, móvil, teclado y reduced motion
-- [ ] Guardar checkpoint del prototipo
+- [x] Mantener la primera capa como galería horizontal de cinco objetos
+- [x] Reducir el texto visible al mínimo del formato de referencia
+- [x] Usar clic para abrir la segunda capa de información
+- [x] Llevar cursos, modos, CTAs y Study Lab a paneles de detalle
+- [ ] Convertir /prototype en la Home principal cuando esté estable
+- [ ] Conservar la Home anterior en una ruta de respaldo
+- [x] Verificar desktop, móvil, keyboard, touch y enlaces
+- [ ] Guardar checkpoint para prueba con usuarios
