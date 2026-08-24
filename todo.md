@@ -1,10 +1,9 @@
-# Home compacta — Study Like a Pro
+# Activación del nuevo proyecto horizontal
 
-- [x] Mantener la primera capa como galería horizontal de cinco objetos
-- [x] Reducir el texto visible al mínimo del formato de referencia
-- [x] Usar clic para abrir la segunda capa de información
-- [x] Llevar cursos, modos, CTAs y Study Lab a paneles de detalle
-- [ ] Convertir /prototype en la Home principal cuando esté estable
-- [ ] Conservar la Home anterior en una ruta de respaldo
-- [x] Verificar desktop, móvil, keyboard, touch y enlaces
-- [ ] Guardar checkpoint para prueba con usuarios
+- [x] Hacer que / cargue el prototipo horizontal
+- [x] Mover la Home anterior a una ruta de respaldo explícita
+- [x] Revisar enlaces de logo, cursos, modos y Study Lab
+- [x] Verificar Home raíz y ruta /prototype
+- [x] Verificar una ruta individual de curso y el responsive móvil
+- [x] Ejecutar check y build estático
+- [ ] Guardar checkpoint de la Home reemplazada

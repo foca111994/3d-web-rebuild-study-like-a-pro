@@ -1,6 +1,6 @@
 /*
- * Style direction: Study Like a Pro — la Home conserva el sitio reconstruido y
- * /prototype presenta el inventario horizontal experimental sin romper rutas existentes.
+ * Style direction: Study Like a Pro — la portada es el inventario horizontal
+ * experimental; la Home anterior queda disponible en /classic como respaldo de prueba.
  */
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -16,7 +16,8 @@ import Prototype from "./pages/Prototype";
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={Home} />
+      <Route path="/" component={Prototype} />
+      <Route path="/classic" component={Home} />
       <Route path="/prototype" component={Prototype} />
       <Route path="/hot-links" component={HotLinks} />
       <Route path="/404" component={NotFound} />
