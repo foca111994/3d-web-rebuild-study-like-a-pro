@@ -498,3 +498,17 @@ button { cursor: pointer; }
 /* El carril no usa discos ni canvases: solo el recorte del objeto y una sombra de contacto mínima. */
 .object-stage--white .object-art--pure::after { display: none; content: none; }
 .object-stage--white .object-art--pure .object-shadow { opacity: .42; }
+
+
+/* Movimiento de inventario: giro continuo en Y, flotación sinusoidal y variación por objeto. */
+.object-stage--white .object-card--pure .object-render { animation: objectTurntableFull 8s linear infinite; backface-visibility: visible; }
+.object-stage--white .object-card--pure:nth-child(2) .object-render { animation-name: objectTurntableComputer; animation-duration: 9s; }
+.object-stage--white .object-card--pure:nth-child(3) .object-render { animation-name: objectTurntableCassette; animation-duration: 6.5s; }
+.object-stage--white .object-card--pure:nth-child(4) .object-render { animation-name: objectTurntableNinja; animation-duration: 8.5s; }
+.object-stage--white .object-card--pure:nth-child(5) .object-render { animation-name: objectTurntableHeadphones; animation-duration: 7.5s; }
+@keyframes objectTurntableFull { 0% { transform: perspective(850px) rotateY(0deg) translateY(0); } 25% { transform: perspective(850px) rotateY(90deg) translateY(-7px); } 50% { transform: perspective(850px) rotateY(180deg) translateY(0); } 75% { transform: perspective(850px) rotateY(270deg) translateY(7px); } 100% { transform: perspective(850px) rotateY(360deg) translateY(0); } }
+@keyframes objectTurntableComputer { 0% { transform: perspective(850px) rotateY(-8deg) translateY(0); } 50% { transform: perspective(850px) rotateY(172deg) translateY(-9px); } 100% { transform: perspective(850px) rotateY(352deg) translateY(0); } }
+@keyframes objectTurntableCassette { 0% { transform: perspective(850px) rotateY(0deg) rotateZ(-12deg) translateY(0); } 25% { transform: perspective(850px) rotateY(90deg) rotateZ(2deg) translateY(-10px); } 50% { transform: perspective(850px) rotateY(180deg) rotateZ(12deg) translateY(0); } 75% { transform: perspective(850px) rotateY(270deg) rotateZ(2deg) translateY(10px); } 100% { transform: perspective(850px) rotateY(360deg) rotateZ(-12deg) translateY(0); } }
+@keyframes objectTurntableNinja { 0% { transform: perspective(850px) rotateY(0deg) translateY(0); } 50% { transform: perspective(850px) rotateY(180deg) translateY(-6px); } 100% { transform: perspective(850px) rotateY(360deg) translateY(0); } }
+@keyframes objectTurntableHeadphones { 0% { transform: perspective(850px) rotateY(-10deg) rotateZ(-3deg) translateY(0); } 50% { transform: perspective(850px) rotateY(170deg) rotateZ(3deg) translateY(-8px); } 100% { transform: perspective(850px) rotateY(350deg) rotateZ(-3deg) translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .object-stage--white .object-card--pure .object-render { animation: none; transform: none; } }

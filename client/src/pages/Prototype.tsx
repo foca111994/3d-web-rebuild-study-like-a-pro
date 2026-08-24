@@ -18,11 +18,11 @@ type ObjectItem = {
 
 const CATALOG_URL = "https://studylikeapro.art/cursos-courses";
 const OBJECT_ASSETS = {
-  student: "/manus-storage/student-central-3d_924cb6b1.png",
-  computer: "/manus-storage/course-computer-render_1e992c81.png",
-  smart: "/manus-storage/cassette-3d_4e7eb85a.png",
-  ninja: "/manus-storage/ninja-3d_afe44b24.png",
-  headphones: "/manus-storage/retro-headphones-3d_676d596d.png",
+  student: "/manus-storage/student-full-3d_16b9ab64.png",
+  computer: "/manus-storage/computer-full-3d_82055ea5.png",
+  smart: "/manus-storage/cassette-vertical-full-3d_cb9a3e9b.png",
+  ninja: "/manus-storage/ninja-front-full-3d_570baab8.png",
+  headphones: "/manus-storage/retro-headphones-full-3d_2bbc00c2.png",
 } as const;
 const LOGO_SKY = "/manus-storage/logo-sky_37c3df06.png";
 
@@ -96,7 +96,7 @@ export default function Prototype() {
         <div className="object-track object-track--pure" style={{ transform: `translateX(calc(50vw - ${activeIndex * 286}px - 143px))` }}>
           {items.map((item, index) => (
             <button className={`object-card object-card--pure ${index === activeIndex ? "object-card--active" : ""} ${selected === item.id ? "object-card--selected" : ""}`} data-object={item.id} key={item.id} onClick={() => { setActiveIndex(index); setSelected(item.id); }} aria-pressed={selected === item.id} aria-label={`${item.number} ${item.title}`}>
-              <span className="object-art object-art--pure"><span className="object-shadow" />{item.id === "computer" ? <span className="object-render object-laptop" aria-hidden="true"><span className="object-laptop-screen"><img src={LOGO_SKY} alt="" /></span><span className="object-laptop-base" /></span> : <img className="object-render" src={item.asset} alt="" draggable="false" />}</span>
+              <span className="object-art object-art--pure"><span className="object-shadow" /><img className="object-render" src={item.asset} alt="" draggable="false" /></span>
             </button>
           ))}
         </div>

@@ -1,11 +1,11 @@
-# Nueva dirección 3D sobre fondo blanco
+# Revisión de objetos 3D y movimiento
 
-- [x] Crear personaje 3D basado en el estudiante central del grupo, sin auriculares y con look de videojuego
-- [x] Crear cassette 3D aislado
-- [x] Crear ninja/samurái 3D aislado
-- [x] Crear auriculares retro 3D como objeto independiente
-- [x] Mantener computadora 3D con el logo ocupando toda la pantalla
-- [x] Eliminar bases circulares y canvases decorativos
-- [x] Subir visualmente los objetos para reservar espacio de header
-- [x] Mantener giro suave e información en segunda capa
-- [x] Verificar Home, clics, responsive y build
+- [x] Analizar el ritmo de giro y flotación del video de referencia
+- [x] Mostrar al estudiante completo, incluidos pies y zapatillas
+- [x] Crear computadora realista 3D con logo bien escalado
+- [x] Dar al cassette giro vertical y cambios de orientación
+- [x] Poner al samurái de frente, completo y elevado
+- [x] Mostrar auriculares retro completos con cable visible
+- [x] Ajustar todos los objetos al centro y debajo del header
+- [x] Validar giro automático, clic, desktop y móvil
+- [ ] Guardar checkpoint de la revisión
