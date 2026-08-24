@@ -1,9 +1,9 @@
-# Iteración scroll narrativo y bilingüe
+# Prototipo horizontal interactivo
 
-- [x] Convertir el hero en una secuencia controlada por scroll, con progreso cuadro a cuadro
-- [x] Revelar las secciones del sitio por escenas durante el scroll
-- [x] Cambiar el logo superior a la versión con cielo
-- [x] Añadir selector Español / English con contenido traducible
-- [x] Mantener fallback, pausa y prefers-reduced-motion
-- [x] Sincronizar pnpm-lock con package.json para que el despliegue no falle
-- [x] Ejecutar check, build, pruebas visuales y guardar checkpoint
+- [x] Definir los cinco objetos y sus metadatos de navegación
+- [x] Implementar carril horizontal con objeto central en foco
+- [x] Añadir rueda, trackpad, flechas, teclado y swipe
+- [x] Añadir panel de detalle al hacer clic
+- [x] Conservar rutas de cursos y CTAs oficiales
+- [x] Verificar desktop, móvil, teclado y reduced motion
+- [ ] Guardar checkpoint del prototipo
