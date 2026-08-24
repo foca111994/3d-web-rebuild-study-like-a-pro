@@ -1,7 +1,4 @@
-/*
- * Style direction: Study Like a Pro — galería horizontal tipo videojuego.
- * Primera capa sin copy visible: personajes y objetos aislados; el clic abre la segunda capa.
- */
+/* Style direction: Study Like a Pro — inventario horizontal 3D sobre fondo blanco. La primera capa es visual y limpia; el detalle aparece solo al seleccionar. */
 import { ArrowLeft, ArrowRight, ArrowUpRight, RotateCcw, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { MODE_ONE } from "@/lib/courses";
@@ -16,41 +13,35 @@ type ObjectItem = {
   micro: string;
   action: string;
   href?: string;
-  icon: "student" | "computer" | "smart" | "ninja" | "discman";
+  asset: string;
 };
 
 const CATALOG_URL = "https://studylikeapro.art/cursos-courses";
+const OBJECT_ASSETS = {
+  student: "/manus-storage/student-central-3d_924cb6b1.png",
+  computer: "/manus-storage/course-computer-render_1e992c81.png",
+  smart: "/manus-storage/cassette-3d_4e7eb85a.png",
+  ninja: "/manus-storage/ninja-3d_afe44b24.png",
+  headphones: "/manus-storage/retro-headphones-3d_676d596d.png",
+} as const;
+const LOGO_SKY = "/manus-storage/logo-sky_37c3df06.png";
 
 const ITEMS: Record<Language, ObjectItem[]> = {
   es: [
-    { id: "student", number: "01", title: "El estudiante", description: "La persona que empieza: foco, curiosidad y una skill que puede usar en el mundo real.", micro: "Identidad / foco / curiosidad", action: "Cerrar", icon: "student" },
-    { id: "computer", number: "02", title: "La computadora", description: "El catálogo completo para elegir una skill, revisar el programa y entrar al curso que corresponde.", micro: "Catálogo / cursos / compra", action: "Explorar cursos", href: CATALOG_URL, icon: "computer" },
-    { id: "smart", number: "03", title: "Study Smart", description: "Un camino de 10 cursos para estudiar con foco, una ruta clara y herramientas aplicables.", micro: "Modo 01 / 10 cursos", action: "Ver Study Smart", href: CATALOG_URL, icon: "smart" },
-    { id: "ninja", number: "04", title: "Ninja Mode", description: "Un camino de otros 10 cursos para practicar, subir de nivel y dominar una herramienta.", micro: "Modo 02 / 10 cursos", action: "Ver Ninja Mode", href: CATALOG_URL, icon: "ninja" },
-    { id: "study-lab", number: "05", title: "Study Lab", description: "El ritual sonoro de Study Like a Pro: música, concentración y contexto para sostener el ritmo.", micro: "Música / ritual / concentración", action: "Cerrar", icon: "discman" },
+    { id: "student", number: "01", title: "El estudiante", description: "El punto de partida: foco, curiosidad y una skill que puedas usar en el mundo real.", micro: "Identidad / foco / curiosidad", action: "Cerrar", asset: OBJECT_ASSETS.student },
+    { id: "computer", number: "02", title: "Cursos", description: "El catálogo completo para elegir una skill, revisar el programa y entrar al curso indicado.", micro: "Catálogo / cursos / compra", action: "Explorar cursos", href: CATALOG_URL, asset: OBJECT_ASSETS.computer },
+    { id: "smart", number: "03", title: "Study Smart", description: `Un recorrido de ${MODE_ONE.length || 10} cursos para estudiar con foco, una ruta clara y herramientas aplicables.`, micro: "Modo 01 / 10 cursos", action: "Ver Study Smart", href: CATALOG_URL, asset: OBJECT_ASSETS.smart },
+    { id: "ninja", number: "04", title: "Ninja Mode", description: "Un recorrido de 10 cursos para practicar, subir de nivel y dominar una herramienta.", micro: "Modo 02 / 10 cursos", action: "Ver Ninja Mode", href: CATALOG_URL, asset: OBJECT_ASSETS.ninja },
+    { id: "study-lab", number: "05", title: "Study Lab", description: "El ritual sonoro de Study Like a Pro: música, concentración y contexto para sostener el ritmo.", micro: "Música / ritual / concentración", action: "Cerrar", asset: OBJECT_ASSETS.headphones },
   ],
   en: [
-    { id: "student", number: "01", title: "The student", description: "The person who starts: focus, curiosity and a skill they can use in the real world.", micro: "Identity / focus / curiosity", action: "Close", icon: "student" },
-    { id: "computer", number: "02", title: "The computer", description: "The complete catalog to choose a skill, review the program and enter the right course.", micro: "Catalog / courses / purchase", action: "Explore courses", href: CATALOG_URL, icon: "computer" },
-    { id: "smart", number: "03", title: "Study Smart", description: "A 10-course path to study with focus, a clear route and tools you can apply.", micro: "Mode 01 / 10 courses", action: "View Study Smart", href: CATALOG_URL, icon: "smart" },
-    { id: "ninja", number: "04", title: "Ninja Mode", description: "Another 10-course path to practice, level up and truly own a tool.", micro: "Mode 02 / 10 courses", action: "View Ninja Mode", href: CATALOG_URL, icon: "ninja" },
-    { id: "study-lab", number: "05", title: "Study Lab", description: "Study Like a Pro's sound ritual: music, concentration and context to keep your rhythm.", micro: "Music / ritual / concentration", action: "Close", icon: "discman" },
+    { id: "student", number: "01", title: "The student", description: "The starting point: focus, curiosity and a skill you can use in the real world.", micro: "Identity / focus / curiosity", action: "Close", asset: OBJECT_ASSETS.student },
+    { id: "computer", number: "02", title: "Courses", description: "The complete catalog to choose a skill, review the program and enter the right course.", micro: "Catalog / courses / purchase", action: "Explore courses", href: CATALOG_URL, asset: OBJECT_ASSETS.computer },
+    { id: "smart", number: "03", title: "Study Smart", description: "A 10-course path to study with focus, a clear route and tools you can apply.", micro: "Mode 01 / 10 courses", action: "View Study Smart", href: CATALOG_URL, asset: OBJECT_ASSETS.smart },
+    { id: "ninja", number: "04", title: "Ninja Mode", description: "A 10-course path to practice, level up and truly own a tool.", micro: "Mode 02 / 10 courses", action: "View Ninja Mode", href: CATALOG_URL, asset: OBJECT_ASSETS.ninja },
+    { id: "study-lab", number: "05", title: "Study Lab", description: "Study Like a Pro's sound ritual: music, concentration and context to keep your rhythm.", micro: "Music / ritual / concentration", action: "Close", asset: OBJECT_ASSETS.headphones },
   ],
 };
-
-const OBJECT_ASSETS: Record<ObjectItem["icon"], string> = {
-  student: "/manus-storage/student-cap-render_1b2e07c7.png",
-  computer: "/manus-storage/course-computer-render_1e992c81.png",
-  smart: "/manus-storage/study-smart-render_889b0043.png",
-  ninja: "/manus-storage/ninja-mode-render_24cd8bb9.png",
-  discman: "/manus-storage/study-lab-render_03d5812e.png",
-};
-
-const LOGO_SKY = "/manus-storage/logo-sky_37c3df06.png";
-
-function ObjectVisual({ item }: { item: ObjectItem }) {
-  return <img className="object-render" src={OBJECT_ASSETS[item.icon]} alt="" draggable="false" />;
-}
 
 export default function Prototype() {
   const [language, setLanguage] = useState<Language>("es");
@@ -91,7 +82,7 @@ export default function Prototype() {
   };
 
   return (
-    <main className="prototype-shell prototype-shell--objects" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+    <main className="prototype-shell prototype-shell--objects prototype-shell--white" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
       <header className="prototype-header">
         <a href="/" className="prototype-wordmark" aria-label="Study Like a Pro"><img src={LOGO_SKY} alt="Study Like a Pro" /><span>/ inventory</span></a>
         <div className="prototype-header-actions">
@@ -101,11 +92,11 @@ export default function Prototype() {
         </div>
       </header>
 
-      <section className="object-stage object-stage--pure" aria-label={language === "es" ? "Objetos interactivos de Study Like a Pro" : "Interactive Study Like a Pro objects"}>
+      <section className="object-stage object-stage--pure object-stage--white" aria-label={language === "es" ? "Objetos interactivos de Study Like a Pro" : "Interactive Study Like a Pro objects"}>
         <div className="object-track object-track--pure" style={{ transform: `translateX(calc(50vw - ${activeIndex * 286}px - 143px))` }}>
           {items.map((item, index) => (
             <button className={`object-card object-card--pure ${index === activeIndex ? "object-card--active" : ""} ${selected === item.id ? "object-card--selected" : ""}`} data-object={item.id} key={item.id} onClick={() => { setActiveIndex(index); setSelected(item.id); }} aria-pressed={selected === item.id} aria-label={`${item.number} ${item.title}`}>
-              <span className="object-art object-art--pure"><span className="object-shadow" /><ObjectVisual item={item} /></span>
+              <span className="object-art object-art--pure"><span className="object-shadow" />{item.id === "computer" ? <span className="object-render object-laptop" aria-hidden="true"><span className="object-laptop-screen"><img src={LOGO_SKY} alt="" /></span><span className="object-laptop-base" /></span> : <img className="object-render" src={item.asset} alt="" draggable="false" />}</span>
             </button>
           ))}
         </div>
