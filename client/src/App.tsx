@@ -12,6 +12,7 @@ import Home from "./pages/Home";
 import HotLinks from "./pages/HotLinks";
 import NotFound from "./pages/NotFound";
 import Prototype from "./pages/Prototype";
+import Pilot3D from "./pages/Pilot3D";
 
 function Router() {
   return (
@@ -19,6 +20,7 @@ function Router() {
       <Route path="/" component={Prototype} />
       <Route path="/classic" component={Home} />
       <Route path="/prototype" component={Prototype} />
+      <Route path="/pilot-3d" component={Pilot3D} />
       <Route path="/hot-links" component={HotLinks} />
       <Route path="/404" component={NotFound} />
       <Route path="/:slug" component={CoursePage} />

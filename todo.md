@@ -1,11 +1,11 @@
-# Revisión de objetos 3D y movimiento
+# Piloto 3D de mecánica
 
-- [x] Analizar el ritmo de giro y flotación del video de referencia
-- [x] Mostrar al estudiante completo, incluidos pies y zapatillas
-- [x] Crear computadora realista 3D con logo bien escalado
-- [x] Dar al cassette giro vertical y cambios de orientación
-- [x] Poner al samurái de frente, completo y elevado
-- [x] Mostrar auriculares retro completos con cable visible
-- [x] Ajustar todos los objetos al centro y debajo del header
-- [x] Validar giro automático, clic, desktop y móvil
-- [ ] Guardar checkpoint de la revisión
+- [x] Añadir Three.js o una capa 3D compatible con Vite
+- [x] Crear avatar temporal con geometría tridimensional visible
+- [x] Configurar cámara casi ortográfica y fondo blanco
+- [x] Replicar giro lineal sobre eje Y del video
+- [x] Añadir flotación sinusoidal suave
+- [x] Mantener cuerpo temporal completo, elevado y centrado
+- [x] Conectar navegación horizontal y selección
+- [x] Validar desktop, móvil, teclado y reduced motion
+- [ ] Guardar checkpoint del piloto

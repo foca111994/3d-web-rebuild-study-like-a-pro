@@ -512,3 +512,62 @@ button { cursor: pointer; }
 @keyframes objectTurntableNinja { 0% { transform: perspective(850px) rotateY(0deg) translateY(0); } 50% { transform: perspective(850px) rotateY(180deg) translateY(-6px); } 100% { transform: perspective(850px) rotateY(360deg) translateY(0); } }
 @keyframes objectTurntableHeadphones { 0% { transform: perspective(850px) rotateY(-10deg) rotateZ(-3deg) translateY(0); } 50% { transform: perspective(850px) rotateY(170deg) rotateZ(3deg) translateY(-8px); } 100% { transform: perspective(850px) rotateY(350deg) rotateZ(-3deg) translateY(0); } }
 @media (prefers-reduced-motion: reduce) { .object-stage--white .object-card--pure .object-render { animation: none; transform: none; } }
+
+
+/* Piloto 3D: escena de prueba con cámara estable, objeto alto y controles de validación discretos. */
+.pilot-page { min-height: 100svh; background: #fbfaf7; color: #171717; padding: 1.4rem 2.6rem 1.8rem; display: grid; grid-template-rows: auto 1fr auto; }
+.pilot-header, .pilot-footer { display: flex; align-items: center; justify-content: space-between; gap: 1rem; position: relative; z-index: 2; }
+.pilot-brand { display: inline-flex; align-items: center; gap: .75rem; color: #171717; font: 700 10px/1 "IBM Plex Mono", monospace; letter-spacing: .14em; text-transform: uppercase; }
+.pilot-brand img { width: 118px; height: 38px; object-fit: cover; object-position: center; background: #fff; border: 1px solid #171717; box-shadow: 4px 4px 0 #bd463d; }
+.pilot-meta, .pilot-label { display: flex; gap: 1.25rem; font: 500 9px/1 "IBM Plex Mono", monospace; letter-spacing: .12em; text-transform: uppercase; color: rgba(23, 23, 23, .58); }
+.pilot-close { width: 36px; height: 36px; display: grid; place-items: center; border: 1px solid rgba(23, 23, 23, .45); color: #171717; font: 300 24px/1 "Space Grotesk", sans-serif; }
+.pilot-stage { min-height: 0; position: relative; display: grid; align-items: center; justify-items: center; padding: 1.5rem 0 .75rem; }
+.pilot-canvas { width: min(76vw, 700px); height: min(70svh, 660px); min-height: 400px; }
+.pilot-label { position: absolute; left: 0; right: 0; justify-content: space-between; pointer-events: none; }
+.pilot-label--top { top: 2rem; }
+.pilot-label--bottom { bottom: 1.4rem; }
+.pilot-controls { position: absolute; bottom: 3.4rem; display: flex; align-items: center; gap: .55rem; }
+.pilot-controls button { min-width: 36px; height: 36px; padding: 0 .7rem; display: inline-grid; place-items: center; border: 1px solid rgba(23, 23, 23, .42); background: rgba(255,255,255,.72); color: #171717; font: 600 9px/1 "IBM Plex Mono", monospace; letter-spacing: .12em; }
+.pilot-controls button:active { transform: scale(.97); }
+.pilot-controls .pilot-toggle { min-width: 72px; }
+.pilot-footer { border-top: 1px solid rgba(23, 23, 23, .16); padding-top: 1rem; }
+.pilot-footer p { max-width: 520px; margin: 0; color: rgba(23, 23, 23, .62); font: 400 11px/1.5 "IBM Plex Mono", monospace; }
+.pilot-link { display: inline-flex; align-items: center; gap: .45rem; color: #bd463d; font: 700 10px/1 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: .1em; }
+@media (max-width: 720px) {
+  .pilot-page { padding: 1rem 1rem 1.25rem; }
+  .pilot-header { align-items: flex-start; }
+  .pilot-brand { flex-direction: column; align-items: flex-start; gap: .65rem; }
+  .pilot-brand img { width: 110px; height: 35px; }
+  .pilot-meta { flex-direction: column; align-items: flex-end; gap: .45rem; }
+  .pilot-stage { padding-top: .5rem; }
+  .pilot-canvas { width: 100vw; height: 64svh; min-height: 410px; }
+  .pilot-label { left: 0; right: 0; font-size: 8px; }
+  .pilot-label--top { top: 1rem; }
+  .pilot-label--bottom { bottom: 1rem; }
+  .pilot-controls { bottom: 2.7rem; }
+  .pilot-footer { align-items: flex-start; flex-direction: column; gap: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) { .pilot-page .pilot-controls { opacity: .7; } }
+
+
+/* Ajuste móvil del piloto: toda la instrumentación permanece dentro del viewport. */
+@media (max-width: 720px) {
+  .pilot-header { width: 100%; gap: .45rem; }
+  .pilot-brand { min-width: 0; flex: 1 1 auto; }
+  .pilot-brand img { width: 96px; height: 31px; }
+  .pilot-brand span { font-size: 8px; letter-spacing: .08em; }
+  .pilot-meta { flex: 0 0 auto; font-size: 8px; }
+  .pilot-meta span:last-child { display: none; }
+  .pilot-close { flex: 0 0 32px; width: 32px; height: 32px; }
+  .pilot-label--top span:last-child, .pilot-label--bottom span:last-child { max-width: 34vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .pilot-footer p { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
+}
+
+
+/* Seguro de viewport para el piloto: evita que controles o el botón de cierre se escapen lateralmente. */
+.pilot-page { box-sizing: border-box; width: 100%; overflow-x: hidden; }
+.pilot-page *, .pilot-page *::before, .pilot-page *::after { box-sizing: border-box; }
+@media (max-width: 720px) {
+  .pilot-header { max-width: 100%; min-width: 0; }
+  .pilot-close { margin-right: 0; }
+}
