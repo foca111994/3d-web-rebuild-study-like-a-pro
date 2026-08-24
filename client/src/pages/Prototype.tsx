@@ -1,8 +1,8 @@
 /*
- * Style direction: Study Like a Pro — inventario horizontal minimalista.
- * Cinco objetos como rutas de aprendizaje; el objeto activo toma el foco y el clic revela contexto.
+ * Style direction: Study Like a Pro — galería horizontal tipo videojuego.
+ * Primera capa sin copy visible: personajes y objetos aislados; el clic abre la segunda capa.
  */
-import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, Headphones, Laptop, Play, RotateCcw, Swords, UserRound, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, RotateCcw, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { MODE_ONE } from "@/lib/courses";
 
@@ -11,9 +11,7 @@ type Language = "es" | "en";
 type ObjectItem = {
   id: string;
   number: string;
-  label: string;
   title: string;
-  accent: string;
   description: string;
   micro: string;
   action: string;
@@ -21,36 +19,38 @@ type ObjectItem = {
   icon: "student" | "computer" | "smart" | "ninja" | "discman";
 };
 
+const CATALOG_URL = "https://studylikeapro.art/cursos-courses";
+
 const ITEMS: Record<Language, ObjectItem[]> = {
   es: [
-    { id: "student", number: "01", label: "YOU", title: "El estudiante", accent: "que empieza.", description: "Una persona curiosa, concentrada y lista para aprender algo que pueda usar en su mundo real.", micro: "Identidad / foco / curiosidad", action: "Conocer la idea", icon: "student" },
-    { id: "computer", number: "02", label: "COURSES", title: "La computadora", accent: "abre la ruta.", description: "El punto de entrada al catálogo: cursos, programas y skills para elegir con criterio.", micro: "Cursos / catálogo / compra", action: "Explorar cursos", href: "https://studylikeapro.art/cursos-courses", icon: "computer" },
-    { id: "smart", number: "03", label: "MODE 01", title: "Study Smart", accent: "sin humo.", description: "Aprendé con foco, una ruta clara y herramientas que te acompañan hasta el próximo resultado.", micro: "Start Smart / Empezá Pro", action: "Ver modo 1", href: "https://studylikeapro.art/cursos-courses", icon: "smart" },
-    { id: "ninja", number: "04", label: "MODE 02", title: "Ninja Mode", accent: "subí de nivel.", description: "Skills tácticas para meterte de lleno, practicar y salir con una herramienta dominada.", micro: "Ninja / práctica / dominio", action: "Ver modo 2", href: "https://studylikeapro.art/cursos-courses", icon: "ninja" },
-    { id: "study-lab", number: "05", label: "STUDY LAB", title: "Study Lab", accent: "poné play.", description: "El laboratorio de concentración de la marca: sonido, ritual y contexto para sostener el ritmo mientras aprendés.", micro: "Música / ritual / concentración", action: "Abrir concepto", icon: "discman" },
+    { id: "student", number: "01", title: "El estudiante", description: "La persona que empieza: foco, curiosidad y una skill que puede usar en el mundo real.", micro: "Identidad / foco / curiosidad", action: "Cerrar", icon: "student" },
+    { id: "computer", number: "02", title: "La computadora", description: "El catálogo completo para elegir una skill, revisar el programa y entrar al curso que corresponde.", micro: "Catálogo / cursos / compra", action: "Explorar cursos", href: CATALOG_URL, icon: "computer" },
+    { id: "smart", number: "03", title: "Study Smart", description: "Un camino de 10 cursos para estudiar con foco, una ruta clara y herramientas aplicables.", micro: "Modo 01 / 10 cursos", action: "Ver Study Smart", href: CATALOG_URL, icon: "smart" },
+    { id: "ninja", number: "04", title: "Ninja Mode", description: "Un camino de otros 10 cursos para practicar, subir de nivel y dominar una herramienta.", micro: "Modo 02 / 10 cursos", action: "Ver Ninja Mode", href: CATALOG_URL, icon: "ninja" },
+    { id: "study-lab", number: "05", title: "Study Lab", description: "El ritual sonoro de Study Like a Pro: música, concentración y contexto para sostener el ritmo.", micro: "Música / ritual / concentración", action: "Cerrar", icon: "discman" },
   ],
   en: [
-    { id: "student", number: "01", label: "YOU", title: "The student", accent: "who starts.", description: "A curious, focused person ready to learn something they can use in the real world.", micro: "Identity / focus / curiosity", action: "Meet the idea", icon: "student" },
-    { id: "computer", number: "02", label: "COURSES", title: "The computer", accent: "opens the route.", description: "The entrance to the catalog: courses, programs and skills to choose with intention.", micro: "Courses / catalog / purchase", action: "Explore courses", href: "https://studylikeapro.art/cursos-courses", icon: "computer" },
-    { id: "smart", number: "03", label: "MODE 01", title: "Study Smart", accent: "without noise.", description: "Learn with focus, a clear route and tools that carry you toward your next result.", micro: "Start Smart / clear route", action: "View mode 1", href: "https://studylikeapro.art/cursos-courses", icon: "smart" },
-    { id: "ninja", number: "04", label: "MODE 02", title: "Ninja Mode", accent: "level up.", description: "Tactical skills to go deep, practice and leave with a tool you truly own.", micro: "Ninja / practice / mastery", action: "View mode 2", href: "https://studylikeapro.art/cursos-courses", icon: "ninja" },
-    { id: "study-lab", number: "05", label: "STUDY LAB", title: "Study Lab", accent: "press play.", description: "The brand's focus lab: sound, ritual and context to keep your rhythm while you learn.", micro: "Music / ritual / concentration", action: "Open concept", icon: "discman" },
+    { id: "student", number: "01", title: "The student", description: "The person who starts: focus, curiosity and a skill they can use in the real world.", micro: "Identity / focus / curiosity", action: "Close", icon: "student" },
+    { id: "computer", number: "02", title: "The computer", description: "The complete catalog to choose a skill, review the program and enter the right course.", micro: "Catalog / courses / purchase", action: "Explore courses", href: CATALOG_URL, icon: "computer" },
+    { id: "smart", number: "03", title: "Study Smart", description: "A 10-course path to study with focus, a clear route and tools you can apply.", micro: "Mode 01 / 10 courses", action: "View Study Smart", href: CATALOG_URL, icon: "smart" },
+    { id: "ninja", number: "04", title: "Ninja Mode", description: "Another 10-course path to practice, level up and truly own a tool.", micro: "Mode 02 / 10 courses", action: "View Ninja Mode", href: CATALOG_URL, icon: "ninja" },
+    { id: "study-lab", number: "05", title: "Study Lab", description: "Study Like a Pro's sound ritual: music, concentration and context to keep your rhythm.", micro: "Music / ritual / concentration", action: "Close", icon: "discman" },
   ],
 };
 
 const OBJECT_ASSETS: Record<ObjectItem["icon"], string> = {
-  student: "/manus-storage/student-render_a932cb44.png",
+  student: "/manus-storage/student-cap-render_1b2e07c7.png",
   computer: "/manus-storage/course-computer-render_1e992c81.png",
   smart: "/manus-storage/study-smart-render_889b0043.png",
   ninja: "/manus-storage/ninja-mode-render_24cd8bb9.png",
   discman: "/manus-storage/study-lab-render_03d5812e.png",
 };
 
-function ObjectIcon({ type }: { type: ObjectItem["icon"] }) {
-  return <img className="object-render" src={OBJECT_ASSETS[type]} alt="" />;
-}
-
 const LOGO_SKY = "/manus-storage/logo-sky_37c3df06.png";
+
+function ObjectVisual({ item }: { item: ObjectItem }) {
+  return <img className="object-render" src={OBJECT_ASSETS[item.icon]} alt="" draggable="false" />;
+}
 
 export default function Prototype() {
   const [language, setLanguage] = useState<Language>("es");
@@ -64,10 +64,11 @@ export default function Prototype() {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "ArrowRight") setActiveIndex((value) => Math.min(items.length - 1, value + 1));
       if (event.key === "ArrowLeft") setActiveIndex((value) => Math.max(0, value - 1));
+      if (event.key === "Enter" && document.activeElement?.getAttribute("data-object") === active.id) setSelected(active.id);
       if (event.key === "Escape") setSelected(null);
     };
     const onWheel = (event: WheelEvent) => {
-      if (Math.abs(event.deltaY) < 5 && Math.abs(event.deltaX) < 5) return;
+      if (selected || (Math.abs(event.deltaY) < 5 && Math.abs(event.deltaX) < 5)) return;
       event.preventDefault();
       const direction = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
       setActiveIndex((value) => Math.max(0, Math.min(items.length - 1, value + (direction > 0 ? 1 : -1))));
@@ -75,71 +76,58 @@ export default function Prototype() {
     window.addEventListener("keydown", onKeyDown);
     window.addEventListener("wheel", onWheel, { passive: false });
     return () => { window.removeEventListener("keydown", onKeyDown); window.removeEventListener("wheel", onWheel); };
-  }, [items.length]);
+  }, [active.id, items.length, selected]);
 
-  const move = (direction: number) => setActiveIndex((value) => Math.max(0, Math.min(items.length - 1, value + direction)));
+  const move = (direction: number) => {
+    setActiveIndex((value) => Math.max(0, Math.min(items.length - 1, value + direction)));
+    setSelected(null);
+  };
   const onTouchStart = (event: React.TouchEvent) => { touchStartX.current = event.touches[0]?.clientX ?? null; };
   const onTouchEnd = (event: React.TouchEvent) => {
-    if (touchStartX.current === null) return;
+    if (touchStartX.current === null || selected) return;
     const delta = (event.changedTouches[0]?.clientX ?? touchStartX.current) - touchStartX.current;
     if (Math.abs(delta) > 35) move(delta < 0 ? 1 : -1);
     touchStartX.current = null;
   };
 
   return (
-    <main className="prototype-shell" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+    <main className="prototype-shell prototype-shell--objects" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
       <header className="prototype-header">
         <a href="/" className="prototype-wordmark" aria-label="Study Like a Pro"><img src={LOGO_SKY} alt="Study Like a Pro" /><span>/ inventory</span></a>
         <div className="prototype-header-actions">
-          <span className="prototype-meta">{String(activeIndex + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")}</span>
-          <label className="prototype-language"><span className="sr-only">Language</span><select value={language} onChange={(event) => { setLanguage(event.target.value as Language); setActiveIndex(0); setSelected(null); }} aria-label="Seleccionar idioma"><option value="es">ES</option><option value="en">EN</option></select></label>
+          <span className="prototype-meta" aria-live="polite">{String(activeIndex + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")}</span>
+          <label className="prototype-language"><span className="sr-only">Seleccionar idioma</span><select value={language} onChange={(event) => { setLanguage(event.target.value as Language); setActiveIndex(0); setSelected(null); }} aria-label="Seleccionar idioma"><option value="es">ES</option><option value="en">EN</option></select></label>
           <a className="prototype-close" href="/" aria-label="Volver a Study Like a Pro"><X size={18} /></a>
         </div>
       </header>
 
-      <section className="prototype-intro">
-        <p className="prototype-kicker">STUDY LIKE A PRO / OBJECT SYSTEM</p>
-        <h1>{language === "es" ? "Aprendé algo." : "Learn something."}<br /><em>{language === "es" ? "Usalo de verdad." : "Use it for real."}</em></h1>
-        <p>{language === "es" ? "Deslizá para explorar el kit de skills. Elegí un objeto para ver qué abre." : "Slide through the skill kit. Choose an object to see what it opens."}</p>
-      </section>
-
-      <a className="proto-hotlink" href={`/${MODE_ONE[0].slug}`}>
-        <span className="proto-hotlink-number">01 / SKILL LINK</span>
-        <span className="proto-hotlink-copy"><strong>{MODE_ONE[0].title}</strong><em>{language === "es" ? "Entrá al curso" : "Enter the course"}</em></span>
-        <ArrowUpRight size={19} />
-      </a>
-
-      <section className="object-stage" aria-label={language === "es" ? "Inventario de Study Like a Pro" : "Study Like a Pro inventory"}>
-        <div className="object-track" style={{ transform: `translateX(calc(50vw - ${activeIndex * 264}px - 132px))` }}>
+      <section className="object-stage object-stage--pure" aria-label={language === "es" ? "Objetos interactivos de Study Like a Pro" : "Interactive Study Like a Pro objects"}>
+        <div className="object-track object-track--pure" style={{ transform: `translateX(calc(50vw - ${activeIndex * 286}px - 143px))` }}>
           {items.map((item, index) => (
-            <button className={`object-card ${index === activeIndex ? "object-card--active" : ""} ${selected === item.id ? "object-card--selected" : ""}`} key={item.id} onClick={() => { setActiveIndex(index); setSelected(item.id); }} aria-pressed={selected === item.id} aria-label={`${item.number} ${item.title}`}>
-              <span className="object-card-top"><span>{item.number}</span><span>{item.label}</span></span>
-              <span className="object-art"><span className="object-shadow" /><ObjectIcon type={item.icon} /></span>
-              <span className="object-card-bottom"><strong>{item.title}</strong><em>{item.accent}</em></span>
+            <button className={`object-card object-card--pure ${index === activeIndex ? "object-card--active" : ""} ${selected === item.id ? "object-card--selected" : ""}`} data-object={item.id} key={item.id} onClick={() => { setActiveIndex(index); setSelected(item.id); }} aria-pressed={selected === item.id} aria-label={`${item.number} ${item.title}`}>
+              <span className="object-art object-art--pure"><span className="object-shadow" /><ObjectVisual item={item} /></span>
             </button>
           ))}
         </div>
-        <div className="object-axis" aria-hidden="true"><span /><span /><span /></div>
+        <div className="object-axis" aria-hidden="true"><span /><span /><span /><span /><span /></div>
       </section>
 
-      <div className="prototype-controls">
-        <button onClick={() => move(-1)} disabled={activeIndex === 0} aria-label="Objeto anterior"><ArrowLeft size={16} /></button>
-        <span>{language === "es" ? "Deslizá o usá las flechas" : "Slide or use the arrows"}</span>
-        <button onClick={() => move(1)} disabled={activeIndex === items.length - 1} aria-label="Siguiente objeto"><ArrowRight size={16} /></button>
+      <div className="prototype-controls prototype-controls--minimal">
+        <button onClick={() => move(-1)} disabled={activeIndex === 0} aria-label="Objeto anterior"><ArrowLeft size={17} /></button>
+        <span className="prototype-dots" aria-hidden="true">{items.map((item, index) => <i className={index === activeIndex ? "is-active" : ""} key={item.id} />)}</span>
+        <button onClick={() => move(1)} disabled={activeIndex === items.length - 1} aria-label="Siguiente objeto"><ArrowRight size={17} /></button>
       </div>
 
-      <section className={`object-detail ${selected ? "object-detail--open" : ""}`} aria-live="polite">
+      <section className={`object-detail object-detail--layer ${selected ? "object-detail--open" : ""}`} aria-live="polite">
         {selected && (
           <div className="object-detail-inner">
-            <div><p className="prototype-kicker">{active.number} / {active.micro}</p><h2>{active.title}<br /><em>{active.accent}</em></h2></div>
+            <div><p className="prototype-kicker">{active.number} / {active.micro}</p><h1>{active.title}</h1></div>
             <p>{active.description}</p>
-            {active.href ? <a href={active.href} target={active.href.startsWith("http") ? "_blank" : undefined} rel={active.href.startsWith("http") ? "noreferrer" : undefined} className="prototype-cta">{active.action} <ArrowUpRight size={15} /></a> : <button className="prototype-cta prototype-cta--quiet" onClick={() => setSelected(null)}>{active.action} <RotateCcw size={15} /></button>}
+            {active.href ? <a href={active.href} target="_blank" rel="noreferrer" className="prototype-cta">{active.action} <ArrowUpRight size={15} /></a> : <button className="prototype-cta prototype-cta--quiet" onClick={() => setSelected(null)}>{active.action} <RotateCcw size={15} /></button>}
             <button className="detail-close" onClick={() => setSelected(null)} aria-label="Cerrar detalle"><X size={17} /></button>
           </div>
         )}
       </section>
-
-      <footer className="prototype-footer"><span>LEARN A SKILL / SKILLS GET 'EM</span><span>SCROLL HORIZONTAL / NO NOISE</span></footer>
     </main>
   );
 }
