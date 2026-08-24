@@ -1,9 +1,9 @@
-# Reconstrucción de Study Like a Pro
+# Iteración scroll narrativo y bilingüe
 
-- [x] Auditar Home, catálogo, modos, cursos y rutas públicas
-- [x] Analizar el video hero y sus requisitos de integración
-- [x] Inventariar imágenes, videos, PDFs, enlaces de checkout y materiales privados
-- [x] Definir arquitectura de contenido reutilizable para 10–20 cursos
-- [x] Construir Home scrolleable y rutas independientes
-- [x] Validar responsive, video, navegación, SEO y fallback sin video
-- [ ] Conectar dominio solo después de validar paridad con la web actual
+- [x] Convertir el hero en una secuencia controlada por scroll, con progreso cuadro a cuadro
+- [x] Revelar las secciones del sitio por escenas durante el scroll
+- [x] Cambiar el logo superior a la versión con cielo
+- [x] Añadir selector Español / English con contenido traducible
+- [x] Mantener fallback, pausa y prefers-reduced-motion
+- [x] Sincronizar pnpm-lock con package.json para que el despliegue no falle
+- [x] Ejecutar check, build, pruebas visuales y guardar checkpoint
