@@ -8,13 +8,17 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
+import CoursePage from "./pages/CoursePage";
+import HotLinks from "./pages/HotLinks";
 import NotFound from "./pages/NotFound";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/hot-links" component={HotLinks} />
       <Route path="/404" component={NotFound} />
+      <Route path="/:slug" component={CoursePage} />
       <Route component={NotFound} />
     </Switch>
   );

@@ -1,0 +1,13 @@
+{
+  "name": "Study Like a Pro",
+  "short_name": "SLP",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#123b5d",
+  "theme_color": "#050505",
+  "description": "Cursos y mentorías para avanzar sin humo.",
+  "icons": [
+    { "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

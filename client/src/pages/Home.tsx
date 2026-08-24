@@ -1,132 +1,203 @@
 /*
- * Style direction: Editorial de Taller — fotografía táctil, composición de portada,
- * rojo ladrillo, marfil de papel y señales utilitarias de catálogo.
+ * Style direction: Cine editorial de taller — el video abre la experiencia,
+ * el scroll revela manifiesto, modos y cursos con la energía táctil de la marca.
  */
-import { ArrowUpRight, ExternalLink, Instagram, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { ArrowDown, ArrowUpRight, ExternalLink, Instagram, Menu, Pause, Play, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { MODE_ONE, MODE_TWO, type Course } from "@/lib/courses";
 
-const COURSES = [
-  {
-    number: "01",
-    category: "AUTOMOTOR",
-    title: "Car Detailing Pro",
-    description: "Interiores, pulido y ópticas. Paso a paso, sin tecnicismos raros.",
-    href: "https://studylikeapro.art/car-detailing",
-    status: "Curso disponible",
-  },
-  {
-    number: "02",
-    category: "MANUALIDADES & CREATIVIDAD",
-    title: "Academia del Macramé",
-    description: "Nudos, proyectos y práctica guiada para transformar inspiración en resultado.",
-    href: "https://studylikeapro.art/academia-del-macrame",
-    status: "Curso disponible",
-  },
-  {
-    number: "03",
-    category: "OFICIOS / SKILLS",
-    title: "Tu Negocio de Jabones Artesanales",
-    description: "Una ruta clara para crear, presentar y vender jabones con más criterio.",
-    href: "https://studylikeapro.art/cursos-courses",
-    status: "Ver disponibilidad",
-  },
-  {
-    number: "04",
-    category: "MÚSICA & VOZ",
-    title: "Aprenda a Cantar con Adrián Lozano",
-    description: "Técnica vocal para empezar a entrenar la voz con más orden y menos caos.",
-    href: "https://studylikeapro.art/cursos-courses",
-    status: "Ver disponibilidad",
-  },
-  {
-    number: "05",
-    category: "AUTOMOTOR",
-    title: "Mecánica de Motos VIP",
-    description: "Mantenimiento, diagnóstico y motor para entender una moto de verdad.",
-    href: "https://studylikeapro.art/cursos-courses",
-    status: "Ver disponibilidad",
-  },
-];
+const HERO_VIDEO = "/manus-storage/hero-study-room_ec80bb6f.mp4";
+const HERO_POSTER = "/manus-storage/hero-study-room-poster_67da5b48.png";
+const LOGO_SKY = "/manus-storage/logo-sky_37c3df06.png";
+const LOGO_TRANSPARENT = "/manus-storage/logo-transparent_be5a9d37.webp";
+const ILLUSTRATED_BREAK = "/manus-storage/illustrated-study-break_839b1fe1.png";
+const CATALOG_HERO = "/manus-storage/catalog-hero_4d0f98de.jpg";
+
+function CourseRail({ courses, mode, heading, light = false }: { courses: Course[]; mode: string; heading: string; light?: boolean }) {
+  return (
+    <section className={`mode-section ${light ? "mode-section--orange" : "mode-section--ink"}`} id={mode === "Modo 1" ? "modo-1" : "modo-2"}>
+      <div className="section-rail">
+        <div className="section-index">{mode} <span>/ {String(courses.length).padStart(2, "0")}</span></div>
+        <div className="section-rule" aria-hidden="true" />
+        <p className="section-kicker">{mode === "Modo 1" ? "START SMART" : "NINJA MODE"}</p>
+      </div>
+      <div className="mode-heading">
+        <div>
+          <p className="mono-label">{mode === "Modo 1" ? "01 / START SMART" : "02 / NINJA MODE"}</p>
+          <h2>{heading}</h2>
+        </div>
+        <p className="mode-description">Skills prácticas, explicadas sin vueltas y pensadas para usarlas en el mundo real.</p>
+      </div>
+      <div className="course-grid">
+        {courses.map((course) => (
+          <a className="course-row" href={`/${course.slug}`} key={`${course.mode}-${course.number}-${course.title}`}>
+            <span className="course-row-number">{course.number}</span>
+            <span className="course-row-copy">
+              <span className="course-row-category">{course.category}</span>
+              <strong>{course.title}</strong>
+              <span className="course-row-description">{course.description}</span>
+              <span className="course-row-status">{course.status}</span>
+            </span>
+            <span className="course-row-arrow" aria-hidden="true"><ArrowUpRight size={20} strokeWidth={1.6} /></span>
+          </a>
+        ))}
+      </div>
+    </section>
+  );
+}
 
 export default function Home() {
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
+  const [videoFailed, setVideoFailed] = useState(false);
+  const [videoPaused, setVideoPaused] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updateMotionPreference = () => setReducedMotion(mediaQuery.matches);
+    updateMotionPreference();
+    mediaQuery.addEventListener("change", updateMotionPreference);
+    return () => mediaQuery.removeEventListener("change", updateMotionPreference);
+  }, []);
+
+  useEffect(() => {
+    if (reducedMotion) videoRef.current?.pause();
+    else if (!videoFailed) videoRef.current?.play().catch(() => setVideoFailed(true));
+  }, [reducedMotion, videoFailed]);
+
+  const recoverVideo = () => {
+    if (reducedMotion || videoFailed) return;
+    window.setTimeout(() => {
+      videoRef.current?.play().catch(() => setVideoFailed(true));
+    }, 700);
+  };
+
+  const toggleVideo = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.paused) {
+      video.play().catch(() => setVideoFailed(true));
+      setVideoPaused(false);
+    } else {
+      video.pause();
+      setVideoPaused(true);
+    }
+  };
 
   return (
-    <main className="site-shell">
-      <div className="photo-layer" aria-hidden="true" />
-      <div className="blueprint-layer" aria-hidden="true" />
-      <div className="grain-layer" aria-hidden="true" />
+    <main className="rebuild-site">
+      <section className="hero-stage" id="top">
+        <div className="hero-media" aria-hidden="true">
+          {!videoFailed && !reducedMotion && (
+            <video
+              ref={videoRef}
+              className="hero-video"
+              autoPlay
+              loop
+              muted
+              playsInline
+              poster={HERO_POSTER}
+              onCanPlay={recoverVideo}
+              onStalled={recoverVideo}
+              onWaiting={recoverVideo}
+              onError={() => setVideoFailed(true)}
+            >
+              <source src={HERO_VIDEO} type="video/mp4" />
+            </video>
+          )}
+          <img className={`hero-poster ${videoFailed || reducedMotion ? "hero-poster--visible" : ""}`} src={HERO_POSTER} alt="Cuatro estudiantes reunidos alrededor de una mesa de estudio" />
+          <div className="hero-vignette" />
+          <div className="hero-grain" />
+        </div>
 
-      <header className="topbar">
-        <a href="#top" className="mini-mark" aria-label="Study Like a Pro, volver al inicio">
-          <span>SLP</span><b>/</b><span>01</span>
-        </a>
-        <button className="menu-button" aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"} onClick={() => setMenuOpen(!menuOpen)}>
-          {menuOpen ? <X size={18} /> : <Menu size={18} />}
-          <span>Índice</span>
-        </button>
-        {menuOpen && (
-          <nav className="quick-menu" aria-label="Navegación rápida">
-            <a href="#cursos" onClick={() => setMenuOpen(false)}>Cursos del Modo 1</a>
-            <a href="https://studylikeapro.art/cursos-courses" target="_blank" rel="noreferrer">Catálogo completo <ExternalLink size={13} /></a>
-            <a href="https://studylikeapro.art/" target="_blank" rel="noreferrer">SLP - Skills? Get 'em. <ExternalLink size={13} /></a>
-          </nav>
-        )}
-      </header>
-
-      <div className="content-column" id="top">
-        <section className="identity-block" aria-labelledby="page-title">
-          <a className="logo-plaque" href="https://playlikeapro.art/" target="_blank" rel="noreferrer" aria-label="Visitar Play Like a Pro">
-            <img src="/manus-storage/study-like-a-pro-sky_86076399.png" alt="Study Like a Pro" />
+        <header className="site-nav">
+          <a href="#top" className="nav-brand" aria-label="Study Like a Pro, volver al inicio">
+            <span className="nav-brand-serial">SLP <b>/</b> 01</span>
+            <img src={LOGO_TRANSPARENT} alt="Study Like a Pro" />
           </a>
-          <div className="identity-meta">
-            <p className="eyebrow">HOT LINKS / 2026</p>
-            <p className="edition">Modo 1 — Start Smart<br />/ Empezá Pro</p>
+          <div className="nav-actions">
+            <a href="https://studylikeapro.art/cursos-courses" target="_blank" rel="noreferrer" className="nav-catalog">Cursos / Courses <ExternalLink size={13} /></a>
+            <button className="index-button" onClick={() => setMenuOpen((value) => !value)} aria-expanded={menuOpen} aria-controls="main-index">
+              {menuOpen ? <X size={17} /> : <Menu size={17} />} <span>Índice</span>
+            </button>
           </div>
-        </section>
+          {menuOpen && (
+            <nav className="main-index" id="main-index" aria-label="Índice principal">
+              <a href="#manifesto" onClick={() => setMenuOpen(false)}>Claridad sin humo</a>
+              <a href="#modo-1" onClick={() => setMenuOpen(false)}>Modo 1 / Empezá Pro</a>
+              <a href="#modo-2" onClick={() => setMenuOpen(false)}>Modo 2 / Ninja Mode</a>
+              <a href="https://studylikeapro.art/cursos-courses" target="_blank" rel="noreferrer">Catálogo completo <ExternalLink size={13} /></a>
+            </nav>
+          )}
+        </header>
 
-        <section className="intro-block">
-          <p className="section-kicker">Elegí una skill. Empezá hoy.</p>
-          <h1 id="page-title">Cursos que<br /><em>hacen</em> avanzar.</h1>
-          <p className="intro-copy">Una selección corta de cursos prácticos para aprender algo que puedas usar en el mundo real. Sin humo, directo al punto.</p>
-          <div className="intro-rule"><span /> <small>disponibles ahora</small></div>
-        </section>
+        <div className="hero-copy">
+          <p className="hero-kicker">Cursos + mentorías / edición 2026</p>
+          <h1>Claridad<br /><em>sin humo.</em></h1>
+          <p className="hero-lede">Aprendé una skill que puedas usar. Estudiá mejor, trabajá mejor y avanzá con más criterio.</p>
+          <a className="hero-cta" href="#cursos">Explorar cursos <ArrowDown size={16} /></a>
+        </div>
+        <div className="hero-side-note">/ Subí de nivel<br />/ con skills<br />/ que sí usás<br />/ en el mundo real</div>
+        <div className="hero-bottomline">
+          <span>STUDY LIKE A PRO</span>
+          <span>PLAY / STUDY / REPEAT</span>
+        </div>
+        <button className="video-toggle" onClick={toggleVideo} aria-label={videoPaused ? "Reproducir video" : "Pausar video"}>
+          {videoPaused ? <Play size={14} /> : <Pause size={14} />} <span>{videoPaused ? "Play" : "Pause"}</span>
+        </button>
+      </section>
 
-        <section className="courses-section" id="cursos" aria-labelledby="courses-title">
-          <div className="section-heading">
-            <div className="section-heading-main">
-              <img className="stamp-mark" src="/manus-storage/slp-red-stamp_a602131d.png" alt="" />
-              <p className="eyebrow">01 / START SMART</p>
-              <h2 id="courses-title">Empezá Pro</h2>
-            </div>
-            <span className="count-label">{String(COURSES.length).padStart(2, "0")} skills / issue 01</span>
+      <section className="manifesto-section" id="manifesto">
+        <div className="manifesto-image-wrap">
+          <img src={ILLUSTRATED_BREAK} alt="Estudiantes rodeados de libros y una ventana de Skills? Get 'em." className="manifesto-image" />
+          <span className="image-caption">01 / Dejá de scrollear sin aprender</span>
+        </div>
+        <div className="manifesto-copy">
+          <p className="mono-label">UNA IDEA SIMPLE</p>
+          <h2>Skills que<br /><span>sí usás.</span></h2>
+          <p>Hay demasiada información suelta. Nosotros armamos rutas claras para que aprendas algo concreto y lo lleves a tu mundo: tu trabajo, tu negocio, tu proyecto o tu próxima etapa.</p>
+          <div className="manifesto-stats">
+            <span><strong>02</strong> modos</span>
+            <span><strong>11</strong> skills públicas</span>
+            <span><strong>01</strong> criterio: que sirva</span>
           </div>
+        </div>
+      </section>
 
-          <div className="course-list">
-            {COURSES.map((course) => (
-              <a key={course.number} className="course-card" href={course.href} target="_blank" rel="noreferrer">
-                <div className="course-index">{course.number}</div>
-                <div className="course-content">
-                  <p className="course-category">{course.category}</p>
-                  <h3>{course.title}</h3>
-                  <p className="course-description">{course.description}</p>
-                  <span className="course-status">{course.status}</span>
-                </div>
-                <span className="course-arrow" aria-hidden="true"><ArrowUpRight size={21} strokeWidth={1.7} /></span>
-              </a>
-            ))}
-          </div>
-        </section>
+      <section className="catalog-intro" id="cursos">
+        <div className="catalog-image" style={{ backgroundImage: `url(${CATALOG_HERO})` }} aria-hidden="true" />
+        <div className="catalog-copy">
+          <p className="mono-label">/ CURSOS / COURSES</p>
+          <h2>Elegí tu<br /><em>siguiente skill.</em></h2>
+          <p>Dos modos para encontrar una ruta que tenga sentido. Empezá por lo que te da curiosidad y seguí por lo que te abre una puerta.</p>
+          <a className="outline-cta" href="https://studylikeapro.art/cursos-courses" target="_blank" rel="noreferrer">Ver catálogo completo <ArrowUpRight size={16} /></a>
+        </div>
+      </section>
 
-        <footer className="footer-block">
-          <a className="footer-brand" href="https://studylikeapro.art/" target="_blank" rel="noreferrer" aria-label="Visitar la website de Study Like a Pro"><img src="/manus-storage/high-res-logo_a5feb20b.png" alt="Study Like a Pro" /><span>Study Like a Pro</span></a>
-          <p>Actualizamos los hot links cada una o dos semanas.<br />Volvé cuando quieras ver qué skill sigue.</p>
-          <div className="footer-bottom">
-            <span>© 2026 SLP / Sin humo</span>
-            <a href="https://www.instagram.com/studylikeapro.art/" target="_blank" rel="noreferrer" aria-label="Instagram de Study Like a Pro"><Instagram size={17} /></a>
+      <CourseRail courses={MODE_ONE} mode="Modo 1" heading="Empezá Pro" />
+      <CourseRail courses={MODE_TWO} mode="Modo 2" heading="Ninja" light />
+
+      <section className="closing-section">
+        <div className="closing-stamp">SLP<br /><span>01</span></div>
+        <p className="mono-label">SIN HUMO / SIN EXCUSAS</p>
+        <h2>Lo que aprendés<br /><em>te mueve.</em></h2>
+        <a className="dark-cta" href="https://studylikeapro.art/cursos-courses" target="_blank" rel="noreferrer">Explorar cursos <ArrowUpRight size={16} /></a>
+      </section>
+
+      <footer className="new-footer">
+        <a className="footer-logo" href="https://studylikeapro.art/" target="_blank" rel="noreferrer" aria-label="Visitar Study Like a Pro">
+          <img src={LOGO_SKY} alt="Study Like a Pro" />
+        </a>
+        <div className="footer-meta">
+          <p>Study Like a Pro es una biblioteca de skills prácticas para avanzar sin humo.</p>
+          <div className="footer-links">
+            <a href="#top">Volver arriba <ArrowUpRight size={13} /></a>
+            <a href="https://www.instagram.com/studylikeapro.art/" target="_blank" rel="noreferrer" aria-label="Instagram de Study Like a Pro"><Instagram size={17} /> Instagram</a>
           </div>
-        </footer>
-      </div>
+          <span>© 2026 Study Like a Pro / Todos los derechos reservados.</span>
+        </div>
+      </footer>
     </main>
   );
 }

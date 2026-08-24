@@ -1,7 +1,9 @@
-# Actualización de navegación solicitada
+# Reconstrucción de Study Like a Pro
 
-- [x] Hacer clicable el logo superior hacia https://studylikeapro.art/
-- [x] Añadir en Índice la tercera opción “SLP - Skills get'em.” hacia https://studylikeapro.art/
-- [x] Hacer clicable la imagen superior hacia https://playlikeapro.art/
-- [x] Verificar navegación y vista actualizada
-- [ ] Guardar checkpoint de la actualización
+- [x] Auditar Home, catálogo, modos, cursos y rutas públicas
+- [x] Analizar el video hero y sus requisitos de integración
+- [x] Inventariar imágenes, videos, PDFs, enlaces de checkout y materiales privados
+- [x] Definir arquitectura de contenido reutilizable para 10–20 cursos
+- [x] Construir Home scrolleable y rutas independientes
+- [x] Validar responsive, video, navegación, SEO y fallback sin video
+- [ ] Conectar dominio solo después de validar paridad con la web actual

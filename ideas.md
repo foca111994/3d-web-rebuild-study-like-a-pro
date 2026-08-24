@@ -72,3 +72,12 @@ La página original publica el Modo 1 como “Start Smart / Empezá Pro” y mue
 - La textura del fondo debe leerse como una superficie fotográfica o impresa, no como un azul plano.
 - `#A62E2E` es la señal primaria de acciones, flechas, números y reglas editoriales; el melocotón queda como apoyo mínimo.
 - Las tarjetas deben conservar la utilidad de una sola columna, pero mostrar ensamblaje editorial mediante desplazamientos alternos, papel pegado y marcadores de edición.
+
+
+## Style Decisions — Reconstrucción Home scrolleable
+
+- El rojo señal es estrictamente `#A62E2E` para acciones, reglas, numerales y soporte del wordmark; se evita el naranja saturado como color de sección completa.
+- Los enlaces de cursos se tratarán como objetos de papel marfil numerados, etiquetados y guiados por flechas, con señales de catálogo y pequeñas imperfecciones editoriales.
+- La textura de taller debe atravesar todas las secciones mediante reglas rojas, etiquetas de edición, papel, grano y numeración consistente.
+- La imagen debe comunicar aprendizaje práctico —mesas, herramientas, cuadernos, manos y materiales— sin perder la energía cinematográfica del hero.
+- El logo proporcionado debe aparecer dentro de tratamientos de marca intencionales y recurrentes, no como un gráfico aislado.
