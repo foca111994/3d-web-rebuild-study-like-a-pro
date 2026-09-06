@@ -273,8 +273,8 @@ button { cursor: pointer; }
 .detail-text-link { margin-top: 32px; color: var(--ink); }
 .detail-text-link:hover, .detail-text-link:focus-visible { color: var(--paper-soft); background: var(--red); border-color: var(--red); transform: translateY(-3px); outline: none; }
 .course-detail-footer { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 36px max(28px, calc((100% - 1120px) / 2)); background: var(--blue-deep); color: var(--paper-soft); font: 10px "IBM Plex Mono", monospace; }
-.footer-logo-link { display: block; width: min(220px, 42vw); padding: 6px 10px; background: var(--paper-soft); border: 1px solid var(--ink); box-shadow: 5px 5px 0 var(--red); }
-.footer-logo-link img { display: block; width: 100%; height: auto; }
+.footer-logo-link { display: block; width: min(220px, 42vw); overflow: hidden; background: #9fd8f3; border: 1px solid var(--ink); box-shadow: 5px 5px 0 var(--red); }
+.footer-logo-link img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
 @media (max-width: 700px) {
   .course-page-nav { padding: 20px 18px; }
