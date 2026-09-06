@@ -1,56 +1,37 @@
-/*
- * Style direction: Cine editorial de taller — cada curso se presenta como una ficha
- * de campo: portada visual, metadata precisa, promesa clara y una acción directa.
- */
 import { ArrowLeft, ArrowUpRight, ExternalLink } from "lucide-react";
 import { Link, useRoute } from "wouter";
+import InstagramLink from "@/components/InstagramLink";
+import { courseDetails } from "@/data/courseDetails";
 import { getCourseBySlug } from "@/lib/courses";
 import NotFound from "@/pages/NotFound";
-
-const HERO_POSTER = "/manus-storage/hero-study-room-poster_67da5b48.png";
-const LOGO_SKY = "/manus-storage/logo-sky_37c3df06.png";
 
 export default function CoursePage() {
   const [, params] = useRoute<{ slug: string }>("/:slug");
   const course = params?.slug ? getCourseBySlug(params.slug) : undefined;
-
-  if (!course) return <NotFound />;
+  const detail = course ? courseDetails[course.slug] : undefined;
+  if (!course || !detail) return <NotFound />;
+  const hasCheckout = course.officialUrl.startsWith("https://go.hotmart.com/");
+  const checkoutLabel = hasCheckout ? "Ver curso en Hotmart" : "Ver disponibilidad";
 
   return (
-    <main className="course-page">
+    <main className={`course-page course-page--${course.mode === "Modo 2" ? "ninja" : "start"}`}>
       <header className="course-page-nav">
-        <Link href="/" className="course-back"><ArrowLeft size={15} /> Volver a Study Like a Pro</Link>
-        <a href="https://studylikeapro.art/cursos-courses" target="_blank" rel="noreferrer" className="course-catalog-link">Catálogo original <ExternalLink size={13} /></a>
+        <Link href={course.mode === "Modo 1" ? "/start-smart" : course.mode === "Modo 2" ? "/ninja-mode" : "/courses"} className="course-back"><ArrowLeft size={15} /> {course.mode === "Catálogo" ? "Volver a cursos" : "Volver al modo"}</Link>
+        <Link href="/courses" className="course-catalog-link">Todos los cursos <ExternalLink size={13} /></Link>
       </header>
       <section className="course-hero">
-        <div className="course-hero-image" style={{ backgroundImage: `linear-gradient(90deg, rgba(0, 0, 0, .78), rgba(0, 0, 0, .2)), url(${HERO_POSTER})` }} />
-        <div className="course-hero-copy">
-          <p className="mono-label">{course.mode} / {course.modeLabel}</p>
-          <p className="course-detail-category">{course.category}</p>
-          <h1>{course.title}</h1>
-          <p>{course.description}</p>
-          <a href={course.officialUrl} target="_blank" rel="noreferrer" className="detail-cta">Abrir curso oficial <ArrowUpRight size={17} /></a>
-        </div>
+        <img className="course-hero-image" src={detail.image} alt={`Portada de ${course.title}`} />
+        <div className="course-hero-shade" />
+        <div className="course-hero-copy"><p className="mono-label">{course.mode} / {course.modeLabel}</p><p className="course-detail-category">{course.category}</p><h1>{course.title}</h1><p>{detail.eyebrow}</p><a href={course.officialUrl} target="_blank" rel="noreferrer" className="detail-cta">Ir al curso <ArrowUpRight size={17} /></a></div>
         <span className="course-hero-number">{course.number}</span>
       </section>
-      <section className="course-detail-body">
-        <div className="course-detail-intro">
-          <p className="mono-label">/ UNA RUTA CONCRETA</p>
-          <h2>Aprendé con<br /><em>más criterio.</em></h2>
-        </div>
-        <div className="course-detail-copy">
-          <p>{course.longDescription}</p>
-          <div className="course-detail-note">
-            <span className="note-number">{course.number}</span>
-            <span>La disponibilidad, el programa completo y la inscripción se consultan en la página oficial del curso.</span>
-          </div>
-          <a href={course.officialUrl} target="_blank" rel="noreferrer" className="detail-text-link">Ver disponibilidad y programa <ArrowUpRight size={16} /></a>
-        </div>
-      </section>
-      <footer className="course-detail-footer">
-        <Link href="/" className="footer-logo-link"><img src={LOGO_SKY} alt="Study Like a Pro" /></Link>
-        <span>© 2026 Study Like a Pro / Sin humo</span>
-      </footer>
+      <section className="course-story"><div><p className="mono-label">/ La propuesta</p><h2>Una ruta<br /><em>concreta.</em></h2></div><div><p className="course-story-lede">{course.longDescription}</p><p>{course.description}</p><a className="course-inline-cta" href={course.officialUrl} target="_blank" rel="noreferrer">{checkoutLabel} <ArrowUpRight size={17} /></a></div></section>
+      <section className="course-audience"><div className="course-section-heading"><span>01</span><p>Este curso es para vos si…</p></div><div className="course-points">{detail.audience.map((item, index) => <article key={item}><span>{String(index + 1).padStart(2, "0")}</span><p>{item}</p></article>)}</div></section>
+      {detail.videos && <section className="course-videos"><div className="course-section-heading"><span>02</span><p>Conocé el curso</p></div><div className={`course-video-grid${detail.videos.length === 1 ? " is-single" : ""}`}>{detail.videos.map((video, index) => <div className="course-video-frame" key={video}><iframe src={video} title={`${course.title}: video ${index + 1}`} loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen /></div>)}</div></section>}
+      <section className="course-includes"><div className="course-section-heading"><span>{detail.videos ? "03" : "02"}</span><p>Qué incluye</p></div><div className="course-includes-list">{detail.includes.map((item, index) => <div key={item}><span>{String(index + 1).padStart(2, "0")}</span><p>{item}</p></div>)}</div><a className="course-inline-cta course-inline-cta--light" href={course.officialUrl} target="_blank" rel="noreferrer">{checkoutLabel} <ArrowUpRight size={17} /></a></section>
+      {detail.pdf && <section className="course-program"><div><p className="mono-label">03 / Programa</p><h2>Explorá el<br /><em>temario.</em></h2><p>Revisá el documento publicado para conocer el recorrido antes de decidir.</p></div><iframe src={detail.pdf} title={`Programa de ${course.title}`} loading="lazy" allow="autoplay" /></section>}
+      <section className="course-final-cta"><span>Final / Próximo paso</span><h2>¿Es la skill<br />que querés aprender?</h2><a href={course.officialUrl} target="_blank" rel="noreferrer">Ver disponibilidad <ArrowUpRight size={20} /></a></section>
+      <footer className="course-detail-footer"><Link href="/pilot-3d" className="footer-logo-link"><img src="/brand/study-like-a-pro-sky.png" alt="Study Like a Pro" /></Link><InstagramLink compact /><span>© 2026 Study Like a Pro / Sin humo</span></footer>
     </main>
   );
 }

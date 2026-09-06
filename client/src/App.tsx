@@ -13,6 +13,9 @@ import HotLinks from "./pages/HotLinks";
 import NotFound from "./pages/NotFound";
 import Prototype from "./pages/Prototype";
 import Pilot3D from "./pages/Pilot3D";
+import FreeResources from "./pages/FreeResources";
+import Courses from "./pages/Courses";
+import { NinjaCourses, StartSmartCourses } from "./pages/ModeCourses";
 
 function Router() {
   return (
@@ -21,6 +24,11 @@ function Router() {
       <Route path="/classic" component={Home} />
       <Route path="/prototype" component={Prototype} />
       <Route path="/pilot-3d" component={Pilot3D} />
+      <Route path="/free-resources" component={FreeResources} />
+      <Route path="/courses" component={Courses} />
+      <Route path="/cursos-courses" component={Courses} />
+      <Route path="/start-smart" component={StartSmartCourses} />
+      <Route path="/ninja-mode" component={NinjaCourses} />
       <Route path="/hot-links" component={HotLinks} />
       <Route path="/404" component={NotFound} />
       <Route path="/:slug" component={CoursePage} />
