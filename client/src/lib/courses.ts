@@ -84,18 +84,6 @@ export const COURSES: Course[] = [
     featured: true,
   },
   {
-    number: "01",
-    mode: "Modo 2",
-    modeLabel: "Ninja / Ninja Mode",
-    category: "Idiomas",
-    title: "Aprende Japonés Desde Cero",
-    slug: "aprende-japones-desde-cero",
-    description: "Una base clara para empezar a leer, escuchar y comunicarte con más estructura.",
-    longDescription: "Empezá japonés con una base práctica y pensada para avanzar sin sentir que estás adivinando todo el tiempo. Ideal para quienes buscan un punto de partida ordenado y realista.",
-    officialUrl: "https://studylikeapro.art/cursos-courses",
-    status: "Ver disponibilidad",
-  },
-  {
     number: "02",
     mode: "Modo 2",
     modeLabel: "Ninja / Ninja Mode",

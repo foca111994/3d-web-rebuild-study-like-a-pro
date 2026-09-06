@@ -8,7 +8,6 @@ const imageBySlug: Record<string, string> = {
   "tu-negocio-de-jabones-artesanales": "/courses/jabones.webp",
   "aprenda-a-cantar-con-adrian-lozano": "/courses/canto.webp",
   "mecanica-de-motos-vip": "/courses/mecanica.webp",
-  "aprende-japones-desde-cero": "/art/ninja-mode.webp",
   "curso-cocteleria-de-autor-online": "/courses/cocteleria.webp",
   "el-rentable-negocio-de-la-sublimacion": "/courses/sublimacion.webp",
 };
