@@ -88,7 +88,7 @@ export default function Pilot3D() {
     <main className="pilot-page">
       <header className="pilot-header">
         <a href="/" className="pilot-brand" aria-label="Volver a Study Like a Pro"><img src="/brand/study-like-a-pro-sky.png" alt="Study Like a Pro" /></a>
-        <span className="pilot-title">Skills Get Them</span>
+        <span className="pilot-title">Skills? Get 'Em</span>
       </header>
 
       <section className="pilot-stage" aria-label={`Objeto ${current.number}: ${current.title}`} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
@@ -134,7 +134,8 @@ export default function Pilot3D() {
       </section>
 
       <footer className="pilot-footer">
-        <p>{current.description}</p>
+        <p className="pilot-footer-description">{current.description}</p>
+        <p className="pilot-footer-short">Claridad sin humo</p>
         <InstagramLink compact />
         <a href="/" className="pilot-link">Volver al inventario <ArrowUpRight size={14} /></a>
       </footer>

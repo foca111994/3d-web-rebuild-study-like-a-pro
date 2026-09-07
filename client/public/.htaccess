@@ -1,4 +1,9 @@
 RewriteEngine On
+
+# La carpeta /courses contiene imágenes, pero /courses es también una ruta React.
+# Esta excepción debe ir antes de la condición que excluye directorios físicos.
+RewriteRule ^courses/?$ index.html [L]
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.html [L]
