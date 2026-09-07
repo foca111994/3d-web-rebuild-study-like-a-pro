@@ -858,7 +858,7 @@ button { cursor: pointer; }
   .pilot-footer > .pilot-footer-mobile-copy { display: flex; grid-column: 1; grid-row: 2; justify-self: start; align-items: flex-start; flex-direction: column; gap: .38rem; min-width: 0; }
   .pilot-footer > .pilot-footer-mobile-copy .pilot-footer-short { display: block; margin: 0; color: rgba(23, 23, 23, .68); font: 700 9px/1.15 "IBM Plex Mono", monospace; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
   .pilot-footer > .site-instagram { grid-column: 2; grid-row: 2; }
-  .pilot-footer > .pilot-link-desktop { display: inline-flex; grid-column: 3; grid-row: 2; justify-self: end; min-width: 0; width: 100%; max-width: 116px; white-space: nowrap; font-size: 9px; }
+  .pilot-footer > .pilot-link-desktop { display: inline-flex; grid-column: 3; grid-row: 2; justify-self: end; align-items: center; justify-content: flex-end; gap: .1rem; min-width: 0; width: 100%; max-width: 116px; white-space: normal; text-align: right; line-height: 1.15; font-size: 9px; }
 }
 @media (max-width: 420px) and (max-height: 740px) {
   .pilot-footer > .site-instagram { grid-row: 1; }
