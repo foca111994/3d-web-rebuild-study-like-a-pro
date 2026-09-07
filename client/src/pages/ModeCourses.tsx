@@ -41,7 +41,7 @@ function ModeCoursesPage({ mode, courses }: { mode: "start" | "ninja"; courses: 
     <main className={`mode-courses-page mode-courses-page--${mode}`}>
       <header className="mode-courses-header">
         <a href="/pilot-3d" className="mode-courses-brand"><img src="/brand/study-like-a-pro-sky.png" alt="Study Like a Pro" /><span>/ {start ? "Start Smart" : "Ninja Mode"}</span></a>
-        <a href="/pilot-3d"><ArrowLeft size={16} /> Inventario 3D</a>
+        <a href="/pilot-3d"><ArrowLeft size={16} /> Skills?</a>
       </header>
       <section className="mode-courses-hero">
         <div>
