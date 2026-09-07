@@ -856,12 +856,12 @@ button { cursor: pointer; }
   .pilot-footer { grid-template-columns: 1fr auto 1fr; align-items: center; }
   .pilot-footer > .pilot-footer-description { display: none; }
   .pilot-footer > .pilot-footer-mobile-copy { display: flex; grid-column: 1; grid-row: 2; justify-self: start; align-items: flex-start; flex-direction: column; gap: .38rem; min-width: 0; }
-  .pilot-footer > .pilot-footer-mobile-copy .pilot-footer-short { display: block; margin: 0; color: rgba(23, 23, 23, .68); font: 450 10px/1.3 "IBM Plex Mono", monospace; letter-spacing: .04em; }
-  .pilot-footer-mobile-link { display: inline-flex; color: #bd463d; font: 700 9px/1.15 "IBM Plex Mono", monospace; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
+  .pilot-footer > .pilot-footer-mobile-copy .pilot-footer-short { display: block; margin: 0; color: rgba(23, 23, 23, .68); font: 700 9px/1.15 "IBM Plex Mono", monospace; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
   .pilot-footer > .site-instagram { grid-column: 2; grid-row: 2; }
-  .pilot-footer > .pilot-link-desktop { display: none; }
+  .pilot-footer > .pilot-link-desktop { display: inline-flex; grid-column: 3; grid-row: 2; justify-self: end; min-width: 0; width: 100%; max-width: 116px; white-space: nowrap; font-size: 9px; }
 }
 @media (max-width: 420px) and (max-height: 740px) {
   .pilot-footer > .site-instagram { grid-row: 1; }
   .pilot-footer > .pilot-footer-mobile-copy { grid-row: 1; }
+  .pilot-footer > .pilot-link-desktop { grid-row: 1; }
 }
