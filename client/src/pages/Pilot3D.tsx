@@ -8,7 +8,7 @@ import InstagramLink from "@/components/InstagramLink";
 const inventory = [
   { number: "01", title: "Recursos gratuitos", subtitle: "Free Resources", short: "Free Resources", description: "Plantillas, guías y herramientas gratuitas para estudiar mejor, organizarte y pasar a la acción.", model: "/models/production/free-resources.glb", preview: "/models/source/hunyuan-inputs/free-resources-v1-white.png", size: 3.12 },
   { number: "02", title: "Cursos", subtitle: "Courses", short: "Courses", description: "No necesitás otra pestaña abierta. Necesitás una skill que te sirva, una ruta clara y cero humo.", model: "/models/production/students-pair.glb", preview: "/models/source/hunyuan-inputs/students-pair-v2-white.png", size: 3.36 },
-  { number: "03", title: "Empezá Pro", subtitle: "Start Smart", short: "Start Smart", description: "Tu skill no se aprende por accidente. Elegí una dirección, practicá con criterio y empezá a usarla de verdad.", model: "/models/production/start-smart.glb", preview: "/models/source/hunyuan-inputs/start-smart-v1-white.png", size: 3.58 },
+  { number: "03", title: "Empezá Pro", subtitle: "Start Smart", short: "Start Smart", description: "Elige una dirección, practica con criterio y empieza a usarla de verdad.", model: "/models/production/start-smart.glb", preview: "/models/source/hunyuan-inputs/start-smart-v1-white.png", size: 3.58 },
   { number: "04", title: "Ninja Mode", subtitle: "War Mode", short: "Ninja Mode", description: "Entrá en flow, afiná la técnica y dominá la herramienta hasta que parezca que siempre supiste usarla.", model: "/models/production/ninja-mode.glb", preview: "/models/source/hunyuan-inputs/ninja-mode-v1-white.png", size: 3.58 },
 ] as const;
 
