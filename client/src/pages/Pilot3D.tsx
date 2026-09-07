@@ -87,13 +87,12 @@ export default function Pilot3D() {
   return (
     <main className="pilot-page">
       <header className="pilot-header">
-        <a href="/" className="pilot-brand" aria-label="Volver a Study Like a Pro"><img src="/brand/study-like-a-pro-sky.png" alt="Study Like a Pro" /><span>/ Skills? Get 'Em</span></a>
-        <div className="pilot-meta"><span>{current.number} / {total}</span><span>SLP INVENTORY</span></div>
-        <a className="pilot-close" href="/" aria-label="Cerrar piloto">×</a>
+        <a href="/" className="pilot-brand" aria-label="Volver a Study Like a Pro"><img src="/brand/study-like-a-pro-sky.png" alt="Study Like a Pro" /></a>
+        <span className="pilot-title">Skills Get Them</span>
       </header>
 
       <section className="pilot-stage" aria-label={`Objeto ${current.number}: ${current.title}`} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
-        <div className="pilot-label pilot-label--top"><span>Object {current.number} · {current.title}</span><span>Live 3D object</span></div>
+        <div className="pilot-stage-instagram"><InstagramLink compact /></div>
         <div className="pilot-object-heading" aria-hidden="true">
           <span>{current.number} / {total}</span>
           <h1>{current.title}</h1>
@@ -131,7 +130,6 @@ export default function Pilot3D() {
           <button type="button" className="pilot-toggle" onClick={() => setActive((value) => !value)} aria-pressed={active}>{active ? "PAUSE" : "PLAY"}</button>
           <button type="button" onClick={() => move(1)} aria-label="Siguiente objeto"><ArrowRight size={16} /></button>
         </div>
-        <div className="pilot-label pilot-label--bottom"><span>Swipe / arrow keys</span><span>Y axis · drag to explore</span></div>
         <div className="pilot-inventory-dots" aria-label={`Objeto ${activeIndex + 1} de ${inventory.length}`}>{inventory.map((item, index) => <i className={index === activeIndex ? "is-active" : ""} key={item.number} />)}</div>
       </section>
 
