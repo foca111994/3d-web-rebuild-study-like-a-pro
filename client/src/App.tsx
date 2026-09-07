@@ -20,7 +20,7 @@ import { NinjaCourses, StartSmartCourses } from "./pages/ModeCourses";
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={Prototype} />
+      <Route path="/" component={Pilot3D} />
       <Route path="/classic" component={Home} />
       <Route path="/prototype" component={Prototype} />
       <Route path="/pilot-3d" component={Pilot3D} />
