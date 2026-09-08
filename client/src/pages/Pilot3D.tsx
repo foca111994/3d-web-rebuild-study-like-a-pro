@@ -1,3 +1,4 @@
+/opt/homebrew/Library/Homebrew/cmd/shellenv.sh: line 18: /bin/ps: Operation not permitted
 /* Style direction: Study Like a Pro — inventario 3D horizontal, mobile first y progresivo. */
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
@@ -6,10 +7,10 @@ import { canPrefetchModel, scheduleModelWarmup, MOBILE_SCENE_QUERY } from "@/lib
 import InstagramLink from "@/components/InstagramLink";
 
 const inventory = [
-  { number: "01", title: "Recursos gratuitos", subtitle: "Free Resources", short: "Free Resources", description: "Plantillas, guías y herramientas gratuitas para estudiar mejor, organizarte y pasar a la acción.", model: "/models/production/free-resources.glb", preview: "/models/previews/free-resources.webp", size: 3.12 },
-  { number: "02", title: "Cursos", subtitle: "Courses", short: "Courses", description: "No necesitás otra pestaña abierta. Necesitás una skill que te sirva, una ruta clara y cero humo.", model: "/models/production/students-pair.glb", preview: "/models/previews/students-pair.webp", size: 3.36 },
-  { number: "03", title: "Empezá Pro", subtitle: "Start Smart", short: "Start Smart", description: "Elige una dirección, practica con criterio y empieza a usarla de verdad.", model: "/models/production/start-smart.glb", preview: "/models/previews/start-smart.webp", size: 3.58 },
-  { number: "04", title: "Ninja Mode", subtitle: "War Mode", short: "Ninja Mode", description: "Entrá en flow, afiná la técnica y dominá la herramienta hasta que parezca que siempre supiste usarla.", model: "/models/production/ninja-mode.glb", preview: "/models/previews/ninja-mode.webp", size: 3.58 },
+  { number: "01", title: "Recursos gratuitos", subtitle: "Free Resources", short: "Free Resources", description: "Plantillas, guías y herramientas gratuitas para estudiar mejor, organizarte y pasar a la acción.", model: "/models/production/free-resources.glb", preview: "/models/previews/free-resources-transparent.webp", size: 3.12 },
+  { number: "02", title: "Cursos", subtitle: "Courses", short: "Courses", description: "No necesitás otra pestaña abierta. Necesitás una skill que te sirva, una ruta clara y cero humo.", model: "/models/production/students-pair.glb", preview: "/models/previews/students-pair-transparent.webp", size: 3.36 },
+  { number: "03", title: "Empezá Pro", subtitle: "Start Smart", short: "Start Smart", description: "Elige una dirección, practica con criterio y empieza a usarla de verdad.", model: "/models/production/start-smart.glb", preview: "/models/previews/start-smart-transparent.webp", size: 3.58 },
+  { number: "04", title: "Ninja Mode", subtitle: "War Mode", short: "Ninja Mode", description: "Entrá en flow, afiná la técnica y dominá la herramienta hasta que parezca que siempre supiste usarla.", model: "/models/production/ninja-mode.glb", preview: "/models/previews/ninja-mode-transparent.webp", size: 3.58 },
 ] as const;
 
 function canPrefetch() {
