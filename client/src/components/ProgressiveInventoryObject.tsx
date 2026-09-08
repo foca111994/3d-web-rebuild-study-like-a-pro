@@ -26,13 +26,16 @@ type Props = {
 
 export default function ProgressiveInventoryObject({ poster, enabled, preview = false, onReady, ...props }: Props) {
   const [ready, setReady] = useState(false);
-  const image = <img className="pilot-model-poster" src={poster} alt="" width="512" height="560" fetchPriority={preview ? "low" : "high"} decoding="async" />;
+  const imageProps = { src: poster, alt: "", width: 512, height: 560, fetchPriority: preview ? "low" as const : "high" as const, decoding: "async" as const };
+  const fallbackImage = <img className="pilot-model-poster" {...imageProps} />;
   return <div className={`pilot-model-frame pilot-canvas${preview ? " pilot-canvas--preview" : ""}`} aria-label={props.label}>
-    {(!ready || !enabled) && image}
-    {enabled && <ModelBoundary fallback={ready ? image : null}>
-      <Suspense fallback={null}>
-        <Renderer {...props} preview={preview} onReady={() => { setReady(true); onReady?.(); }} />
-      </Suspense>
-    </ModelBoundary>}
+    <img className={`pilot-model-poster${ready && enabled ? " is-retiring" : ""}`} {...imageProps} />
+    {enabled && <div className={`pilot-model-live${ready ? " is-ready" : ""}`}>
+      <ModelBoundary fallback={ready ? fallbackImage : null}>
+        <Suspense fallback={null}>
+          <Renderer {...props} preview={preview} onReady={() => { setReady(true); onReady?.(); }} />
+        </Suspense>
+      </ModelBoundary>
+    </div>}
   </div>;
 }
