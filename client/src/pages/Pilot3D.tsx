@@ -1,20 +1,30 @@
 /* Style direction: Study Like a Pro — inventario 3D horizontal, mobile first y progresivo. */
-import { useGLTF } from "@react-three/drei";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import InventoryObject3D from "@/components/InventoryObject3D";
+import ProgressiveInventoryObject, { preloadInventoryModel } from "@/components/ProgressiveInventoryObject";
+import { canPrefetchModel, scheduleModelWarmup, MOBILE_SCENE_QUERY } from "@/lib/inventoryLoading";
 import InstagramLink from "@/components/InstagramLink";
 
 const inventory = [
-  { number: "01", title: "Recursos gratuitos", subtitle: "Free Resources", short: "Free Resources", description: "Plantillas, guías y herramientas gratuitas para estudiar mejor, organizarte y pasar a la acción.", model: "/models/production/free-resources.glb", preview: "/models/source/hunyuan-inputs/free-resources-v1-white.png", size: 3.12 },
-  { number: "02", title: "Cursos", subtitle: "Courses", short: "Courses", description: "No necesitás otra pestaña abierta. Necesitás una skill que te sirva, una ruta clara y cero humo.", model: "/models/production/students-pair.glb", preview: "/models/source/hunyuan-inputs/students-pair-v2-white.png", size: 3.36 },
-  { number: "03", title: "Empezá Pro", subtitle: "Start Smart", short: "Start Smart", description: "Elige una dirección, practica con criterio y empieza a usarla de verdad.", model: "/models/production/start-smart.glb", preview: "/models/source/hunyuan-inputs/start-smart-v1-white.png", size: 3.58 },
-  { number: "04", title: "Ninja Mode", subtitle: "War Mode", short: "Ninja Mode", description: "Entrá en flow, afiná la técnica y dominá la herramienta hasta que parezca que siempre supiste usarla.", model: "/models/production/ninja-mode.glb", preview: "/models/source/hunyuan-inputs/ninja-mode-v1-white.png", size: 3.58 },
+  { number: "01", title: "Recursos gratuitos", subtitle: "Free Resources", short: "Free Resources", description: "Plantillas, guías y herramientas gratuitas para estudiar mejor, organizarte y pasar a la acción.", model: "/models/production/free-resources.glb", preview: "/models/previews/free-resources.webp", size: 3.12 },
+  { number: "02", title: "Cursos", subtitle: "Courses", short: "Courses", description: "No necesitás otra pestaña abierta. Necesitás una skill que te sirva, una ruta clara y cero humo.", model: "/models/production/students-pair.glb", preview: "/models/previews/students-pair.webp", size: 3.36 },
+  { number: "03", title: "Empezá Pro", subtitle: "Start Smart", short: "Start Smart", description: "Elige una dirección, practica con criterio y empieza a usarla de verdad.", model: "/models/production/start-smart.glb", preview: "/models/previews/start-smart.webp", size: 3.58 },
+  { number: "04", title: "Ninja Mode", subtitle: "War Mode", short: "Ninja Mode", description: "Entrá en flow, afiná la técnica y dominá la herramienta hasta que parezca que siempre supiste usarla.", model: "/models/production/ninja-mode.glb", preview: "/models/previews/ninja-mode.webp", size: 3.58 },
 ] as const;
+
+function canPrefetch() {
+  const connection = (navigator as Navigator & { connection?: { effectiveType?: string; saveData?: boolean } }).connection;
+  return canPrefetchModel(connection);
+}
 
 const inventoryRoutes = ["/free-resources", "/courses", "/start-smart", "/ninja-mode"] as const;
 
 export default function Pilot3D() {
+  const [mobile, setMobile] = useState(() => window.matchMedia(MOBILE_SCENE_QUERY).matches);
+  const [enabled, setEnabled] = useState(false);
+  const [loadedModel, setLoadedModel] = useState("");
+  const [neighborsEnabled, setNeighborsEnabled] = useState(false);
+  const [nextReady, setNextReady] = useState(false);
   const [active, setActive] = useState(true);
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState<1 | -1>(1);
@@ -42,16 +52,26 @@ export default function Pilot3D() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, []);
 
-  // Precarga el siguiente modelo cuando la primera escena ya tuvo prioridad.
   useEffect(() => {
-    const connection = (navigator as Navigator & { connection?: { effectiveType?: string; saveData?: boolean } }).connection;
-    if (connection?.saveData || connection?.effectiveType === "2g" || connection?.effectiveType === "slow-2g") return;
+    const media = window.matchMedia(MOBILE_SCENE_QUERY);
+    const resize = () => setMobile(media.matches);
+    media.addEventListener("change", resize);
+    resize();
+    // Let the lightweight poster and navigation paint before importing WebGL.
+    const timer = window.setTimeout(() => { if (canPrefetch()) setEnabled(true); }, 200);
+    return () => { media.removeEventListener("change", resize); window.clearTimeout(timer); };
+  }, []);
 
-    const timer = window.setTimeout(() => {
-      useGLTF.preload(inventory[(activeIndex + 1) % inventory.length].model);
-    }, 2500);
-    return () => window.clearTimeout(timer);
-  }, [activeIndex]);
+  // Only the next model, 2.5s AFTER the active model is ready, on an eligible connection.
+  useEffect(() => {
+    setNeighborsEnabled(false);
+    setNextReady(false);
+    if (loadedModel !== current.model || !canPrefetch()) return;
+    return scheduleModelWarmup(() => {
+      void preloadInventoryModel(next.model).catch(() => {});
+      setNeighborsEnabled(true);
+    }, () => (navigator as Navigator & { connection?: { effectiveType?: string; saveData?: boolean } }).connection, () => !document.hidden);
+  }, [loadedModel, current.model, next.model]);
 
   const onTouchStart = (event: React.TouchEvent) => {
     const target = event.target as HTMLElement;
@@ -92,15 +112,15 @@ export default function Pilot3D() {
         <div className="pilot-header-instagram"><InstagramLink compact /></div>
       </header>
 
-      <section className="pilot-stage" aria-label={`Objeto ${current.number}: ${current.title}`} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
-        <div className="pilot-object-heading" aria-hidden="true">
+      <section className="pilot-stage" data-object={current.number} aria-label={`Objeto ${current.number}: ${current.title}`} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+        <div className="pilot-object-heading">
           <span>{current.number} / {total}</span>
           <h1>{current.title}</h1>
           {current.subtitle && <small>{current.subtitle}</small>}
         </div>
         <div className="pilot-neighbors" aria-hidden="true">
-          <div className="pilot-neighbor pilot-neighbor--previous"><InventoryObject3D active label={`Vista previa 3D de ${previous.title}`} modelSize={previous.size} preview synchronized url={previous.model} /><span>{previous.number} · {previous.short}</span></div>
-          <div className="pilot-neighbor pilot-neighbor--next"><InventoryObject3D active label={`Vista previa 3D de ${next.title}`} modelSize={next.size} preview synchronized url={next.model} /><span>{next.number} · {next.short}</span></div>
+          <div className="pilot-neighbor pilot-neighbor--previous"><ProgressiveInventoryObject key={previous.model} active={active} enabled={!mobile && canPrefetch() && neighborsEnabled && nextReady} label={`Vista previa de ${previous.title}`} modelSize={previous.size} preview url={previous.model} poster={previous.preview} /><span>{previous.number} · {previous.short}</span></div>
+          <div className="pilot-neighbor pilot-neighbor--next"><ProgressiveInventoryObject key={next.model} active={active} enabled={!mobile && canPrefetch() && neighborsEnabled} onReady={() => setNextReady(true)} label={`Vista previa de ${next.title}`} modelSize={next.size} preview url={next.model} poster={next.preview} /><span>{next.number} · {next.short}</span></div>
         </div>
         <div
           key={current.number}
@@ -123,11 +143,11 @@ export default function Pilot3D() {
           }}
           aria-label={`Abrir ${current.title}. Arrastrá para explorar el modelo en 3D.`}
         >
-          <InventoryObject3D active={active} label={`Modelo 3D de ${current.title}`} modelSize={current.size} url={current.model} />
+          <ProgressiveInventoryObject active={active} enabled={enabled} onReady={() => setLoadedModel(current.model)} label={`Modelo 3D de ${current.title}`} modelSize={current.size} url={current.model} poster={current.preview} />
         </div>
         <div className="pilot-controls">
           <button type="button" onClick={() => move(-1)} aria-label="Objeto anterior"><ArrowLeft size={16} /></button>
-          <button type="button" className="pilot-toggle" onClick={() => setActive((value) => !value)} aria-pressed={active}>{active ? "PAUSE" : "PLAY"}</button>
+          <button type="button" className="pilot-toggle" onClick={() => { if (!enabled) setEnabled(true); else setActive((value) => !value); }} aria-pressed={enabled && active}>{!enabled ? "ACTIVAR 3D" : active ? "PAUSE" : "PLAY"}</button>
           <button type="button" onClick={() => move(1)} aria-label="Siguiente objeto"><ArrowRight size={16} /></button>
         </div>
         <div className="pilot-inventory-dots" aria-label={`Objeto ${activeIndex + 1} de ${inventory.length}`}>{inventory.map((item, index) => <i className={index === activeIndex ? "is-active" : ""} key={item.number} />)}</div>
