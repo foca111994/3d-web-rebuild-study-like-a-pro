@@ -26,7 +26,7 @@ Changes:
 | --- | --- |
 | <=720px width | 62% center column; 18% per neighbor; remaining space creates gaps. Camera fits the actual canvas aspect ratio. |
 | 390–430px width and >=800px height | Tall phones including Pixel 8: 60% center, capped 370px scene; avoids growth driven solely by phone height. |
-| <=960px width and <=540px height | Compact landscape: one Canvas, 220px scene inside a minimum 430px stage; vertical scrolling preserves controls. |
+| <=960px width and <=540px height | Compact landscape: one Canvas, 200px scene inside a minimum 430px stage; vertical scrolling preserves controls. |
 | 721–1024px, other heights | Existing tablet dimensions and header/footer preserved. |
 | >=1025px | Existing desktop center geometry preserved. Only headings for tall states 03/04 move to 2rem to separate the subtitle from the model. |
 
@@ -44,6 +44,7 @@ Chrome desktop browser viewport emulation was used, not physical devices or Safa
 | iPad Air equivalent | 820 × 1180 | 01–04 | No horizontal overflow; existing composition preserved; War Mode/footer visible. |
 | MacBook 14 equivalent | 1512 × 982 | 01–04 | No horizontal overflow; existing model sizing preserved; tall headings separated. |
 | Desktop HD | 1440 × 900 | 01–04 | No horizontal overflow; three Canvases appear sequentially after warmup; approved hierarchy retained. |
+| Phone landscape | 844 × 390 | 01–04 | No horizontal overflow; separate columns; title and controls outside the canvas; natural vertical scroll. |
 
 Desktop/tablet Canvases include empty space: their DOM boxes can overlap heading/control/neighbor boxes in the original layout. Those box intersections are not interpreted as geometry collisions; visual checks complement the mobile geometric assertions.
 
