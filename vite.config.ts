@@ -204,7 +204,7 @@ function vitePluginStorageProxy(): Plugin {
 
 // jsxLocPlugin injects HTML data attributes into React Three Fiber primitives,
 // which are Three.js objects rather than DOM elements and reject those props.
-const plugins = [react(), tailwindcss(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
+const plugins = [react(), tailwindcss(), { ...vitePluginManusRuntime(), apply: "serve" as const }, vitePluginManusDebugCollector(), vitePluginStorageProxy()];
 
 export default defineConfig({
   plugins,

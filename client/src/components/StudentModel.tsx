@@ -1,14 +1,14 @@
 import { useGLTF } from "@react-three/drei";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import * as THREE from "three";
 
 export const STUDENT_MODEL_URL = "/models/student.glb";
 export const STUDENT_COMPANION_MODEL_URL = "/models/student-companion.glb";
 export const STUDENTS_BLOCKOUT_MODEL_URL = "/models/blockout/students-pair-blockout-open.glb";
 
-type StudentModelProps = { url?: string; targetSize?: number };
+type StudentModelProps = { url?: string; targetSize?: number; onReady?: () => void };
 
-export default function StudentModel({ url = STUDENT_MODEL_URL, targetSize = 3.12 }: StudentModelProps) {
+export default function StudentModel({ url = STUDENT_MODEL_URL, targetSize = 3.12, onReady }: StudentModelProps) {
   const { scene } = useGLTF(url);
 
   const normalized = useMemo(() => {
@@ -50,8 +50,19 @@ export default function StudentModel({ url = STUDENT_MODEL_URL, targetSize = 3.1
     return { model, position: center.multiplyScalar(-scale), scale };
   }, [scene, targetSize, url]);
 
+  useEffect(() => { onReady?.(); }, [normalized]);
+  useEffect(() => () => {
+    normalized.model.traverse(child => {
+      if (child instanceof THREE.Mesh) {
+        const materials = Array.isArray(child.material) ? child.material : [child.material];
+        materials.forEach(material => material.dispose());
+      }
+    });
+  }, [normalized]);
+
   return (
     <primitive
+      dispose={null}
       object={normalized.model}
       position={normalized.position}
       scale={normalized.scale}

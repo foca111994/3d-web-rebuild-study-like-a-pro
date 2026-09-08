@@ -5,17 +5,19 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Route, Switch } from "wouter";
+import { lazy, Suspense } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import CoursePage from "./pages/CoursePage";
-import Home from "./pages/Home";
-import HotLinks from "./pages/HotLinks";
-import NotFound from "./pages/NotFound";
-import Prototype from "./pages/Prototype";
+const CoursePage = lazy(() => import("./pages/CoursePage"));
+const Home = lazy(() => import("./pages/Home"));
+const HotLinks = lazy(() => import("./pages/HotLinks"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const Prototype = lazy(() => import("./pages/Prototype"));
 import Pilot3D from "./pages/Pilot3D";
-import FreeResources from "./pages/FreeResources";
-import Courses from "./pages/Courses";
-import { NinjaCourses, StartSmartCourses } from "./pages/ModeCourses";
+const FreeResources = lazy(() => import("./pages/FreeResources"));
+const Courses = lazy(() => import("./pages/Courses"));
+const NinjaCourses = lazy(() => import("./pages/ModeCourses").then(m => ({ default: m.NinjaCourses })));
+const StartSmartCourses = lazy(() => import("./pages/ModeCourses").then(m => ({ default: m.StartSmartCourses })));
 
 function Router() {
   return (
@@ -43,7 +45,7 @@ export default function App() {
       <ThemeProvider defaultTheme="light">
         <TooltipProvider>
           <Toaster />
-          <Router />
+          <Suspense fallback={<main className="route-loading" role="status">Cargando…</main>}><Router /></Suspense>
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
