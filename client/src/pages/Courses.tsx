@@ -13,7 +13,7 @@ export default function Courses() {
   return (
     <main className="courses-page">
       <header className="resources-header">
-        <a href="/pilot-3d" className="resources-brand" aria-label="Volver al inventario 3D"><img src="/brand/study-like-a-pro-sky.png" alt="Study Like a Pro" /><span>/ Courses</span></a>
+        <a href="/" className="resources-brand" aria-label="Volver al inicio"><img src="/brand/study-like-a-pro-sky.png" alt="Study Like a Pro" /><span>/ Courses</span></a>
         <a href="/pilot-3d" className="resources-back"><ArrowLeft size={16} /> Skills?</a>
       </header>
 

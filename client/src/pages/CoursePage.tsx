@@ -29,7 +29,7 @@ export default function CoursePage() {
       <section className="course-includes"><div className="course-section-heading"><span>{detail.videos ? "03" : "02"}</span><p>Qué incluye</p></div><div className="course-includes-list">{detail.includes.map((item, index) => <div key={item}><span>{String(index + 1).padStart(2, "0")}</span><p>{item}</p></div>)}</div><a className="course-inline-cta course-inline-cta--light" href={course.officialUrl} target="_blank" rel="noreferrer">Ver skill <ArrowUpRight size={17} /></a></section>
       {detail.pdf && <section className="course-program"><div><p className="mono-label">03 / Programa</p><h2>Explorá el<br /><em>temario.</em></h2><p>Revisá el documento publicado para conocer el recorrido antes de decidir.</p></div><iframe src={detail.pdf} title={`Programa de ${course.title}`} loading="lazy" allow="autoplay" /></section>}
       <section className="course-final-cta"><span>Final / Próximo paso</span><h2>¿Es la skill<br />que querés aprender?</h2><a href={course.officialUrl} target="_blank" rel="noreferrer">Ver disponibilidad <ArrowUpRight size={20} /></a></section>
-      <footer className="course-detail-footer"><Link href="/pilot-3d" className="footer-logo-link"><img src="/brand/study-like-a-pro-sky.png" alt="Study Like a Pro" /></Link><InstagramLink compact /><span>© 2026 Study Like a Pro / Sin humo</span></footer>
+      <footer className="course-detail-footer"><Link href="/" className="footer-logo-link" aria-label="Volver al inicio"><img src="/brand/study-like-a-pro-sky.png" alt="Study Like a Pro" /></Link><InstagramLink compact /><span>© 2026 Study Like a Pro / Sin humo</span></footer>
     </main>
   );
 }
