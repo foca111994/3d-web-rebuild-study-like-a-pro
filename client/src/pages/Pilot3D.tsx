@@ -27,9 +27,7 @@ export default function Pilot3D() {
   const [nextReady, setNextReady] = useState(false);
   const [active, setActive] = useState(true);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [outgoingIndex, setOutgoingIndex] = useState<number | null>(null);
-  const activeIndexRef = useRef(0);
-  const swapTimer = useRef<number | null>(null);
+  const [direction, setDirection] = useState<1 | -1>(1);
   const touchStartX = useRef<number | null>(null);
   const touchCanNavigate = useRef(false);
   const objectPointerStart = useRef<{ x: number; y: number } | null>(null);
@@ -38,27 +36,12 @@ export default function Pilot3D() {
   const total = String(inventory.length).padStart(2, "0");
   const previous = inventory[(activeIndex - 1 + inventory.length) % inventory.length];
   const next = inventory[(activeIndex + 1) % inventory.length];
-  const outgoing = outgoingIndex === null ? null : inventory[outgoingIndex];
 
-  const move = (step: number) => {
-    if (swapTimer.current !== null) return;
-    const from = activeIndexRef.current;
-    const to = (from + step + inventory.length) % inventory.length;
-    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setOutgoingIndex(from);
-      swapTimer.current = window.setTimeout(() => {
-        setOutgoingIndex(null);
-        swapTimer.current = null;
-      }, 250);
-    }
-    activeIndexRef.current = to;
-    setActiveIndex(to);
+  const move = (direction: number) => {
+    setDirection(direction >= 0 ? 1 : -1);
+    setActiveIndex((value) => (value + direction + inventory.length) % inventory.length);
     setActive(true);
   };
-
-  useEffect(() => () => {
-    if (swapTimer.current !== null) window.clearTimeout(swapTimer.current);
-  }, []);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -139,33 +122,28 @@ export default function Pilot3D() {
           <div className="pilot-neighbor pilot-neighbor--previous"><ProgressiveInventoryObject key={previous.model} active={active} enabled={!mobile && canPrefetch() && neighborsEnabled && nextReady} label={`Vista previa de ${previous.title}`} modelSize={previous.size} preview url={previous.model} poster={previous.preview} /><span>{previous.number} · {previous.short}</span></div>
           <div className="pilot-neighbor pilot-neighbor--next"><ProgressiveInventoryObject key={next.model} active={active} enabled={!mobile && canPrefetch() && neighborsEnabled} onReady={() => setNextReady(true)} label={`Vista previa de ${next.title}`} modelSize={next.size} preview url={next.model} poster={next.preview} /><span>{next.number} · {next.short}</span></div>
         </div>
-        <div className="pilot-active-stack">
-          {outgoing && <div key={outgoing.model} className="pilot-active-slot pilot-active-slot--outgoing" aria-hidden="true">
-            <ProgressiveInventoryObject active={false} enabled={enabled} label={`Modelo 3D de ${outgoing.title}`} modelSize={outgoing.size} url={outgoing.model} poster={outgoing.preview} />
-          </div>}
-          <div
-            key={current.model}
-            className="pilot-active-slot pilot-active-slot--incoming is-clickable"
-            onClick={() => {
-              if (objectWasDragged.current) {
-                objectWasDragged.current = false;
-                return;
-              }
-              window.location.href = inventoryRoutes[activeIndex];
-            }}
-            onPointerDown={onObjectPointerDown}
-            onPointerMove={onObjectPointerMove}
-            onPointerUp={onObjectPointerUp}
-            onPointerCancel={onObjectPointerUp}
-            role="link"
-            tabIndex={0}
-            onKeyDown={(event) => {
-              if (event.key === "Enter" || event.key === " ") window.location.href = inventoryRoutes[activeIndex];
-            }}
-            aria-label={`Abrir ${current.title}. Arrastrá para explorar el modelo en 3D.`}
-          >
-            <ProgressiveInventoryObject active={active} enabled={enabled} onReady={() => setLoadedModel(current.model)} label={`Modelo 3D de ${current.title}`} modelSize={current.size} url={current.model} poster={current.preview} />
-          </div>
+        <div
+          key={current.number}
+          className={`pilot-active-slot pilot-active-slot--${direction > 0 ? "forward" : "back"} is-clickable`}
+          onClick={() => {
+            if (objectWasDragged.current) {
+              objectWasDragged.current = false;
+              return;
+            }
+            window.location.href = inventoryRoutes[activeIndex];
+          }}
+          onPointerDown={onObjectPointerDown}
+          onPointerMove={onObjectPointerMove}
+          onPointerUp={onObjectPointerUp}
+          onPointerCancel={onObjectPointerUp}
+          role="link"
+          tabIndex={0}
+          onKeyDown={(event) => {
+            if (event.key === "Enter" || event.key === " ") window.location.href = inventoryRoutes[activeIndex];
+          }}
+          aria-label={`Abrir ${current.title}. Arrastrá para explorar el modelo en 3D.`}
+        >
+          <ProgressiveInventoryObject active={active} enabled={enabled} onReady={() => setLoadedModel(current.model)} label={`Modelo 3D de ${current.title}`} modelSize={current.size} url={current.model} poster={current.preview} />
         </div>
         <div className="pilot-controls">
           <button type="button" onClick={() => move(-1)} aria-label="Objeto anterior"><ArrowLeft size={16} /></button>
