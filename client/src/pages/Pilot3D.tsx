@@ -208,6 +208,7 @@ export default function Pilot3D() {
         </div>
         <InstagramLink compact />
         <a href="/" className="pilot-link pilot-link-desktop">{language === "en" ? "Back to inventory" : "Volver al inventario"} <ArrowUpRight size={14} /></a>
+        <a href="/" className="pilot-link pilot-link-mobile">Skills? Get 'Em <ArrowUpRight size={14} /></a>
       </footer>
     </main>
   );
