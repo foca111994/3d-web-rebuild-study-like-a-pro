@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import ProgressiveInventoryObject, { preloadInventoryModel } from "@/components/ProgressiveInventoryObject";
 import { canPrefetchModel, scheduleModelWarmup, MOBILE_SCENE_QUERY } from "@/lib/inventoryLoading";
 import InstagramLink from "@/components/InstagramLink";
+import LanguageToggle from "@/components/LanguageToggle";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const inventory = [
   { number: "01", title: "Recursos gratuitos", subtitle: "Free Resources", short: "Free Resources", description: "Plantillas, guías y herramientas gratuitas para estudiar mejor, organizarte y pasar a la acción.", model: "/models/production/free-resources.glb", preview: "/models/previews/free-resources-transparent.webp", size: 3.12 },
@@ -19,7 +21,15 @@ function canPrefetch() {
 
 const inventoryRoutes = ["/free-resources", "/courses", "/start-smart", "/ninja-mode"] as const;
 
+const inventoryEnglish = [
+  "Free templates, guides and tools to study better, get organized and take action.",
+  "You don't need another open tab. You need a useful skill, a clear path and zero noise.",
+  "Choose a direction, practise with purpose and start using it for real.",
+  "Get into flow, sharpen your technique and master the tool until it feels natural.",
+] as const;
+
 export default function Pilot3D() {
+  const { language } = useLanguage();
   const [mobile, setMobile] = useState(() => window.matchMedia(MOBILE_SCENE_QUERY).matches);
   const [enabled, setEnabled] = useState(false);
   const [loadedModel, setLoadedModel] = useState("");
@@ -109,7 +119,7 @@ export default function Pilot3D() {
       <header className="pilot-header">
         <a href="/" className="pilot-brand" aria-label="Volver a Study Like a Pro"><img src="/brand/study-like-a-pro-sky.png" alt="Study Like a Pro" /></a>
         <span className="pilot-title">Skills? Get 'Em</span>
-        <div className="pilot-header-instagram"><InstagramLink compact /></div>
+        <div className="pilot-header-language"><LanguageToggle /></div>
       </header>
 
       <section className="pilot-stage" data-object={current.number} aria-label={`Objeto ${current.number}: ${current.title}`} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
@@ -154,12 +164,12 @@ export default function Pilot3D() {
       </section>
 
       <footer className="pilot-footer">
-        <p className="pilot-footer-description">{current.description}</p>
+        <p className="pilot-footer-description">{language === "en" ? inventoryEnglish[activeIndex] : current.description}</p>
         <div className="pilot-footer-mobile-copy">
-          <p className="pilot-footer-short">Claridad sin humo</p>
+          <p className="pilot-footer-short">{language === "en" ? "Clarity, no noise" : "Claridad sin humo"}</p>
         </div>
         <InstagramLink compact />
-        <a href="/" className="pilot-link pilot-link-desktop">Volver al inventario <ArrowUpRight size={14} /></a>
+        <a href="/" className="pilot-link pilot-link-desktop">{language === "en" ? "Back to inventory" : "Volver al inventario"} <ArrowUpRight size={14} /></a>
       </footer>
     </main>
   );

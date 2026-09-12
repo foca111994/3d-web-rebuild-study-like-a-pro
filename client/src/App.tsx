@@ -8,6 +8,7 @@ import { Route, Switch } from "wouter";
 import { lazy, Suspense } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { LanguageProvider } from "./contexts/LanguageContext";
 const CoursePage = lazy(() => import("./pages/CoursePage"));
 const Home = lazy(() => import("./pages/Home"));
 const HotLinks = lazy(() => import("./pages/HotLinks"));
@@ -43,10 +44,12 @@ export default function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider defaultTheme="light">
-        <TooltipProvider>
-          <Toaster />
-          <Suspense fallback={<main className="route-loading" role="status">Cargando…</main>}><Router /></Suspense>
-        </TooltipProvider>
+        <LanguageProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Suspense fallback={<main className="route-loading" role="status">Cargando…</main>}><Router /></Suspense>
+          </TooltipProvider>
+        </LanguageProvider>
       </ThemeProvider>
     </ErrorBoundary>
   );
