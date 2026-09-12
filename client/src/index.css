@@ -573,6 +573,9 @@ button { cursor: pointer; }
 .pilot-object-heading span { display: block; margin-bottom: .45rem; color: #bd463d; font: 700 clamp(12px, 1.05vw, 15px)/1 "IBM Plex Mono", monospace; letter-spacing: .16em; text-transform: uppercase; }
 .pilot-object-heading h1 { margin: 0; color: rgba(23,23,23,.88); font: 650 clamp(1.5rem, 3vw, 2.8rem)/.98 "Space Grotesk", sans-serif; letter-spacing: -.045em; text-wrap: balance; }
 .pilot-object-heading small { display: block; width: max-content; margin: .55rem auto 0; padding: .28rem .5rem; color: rgba(23,23,23,.68); background: rgba(239,239,237,.86); font: 650 clamp(9px, .85vw, 12px)/1 "IBM Plex Mono", monospace; letter-spacing: .16em; text-transform: uppercase; }
+.t-text-swap { transform: translateY(0); filter: blur(0); opacity: 1; transition: transform 150ms ease-in-out, filter 150ms ease-in-out, opacity 150ms ease-in-out; will-change: transform, filter, opacity; }
+.t-text-swap.is-exit { transform: translateY(-4px); filter: blur(2px); opacity: 0; }
+.t-text-swap.is-enter-start { transform: translateY(4px); filter: blur(2px); opacity: 0; transition: none; }
 .pilot-canvas { position: relative; z-index: 2; width: min(68vw, 620px); height: min(72svh, 680px); min-height: 400px; }
 .pilot-active-slot { position: relative; z-index: 2; width: min(68vw, 620px); }
 .pilot-active-slot.is-clickable { cursor: grab; touch-action: none; }
@@ -629,7 +632,10 @@ button { cursor: pointer; }
   .pilot-neighbor--next { right: -4px; }
 }
 @media (prefers-reduced-motion: reduce) { .pilot-page .pilot-controls { opacity: .7; } }
-@media (prefers-reduced-motion: reduce) { .pilot-active-slot { animation: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .pilot-active-slot { animation: none; }
+  .t-text-swap { transition: none !important; transform: none; filter: none; }
+}
 
 /* Smartphone: cámara más abierta y controles dentro del área segura. */
 @media (max-width: 720px), (max-width: 960px) and (max-height: 540px) {
@@ -858,9 +864,9 @@ button { cursor: pointer; }
 .pilot-footer-mobile-copy { display: none; }
 @media (max-width: 720px), (max-width: 960px) and (max-height: 540px) {
   .pilot-brand { flex: 0 0 auto; }
-  .pilot-title { top: 50%; right: 0; left: auto; transform: translateY(-50%); font-size: clamp(8px, 2.5vw, 10px); letter-spacing: .08em; }
-  .pilot-header { min-height: 74px; }
-  .pilot-header-language { top: 31px; right: 0; transform: none; }
+  .pilot-title { top: 18px; right: 0; left: auto; transform: translateY(-50%); font-size: clamp(8px, 2.5vw, 10px); letter-spacing: .08em; }
+  .pilot-header { min-height: 82px; }
+  .pilot-header-language { top: 43px; right: 0; transform: none; }
   .language-toggle { width: 82px; height: 30px; }
   .pilot-header-instagram { display: none; }
   .pilot-footer { grid-template-columns: 1fr auto 1fr; align-items: center; }

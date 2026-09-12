@@ -7,6 +7,42 @@ import InstagramLink from "@/components/InstagramLink";
 import LanguageToggle from "@/components/LanguageToggle";
 import { useLanguage } from "@/contexts/LanguageContext";
 
+const TEXT_SWAP_DURATION = 150;
+
+function TextSwap({ text, as }: { text: string; as: "h1" | "small" }) {
+  const [displayedText, setDisplayedText] = useState(text);
+  const [phase, setPhase] = useState<"idle" | "exit" | "enter">("idle");
+
+  useEffect(() => {
+    if (text === displayedText) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setDisplayedText(text);
+      setPhase("idle");
+      return;
+    }
+
+    setPhase("exit");
+    let frame = 0;
+    const timer = window.setTimeout(() => {
+      setDisplayedText(text);
+      setPhase("enter");
+      frame = window.requestAnimationFrame(() => {
+        frame = window.requestAnimationFrame(() => setPhase("idle"));
+      });
+    }, TEXT_SWAP_DURATION);
+
+    return () => {
+      window.clearTimeout(timer);
+      window.cancelAnimationFrame(frame);
+    };
+  }, [text]);
+
+  const className = `t-text-swap${phase === "exit" ? " is-exit" : phase === "enter" ? " is-enter-start" : ""}`;
+  return as === "h1"
+    ? <h1 className={className}>{displayedText}</h1>
+    : <small className={className}>{displayedText}</small>;
+}
+
 const inventory = [
   { number: "01", title: "Recursos gratuitos", subtitle: "Free Resources", short: "Free Resources", description: "Plantillas, guías y herramientas gratuitas para estudiar mejor, organizarte y pasar a la acción.", model: "/models/production/free-resources.glb", preview: "/models/previews/free-resources-transparent.webp", size: 3.12 },
   { number: "02", title: "Cursos", subtitle: "Courses", short: "Courses", description: "No necesitás otra pestaña abierta. Necesitás una skill que te sirva, una ruta clara y cero humo.", model: "/models/production/students-pair.glb", preview: "/models/previews/students-pair-transparent.webp", size: 3.36 },
@@ -125,10 +161,10 @@ export default function Pilot3D() {
       </header>
 
       <section className="pilot-stage" data-object={current.number} aria-label={`Objeto ${current.number}: ${current.title}`} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
-        <div className="pilot-object-heading" key={`${current.number}-${language}`}>
+        <div className="pilot-object-heading">
           <span>{current.number} / {total}</span>
-          <h1>{displayTitle}</h1>
-          {displaySubtitle && <small>{displaySubtitle}</small>}
+          <TextSwap as="h1" text={displayTitle} />
+          {displaySubtitle && <TextSwap as="small" text={displaySubtitle} />}
         </div>
         <div className="pilot-neighbors" aria-hidden="true">
           <div className="pilot-neighbor pilot-neighbor--previous"><ProgressiveInventoryObject key={previous.model} active={active} enabled={!mobile && canPrefetch() && neighborsEnabled && nextReady} label={`Vista previa de ${previous.title}`} modelSize={previous.size} preview url={previous.model} poster={previous.preview} /><span>{previous.number} · {previous.short}</span></div>
