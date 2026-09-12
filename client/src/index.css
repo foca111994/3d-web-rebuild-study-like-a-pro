@@ -867,8 +867,9 @@ button { cursor: pointer; }
   .pilot-brand { flex: 0 0 auto; }
   .pilot-title { display: none; }
   .pilot-header { min-height: 42px; }
-  .pilot-header-language { top: 4px; right: 0; transform: none; }
-  .language-toggle { width: 82px; height: 30px; }
+  .pilot-header-language { top: 6px; right: 0; transform: none; }
+  .language-toggle { width: 70px; height: 26px; padding: 2px; }
+  .language-toggle button { font-size: 8px; letter-spacing: .05em; }
   .pilot-header-instagram { display: none; }
   .pilot-footer { grid-template-columns: 1fr auto 1fr; align-items: center; }
   .pilot-footer > .pilot-footer-description { display: none; }
