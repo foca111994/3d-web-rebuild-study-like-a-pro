@@ -46,6 +46,8 @@ export default function Pilot3D() {
   const total = String(inventory.length).padStart(2, "0");
   const previous = inventory[(activeIndex - 1 + inventory.length) % inventory.length];
   const next = inventory[(activeIndex + 1) % inventory.length];
+  const displayTitle = language === "en" && current.subtitle ? current.subtitle : current.title;
+  const displaySubtitle = language === "en" ? current.title : current.subtitle;
 
   const move = (direction: number) => {
     setDirection(direction >= 0 ? 1 : -1);
@@ -123,10 +125,10 @@ export default function Pilot3D() {
       </header>
 
       <section className="pilot-stage" data-object={current.number} aria-label={`Objeto ${current.number}: ${current.title}`} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
-        <div className="pilot-object-heading">
+        <div className="pilot-object-heading" key={`${current.number}-${language}`}>
           <span>{current.number} / {total}</span>
-          <h1>{current.title}</h1>
-          {current.subtitle && <small>{current.subtitle}</small>}
+          <h1>{displayTitle}</h1>
+          {displaySubtitle && <small>{displaySubtitle}</small>}
         </div>
         <div className="pilot-neighbors" aria-hidden="true">
           <div className="pilot-neighbor pilot-neighbor--previous"><ProgressiveInventoryObject key={previous.model} active={active} enabled={!mobile && canPrefetch() && neighborsEnabled && nextReady} label={`Vista previa de ${previous.title}`} modelSize={previous.size} preview url={previous.model} poster={previous.preview} /><span>{previous.number} · {previous.short}</span></div>
