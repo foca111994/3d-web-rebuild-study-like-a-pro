@@ -62,7 +62,7 @@ export default function FreeResources() {
               <h2>{resource.name}</h2>
               <p className="resource-hook">{localized.shortHook}</p>
               <p className="resource-description">{localized.description}</p>
-              <div className="resource-badges"><span>{localized.priceType}</span><span>{localized.accessType}</span>{localized.status !== (language === "en" ? "Verified" : "Verificado") && <span className="is-warning">{language === "en" ? "Review" : "Revisar"}</span>}</div>
+              <div className="resource-badges">{localized.secondaryCategories.map((secondaryCategory) => <span key={secondaryCategory}>{secondaryCategory}</span>)}<span>{localized.priceType}</span><span>{localized.accessType}</span>{localized.status !== (language === "en" ? "Verified" : "Verificado") && <span className="is-warning">{language === "en" ? "Review" : "Revisar"}</span>}</div>
               <p className="resource-why"><strong>{language === "en" ? "Why we like it:" : "Por qué nos gusta:"}</strong> {localized.whyWeLikeIt}</p>
               <a href={resource.officialUrl} target="_blank" rel="noreferrer">{language === "en" ? "Open tool" : "Abrir herramienta"} <ArrowUpRight size={16} /></a>
             </article>;
