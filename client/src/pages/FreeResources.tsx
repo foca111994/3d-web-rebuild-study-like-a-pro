@@ -8,8 +8,13 @@ import { resourceEnglish } from "@/data/english";
 const categories = [
   ["Todos", "All"], ["Estudio", "Study"], ["IA", "AI"], ["Diseño", "Design"], ["Coding", "Coding"],
   ["Documentos", "Documents"], ["Datos", "Data"], ["Audio", "Audio"], ["Video", "Video"], ["Navegador", "Browser"],
+  ["Escritura", "Writing"], ["Contenido", "Content"], ["Social", "Social"], ["Web", "Web"],
+  ["Investigación", "Research"], ["Matemáticas", "Maths"], ["Enfoque", "Focus"], ["Imágenes", "Images"],
 ] as const;
-const accessOptions = [["Todos", "All"], ["Sin registro", "No sign-up"], ["Descarga gratuita", "Free download"], ["Extensión", "Extension"]] as const;
+const accessOptions = [
+  ["Todos", "All"], ["Sin registro", "No sign-up"], ["Cuenta gratuita", "Free account"],
+  ["Plan gratuito", "Free tier"], ["Pago único", "One-time"], ["Descarga gratuita", "Free download"], ["Extensión", "Extension"],
+] as const;
 
 export default function FreeResources() {
   const { language } = useLanguage();
@@ -19,7 +24,7 @@ export default function FreeResources() {
 
   const filtered = useMemo(() => freeResources.filter((resource) => {
     const categoryMatch = category === "Todos" || resource.category === category || resource.secondaryCategories.includes(category);
-    const accessMatch = access === "Todos" || resource.accessType === access;
+    const accessMatch = access === "Todos" || resource.accessType === access || resource.priceType === access;
     const translated = language === "en" ? resourceEnglish[resource.id] : resource;
     const searchMatch = `${resource.name} ${translated.shortHook} ${translated.description}`.toLowerCase().includes(query.trim().toLowerCase());
     return categoryMatch && accessMatch && searchMatch;
@@ -33,11 +38,11 @@ export default function FreeResources() {
       </header>
 
       <section className="resources-hero">
-        <p className="resources-eyebrow">01 / {language === "en" ? "Curated library" : "Biblioteca curada"}</p>
+        <p className="resources-eyebrow">02 / {language === "en" ? "Curated library" : "Biblioteca curada"}</p>
         <h1>{language === "en" ? "Free" : "Recursos"}<br /><em>{language === "en" ? "resources." : "gratuitos."}</em></h1>
         <div className="resources-intro">
           <p>{language === "en" ? "Useful tools to study, create and work better. We prioritize free access and no sign-up." : "Herramientas útiles para estudiar, crear y trabajar mejor. Priorizamos acceso gratuito y sin registro."}</p>
-          <span>Batch 01 · 10 {language === "en" ? "resources · Reviewed" : "recursos · Revisado"} 06.09.2026</span>
+          <span>{language === "en" ? "Batches 01 + 02" : "Batches 01 + 02"} · 20 {language === "en" ? "resources · Reviewed" : "recursos · Revisado"} 21.09.2026</span>
         </div>
       </section>
 
