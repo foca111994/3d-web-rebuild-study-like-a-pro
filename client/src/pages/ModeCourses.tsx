@@ -4,22 +4,12 @@ import { MODE_ONE, MODE_TWO, type Course } from "@/lib/courses";
 import { courseEnglish } from "@/data/english";
 import { useLanguage, type Language } from "@/contexts/LanguageContext";
 
-const imageBySlug: Record<string, string> = {
-  "car-detailing": "/courses/car-detailing.webp",
-  "academia-del-macrame": "/courses/macrame.webp",
-  "tu-negocio-de-jabones-artesanales": "/courses/jabones.webp",
-  "aprenda-a-cantar-con-adrian-lozano": "/courses/canto.webp",
-  "mecanica-de-motos-vip": "/courses/mecanica.webp",
-  "curso-cocteleria-de-autor-online": "/courses/cocteleria.webp",
-  "el-rentable-negocio-de-la-sublimacion": "/courses/sublimacion.webp",
-};
-
 function ModeRow({ course, index, language }: { course: Course; index: number; language: Language }) {
   const localized = language === "en" ? courseEnglish[course.slug] : course;
   return (
     <article className="mode-course-row">
       <span className="mode-course-number">{String(index + 1).padStart(2, "0")}</span>
-      <img src={imageBySlug[course.slug]} alt={language === "en" ? `Cover of ${localized.title}` : `Portada de ${localized.title}`} loading={index < 2 ? "eager" : "lazy"} />
+      <img src={course.image} alt={language === "en" ? `Cover of ${localized.title}` : `Portada de ${localized.title}`} loading={index < 2 ? "eager" : "lazy"} />
       <div>
         <span className="mode-course-category">{localized.category}</span>
         <h2>{localized.title}</h2>
@@ -55,7 +45,7 @@ function ModeCoursesPage({ mode, courses }: { mode: "start" | "ninja"; courses: 
         </div>
         <img src={start ? "/art/start-smart-computer-student.webp" : "/art/ninja-mode.webp"} alt={start ? "Personaje Start Smart" : "Personaje Ninja Mode"} />
       </section>
-      <section className="mode-courses-intro"><p>{start ? (language === "en" ? "Five routes to begin a new skill with clarity and put it into practice." : "Cinco rutas para empezar una nueva skill con claridad y llevarla a la práctica.") : (language === "en" ? "Two routes to go deeper, practise and master a skill with better judgment." : "Dos rutas para profundizar, practicar y dominar una skill con más criterio.")}</p><span>{String(courses.length).padStart(2, "0")} {language === "en" ? "selected courses" : "cursos seleccionados"}</span></section>
+      <section className="mode-courses-intro"><p>{start ? (language === "en" ? "Five routes to begin a new skill with clarity and put it into practice." : "Cinco rutas para empezar una nueva skill con claridad y llevarla a la práctica.") : (language === "en" ? "Four routes to go deeper, practise and master a skill with better judgment." : "Cuatro rutas para profundizar, practicar y dominar una skill con más criterio.")}</p><span>{String(courses.length).padStart(2, "0")} {language === "en" ? "selected courses" : "cursos seleccionados"}</span></section>
       <section className="mode-courses-list">{courses.map((course, index) => <ModeRow course={course} index={index} language={language} key={course.slug} />)}</section>
       <footer className="mode-courses-footer"><span>Study Like a Pro · {start ? "Start Smart" : "Ninja Mode"}</span><InstagramLink /><a href="/pilot-3d">{language === "en" ? "Back to inventory" : "Volver al inventario"}</a></footer>
     </main>

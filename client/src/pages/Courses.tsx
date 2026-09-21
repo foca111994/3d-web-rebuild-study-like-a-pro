@@ -6,7 +6,6 @@ import { courseEnglish } from "@/data/english";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const categories = ["Todos", ...Array.from(new Set(courses.map((course) => course.category)))];
-const detailSlugs: Record<string, string> = { sublimacion: "el-rentable-negocio-de-la-sublimacion", carpinteria: "carpinteria-y-muebles-de-melamina", macrame: "academia-del-macrame", cocteleria: "curso-cocteleria-de-autor-online", "car-detailing": "car-detailing", mecanica: "mecanica-de-motos-vip", canto: "aprenda-a-cantar-con-adrian-lozano", miradas: "master-en-miradas-todo-sobre-cejas-y-pestanas", jabones: "tu-negocio-de-jabones-artesanales" };
 
 export default function Courses() {
   const { language } = useLanguage();
@@ -29,14 +28,14 @@ export default function Courses() {
       <nav className="courses-filter" aria-label={language === "en" ? "Filter courses by category" : "Filtrar cursos por categoría"}>
         {categories.map((item) => {
           const translatedCategory = courses.find((course) => course.category === item);
-          const english = translatedCategory ? courseEnglish[detailSlugs[translatedCategory.id]]?.category : "All";
+          const english = translatedCategory ? courseEnglish[translatedCategory.slug]?.category : "All";
           return <button type="button" className={category === item ? "is-active" : ""} onClick={() => setCategory(item)} key={item}>{language === "en" ? english : item}</button>;
         })}
       </nav>
 
       <section className="courses-list" aria-label={language === "en" ? "All courses" : "Todos los cursos"}>
         {visible.map((course, index) => {
-          const localized = language === "en" ? courseEnglish[detailSlugs[course.id]] : course;
+          const localized = language === "en" ? courseEnglish[course.slug] : course;
           return (
           <article className="course-catalog-card" key={course.id}>
             <div className="course-catalog-number">{String(courses.indexOf(course) + 1).padStart(2, "0")}</div>
@@ -45,7 +44,7 @@ export default function Courses() {
               <span>{localized.category}</span>
               <h2>{localized.title}</h2>
               <p>{localized.description}</p>
-              <a href={`/${detailSlugs[course.id]}`}>{language === "en" ? "View course" : "Ver curso"} <ArrowUpRight size={17} /></a>
+              <a href={`/${course.slug}`}>{language === "en" ? "View course" : "Ver curso"} <ArrowUpRight size={17} /></a>
             </div>
           </article>
           );

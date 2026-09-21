@@ -4,49 +4,9 @@
  */
 import { ArrowUpRight, ExternalLink, Instagram, Menu, X } from "lucide-react";
 import { useState } from "react";
+import { MODE_ONE } from "@/lib/courses";
 
-const COURSES = [
-  {
-    number: "01",
-    category: "AUTOMOTOR",
-    title: "Car Detailing Pro",
-    description: "Interiores, pulido y ópticas. Paso a paso, sin tecnicismos raros.",
-    href: "https://studylikeapro.art/car-detailing",
-    status: "Curso disponible",
-  },
-  {
-    number: "02",
-    category: "MANUALIDADES & CREATIVIDAD",
-    title: "Academia del Macramé",
-    description: "Nudos, proyectos y práctica guiada para transformar inspiración en resultado.",
-    href: "https://studylikeapro.art/academia-del-macrame",
-    status: "Curso disponible",
-  },
-  {
-    number: "03",
-    category: "OFICIOS / SKILLS",
-    title: "Tu Negocio de Jabones Artesanales",
-    description: "Una ruta clara para crear, presentar y vender jabones con más criterio.",
-    href: "https://studylikeapro.art/cursos-courses",
-    status: "Ver disponibilidad",
-  },
-  {
-    number: "04",
-    category: "MÚSICA & VOZ",
-    title: "Aprenda a Cantar con Adrián Lozano",
-    description: "Técnica vocal para empezar a entrenar la voz con más orden y menos caos.",
-    href: "https://studylikeapro.art/cursos-courses",
-    status: "Ver disponibilidad",
-  },
-  {
-    number: "05",
-    category: "AUTOMOTOR",
-    title: "Mecánica de Motos VIP",
-    description: "Mantenimiento, diagnóstico y motor para entender una moto de verdad.",
-    href: "https://studylikeapro.art/cursos-courses",
-    status: "Ver disponibilidad",
-  },
-];
+const START_SMART_COURSES = MODE_ONE;
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -99,15 +59,15 @@ export default function Home() {
               <p className="eyebrow">01 / START SMART</p>
               <h2 id="courses-title">Empezá Pro</h2>
             </div>
-            <span className="count-label">{String(COURSES.length).padStart(2, "0")} skills / issue 01</span>
+            <span className="count-label">{String(START_SMART_COURSES.length).padStart(2, "0")} skills / issue 01</span>
           </div>
 
           <div className="course-list">
-            {COURSES.map((course) => (
-              <a key={course.number} className="course-card" href={course.href} target="_blank" rel="noreferrer">
-                <div className="course-index">{course.number}</div>
+            {START_SMART_COURSES.map((course, index) => (
+              <a key={course.slug} className="course-card" href={`https://studylikeapro.art/${course.slug}`} target="_blank" rel="noreferrer">
+                <div className="course-index">{String(index + 1).padStart(2, "0")}</div>
                 <div className="course-content">
-                  <p className="course-category">{course.category}</p>
+                  <p className="course-category">{course.category.toUpperCase()}</p>
                   <h3>{course.title}</h3>
                   <p className="course-description">{course.description}</p>
                   <span className="course-status">{course.status}</span>

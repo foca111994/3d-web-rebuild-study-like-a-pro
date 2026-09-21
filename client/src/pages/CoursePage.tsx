@@ -15,17 +15,20 @@ export default function CoursePage() {
   if (!course || !detail) return <NotFound />;
   const localizedCourse = language === "en" ? courseEnglish[course.slug] : course;
   const localizedDetail = language === "en" ? courseDetailEnglish[course.slug] : detail;
+  const isWarMode = course.level === "war-mode";
+  const modeName = language === "en" ? (isWarMode ? "Mode 2" : "Mode 1") : (isWarMode ? "Modo 2" : "Modo 1");
+  const modeLabel = isWarMode ? "Ninja / Ninja Mode" : "Start Smart / Empezá Pro";
 
   return (
-    <main className={`course-page course-page--${course.mode === "Modo 2" ? "ninja" : "start"}`}>
+    <main className={`course-page course-page--${isWarMode ? "ninja" : "start"}`}>
       <header className="course-page-nav">
-        <Link href={course.mode === "Modo 1" ? "/start-smart" : course.mode === "Modo 2" ? "/ninja-mode" : "/courses"} className="course-back"><ArrowLeft size={15} /> {language === "en" ? (course.mode === "Catálogo" ? "Back to courses" : "Back to mode") : (course.mode === "Catálogo" ? "Volver a cursos" : "Volver al modo")}</Link>
+        <Link href={isWarMode ? "/ninja-mode" : "/start-smart"} className="course-back"><ArrowLeft size={15} /> {language === "en" ? "Back to mode" : "Volver al modo"}</Link>
         <Link href="/courses" className="course-catalog-link">{language === "en" ? "All courses" : "Todos los cursos"} <ExternalLink size={13} /></Link>
       </header>
       <section className="course-hero">
         <img className="course-hero-image" src={detail.image} alt={language === "en" ? `Cover of ${localizedCourse.title}` : `Portada de ${localizedCourse.title}`} />
         <div className="course-hero-shade" />
-        <div className="course-hero-copy"><p className="mono-label">{language === "en" ? course.mode.replace("Modo", "Mode").replace("Catálogo", "Catalogue") : course.mode} / {course.modeLabel}</p><p className="course-detail-category">{localizedCourse.category}</p><h1>{localizedCourse.title}</h1><p>{localizedDetail.eyebrow}</p><a href={course.officialUrl} target="_blank" rel="noreferrer" className="detail-cta">{language === "en" ? "More about this skill" : "Más de este skill"} <ArrowUpRight size={17} /></a></div>
+        <div className="course-hero-copy"><p className="mono-label">{modeName} / {modeLabel}</p><p className="course-detail-category">{localizedCourse.category}</p><h1>{localizedCourse.title}</h1><p>{localizedDetail.eyebrow}</p><a href={course.officialUrl} target="_blank" rel="noreferrer" className="detail-cta">{language === "en" ? "More about this skill" : "Más de este skill"} <ArrowUpRight size={17} /></a></div>
         <span className="course-hero-number">{course.number}</span>
       </section>
       <section className="course-story"><div><p className="mono-label">/ {language === "en" ? "The idea" : "La propuesta"}</p><h2>{language === "en" ? <>A clear<br /><em>route.</em></> : <>Una ruta<br /><em>concreta.</em></>}</h2></div><div><p className="course-story-lede">{localizedCourse.longDescription}</p><p>{localizedCourse.description}</p></div></section>

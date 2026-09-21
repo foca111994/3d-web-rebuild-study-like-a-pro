@@ -5,6 +5,7 @@
 import { ArrowDown, ArrowUpRight, ExternalLink, Instagram, Menu, Pause, Play, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { MODE_ONE, MODE_TWO, type Course } from "@/lib/courses";
+import { courseEnglish } from "@/data/english";
 
 type Language = "es" | "en";
 
@@ -87,22 +88,9 @@ const COPY = {
   },
 } as const;
 
-const COURSE_EN: Record<string, { title: string; category: string; description: string; status: string }> = {
-  "Car Detailing Pro": { title: "Car Detailing Pro", category: "Automotive", description: "Interiors, polishing and headlights. Step by step, without the jargon.", status: "Course available" },
-  "Academia del Macramé": { title: "Macramé Academy", category: "Crafts & creativity", description: "Knots, projects and guided practice to turn inspiration into results.", status: "Course available" },
-  "Tu Negocio de Jabones Artesanales": { title: "Your Handmade Soap Business", category: "Trades / skills", description: "A clear route to create, present and sell handmade soaps with more intention.", status: "Check availability" },
-  "Aprenda a Cantar con Adrián Lozano": { title: "Learn to Sing with Adrián Lozano", category: "Music & voice", description: "Vocal technique to start training your voice with more order and less chaos.", status: "Check availability" },
-  "Mecánica de Motos VIP": { title: "VIP Motorcycle Mechanics", category: "Automotive", description: "Maintenance, diagnostics and engines to truly understand a motorcycle.", status: "Check availability" },
-  "El Arte de Hablar en Público": { title: "The Art of Public Speaking", category: "Communication", description: "Organize your ideas, strengthen your presence and speak with clarity.", status: "Check availability" },
-  "Yoga, Medicina para el Espíritu": { title: "Yoga, Medicine for the Spirit", category: "Wellbeing", description: "A practice to slow down, reconnect with your body and find more calm.", status: "Check availability" },
-  "Curso Coctelería de Autor Online": { title: "Online Signature Cocktail Course", category: "Hobbies", description: "Technique, creativity and a more professional view of the bar.", status: "Check availability" },
-  "Gestión Emocional Para Niños": { title: "Emotional Management for Children", category: "Education & family", description: "More tools, more calm and less frustration for everyday support.", status: "Check availability" },
-  "El Rentable Negocio de la Sublimación": { title: "The Profitable Sublimation Business", category: "Business & hobbies", description: "Sublimation, equipment and clear steps to start with better judgment.", status: "Course available" },
-};
-
 function localizeCourse(course: Course, language: Language) {
   if (language === "es") return { title: course.title, category: course.category, description: course.description, status: course.status };
-  return COURSE_EN[course.title] ?? { title: course.title, category: course.category, description: course.description, status: "View availability" };
+  return courseEnglish[course.slug] ?? { title: course.title, category: course.category, description: course.description, status: "View availability" };
 }
 
 function CourseRail({ courses, mode, heading, language, light = false }: { courses: Course[]; mode: string; heading: string; language: Language; light?: boolean }) {
@@ -122,11 +110,11 @@ function CourseRail({ courses, mode, heading, language, light = false }: { cours
         <p className="mode-description">{text.modeDescription}</p>
       </div>
       <div className="course-grid">
-        {courses.map((course) => {
+        {courses.map((course, index) => {
           const localized = localizeCourse(course, language);
           return (
-            <a className="course-row" href={`/${course.slug}`} key={`${course.mode}-${course.number}-${course.title}`}>
-              <span className="course-row-number">{course.number}</span>
+            <a className="course-row" href={`/${course.slug}`} key={course.slug}>
+              <span className="course-row-number">{String(index + 1).padStart(2, "0")}</span>
               <span className="course-row-copy">
                 <span className="course-row-category">{localized.category}</span>
                 <strong>{localized.title}</strong>

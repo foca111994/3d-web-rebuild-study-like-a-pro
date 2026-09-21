@@ -1,7 +1,7 @@
 /* Style direction: Study Like a Pro — inventario horizontal 3D sobre fondo blanco. La primera capa es visual y limpia; el detalle aparece solo al seleccionar. */
 import { ArrowLeft, ArrowRight, ArrowUpRight, RotateCcw, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { MODE_ONE } from "@/lib/courses";
+import { MODE_ONE, MODE_TWO } from "@/lib/courses";
 
 type Language = "es" | "en";
 
@@ -30,15 +30,15 @@ const ITEMS: Record<Language, ObjectItem[]> = {
   es: [
     { id: "student", number: "01", title: "El estudiante", description: "El punto de partida: foco, curiosidad y una skill que puedas usar en el mundo real.", micro: "Identidad / foco / curiosidad", action: "Cerrar", asset: OBJECT_ASSETS.student },
     { id: "computer", number: "02", title: "Cursos", description: "El catálogo completo para elegir una skill, revisar el programa y entrar al curso indicado.", micro: "Catálogo / cursos / compra", action: "Explorar cursos", href: CATALOG_URL, asset: OBJECT_ASSETS.computer },
-    { id: "smart", number: "03", title: "Study Smart", description: `Un recorrido de ${MODE_ONE.length || 10} cursos para estudiar con foco, una ruta clara y herramientas aplicables.`, micro: "Modo 01 / 10 cursos", action: "Ver Study Smart", href: CATALOG_URL, asset: OBJECT_ASSETS.smart },
-    { id: "ninja", number: "04", title: "Ninja Mode", description: "Un recorrido de 10 cursos para practicar, subir de nivel y dominar una herramienta.", micro: "Modo 02 / 10 cursos", action: "Ver Ninja Mode", href: CATALOG_URL, asset: OBJECT_ASSETS.ninja },
+    { id: "smart", number: "03", title: "Study Smart", description: `Un recorrido de ${MODE_ONE.length} cursos para estudiar con foco, una ruta clara y herramientas aplicables.`, micro: `Modo 01 / ${MODE_ONE.length} cursos`, action: "Ver Study Smart", href: CATALOG_URL, asset: OBJECT_ASSETS.smart },
+    { id: "ninja", number: "04", title: "Ninja Mode", description: `Un recorrido de ${MODE_TWO.length} cursos para practicar, subir de nivel y dominar una herramienta.`, micro: `Modo 02 / ${MODE_TWO.length} cursos`, action: "Ver Ninja Mode", href: CATALOG_URL, asset: OBJECT_ASSETS.ninja },
     { id: "study-lab", number: "05", title: "Study Lab", description: "El ritual sonoro de Study Like a Pro: música, concentración y contexto para sostener el ritmo.", micro: "Música / ritual / concentración", action: "Cerrar", asset: OBJECT_ASSETS.headphones },
   ],
   en: [
     { id: "student", number: "01", title: "The student", description: "The starting point: focus, curiosity and a skill you can use in the real world.", micro: "Identity / focus / curiosity", action: "Close", asset: OBJECT_ASSETS.student },
     { id: "computer", number: "02", title: "Courses", description: "The complete catalog to choose a skill, review the program and enter the right course.", micro: "Catalog / courses / purchase", action: "Explore courses", href: CATALOG_URL, asset: OBJECT_ASSETS.computer },
-    { id: "smart", number: "03", title: "Study Smart", description: "A 10-course path to study with focus, a clear route and tools you can apply.", micro: "Mode 01 / 10 courses", action: "View Study Smart", href: CATALOG_URL, asset: OBJECT_ASSETS.smart },
-    { id: "ninja", number: "04", title: "Ninja Mode", description: "A 10-course path to practice, level up and truly own a tool.", micro: "Mode 02 / 10 courses", action: "View Ninja Mode", href: CATALOG_URL, asset: OBJECT_ASSETS.ninja },
+    { id: "smart", number: "03", title: "Study Smart", description: `A ${MODE_ONE.length}-course path to study with focus, a clear route and tools you can apply.`, micro: `Mode 01 / ${MODE_ONE.length} courses`, action: "View Study Smart", href: CATALOG_URL, asset: OBJECT_ASSETS.smart },
+    { id: "ninja", number: "04", title: "Ninja Mode", description: `A ${MODE_TWO.length}-course path to practice, level up and truly own a tool.`, micro: `Mode 02 / ${MODE_TWO.length} courses`, action: "View Ninja Mode", href: CATALOG_URL, asset: OBJECT_ASSETS.ninja },
     { id: "study-lab", number: "05", title: "Study Lab", description: "Study Like a Pro's sound ritual: music, concentration and context to keep your rhythm.", micro: "Music / ritual / concentration", action: "Close", asset: OBJECT_ASSETS.headphones },
   ],
 };
