@@ -22,7 +22,7 @@ export default function Courses() {
       <section className="courses-hero">
         <p className="resources-eyebrow">02 / {language === "en" ? "Skills to use" : "Skills para hacer"}</p>
         <h1>Cursos<br /><em>Courses.</em></h1>
-        <div><p>{language === "en" ? "Learn a useful skill through a clear, practical and direct route." : "Aprendé una skill útil con una ruta clara, práctica y directa."}</p><span>{language === "en" ? "9 courses · One library" : "9 cursos · Una sola biblioteca"}</span></div>
+        <div><p>{language === "en" ? "Learn a useful skill through a clear, practical and direct route." : "Aprendé una skill útil con una ruta clara, práctica y directa."}</p><span>{courses.length} {language === "en" ? "courses · One library" : "cursos · Una sola biblioteca"}</span></div>
       </section>
 
       <nav className="courses-filter" aria-label={language === "en" ? "Filter courses by category" : "Filtrar cursos por categoría"}>
