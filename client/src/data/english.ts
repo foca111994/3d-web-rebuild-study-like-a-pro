@@ -1,73 +1,762 @@
-export const resourceEnglish: Record<string, {
-  category: string;
-  secondaryCategories: string[];
-  accessType: string;
-  priceType: string;
-  shortHook: string;
-  description: string;
-  whyWeLikeIt: string;
-  status: string;
-}> = {
-  "fr-001": { category: "Documents", secondaryCategories: ["Study"], accessType: "No sign-up", priceType: "Free", shortHook: "Your PDF toolbox, without the subscription.", description: "Merge, split, compress, convert, sign and edit PDF files in your browser.", whyWeLikeIt: "It solves many everyday PDF problems in one place.", status: "Verified" },
-  "fr-002": { category: "Design", secondaryCategories: [], accessType: "No sign-up", priceType: "Free", shortHook: "Photoshop, without Photoshop.", description: "A browser-based image editor that supports PSD files, layers, masks and professional workflows.", whyWeLikeIt: "You can start editing in seconds without installing anything.", status: "Verified" },
-  "fr-003": { category: "Study", secondaryCategories: ["Coding"], accessType: "No sign-up", priceType: "Free", shortHook: "Turn structured text into diagrams.", description: "Create flows, sequences, timelines and other visual diagrams using Mermaid syntax.", whyWeLikeIt: "It turns organized notes into clear diagrams.", status: "Verified" },
-  "fr-004": { category: "Data", secondaryCategories: ["Design"], accessType: "No sign-up", priceType: "Free", shortHook: "Make your data easier to see.", description: "An open tool for turning tabular data into exportable visualizations.", whyWeLikeIt: "It makes data visualization approachable without a complex platform.", status: "Verified" },
-  "fr-005": { category: "AI", secondaryCategories: ["Study", "Audio"], accessType: "Free download", priceType: "Free", shortHook: "Transcribe locally with Whisper.", description: "An open app for transcribing and translating audio or video on your computer.", whyWeLikeIt: "It is useful for classes and interviews while keeping the workflow local.", status: "Verified" },
-  "fr-006": { category: "Study", secondaryCategories: ["Design"], accessType: "No sign-up", priceType: "Free", shortHook: "Think it. Draw it. Explain it.", description: "A hand-drawn-style whiteboard for ideas, explanations, diagrams and visual notes.", whyWeLikeIt: "It minimizes the distance between an idea and a diagram.", status: "Verified" },
-  "fr-007": { category: "Browser", secondaryCategories: ["Study"], accessType: "Extension", priceType: "Free", shortHook: "Capture the entire page.", description: "An extension for saving a complete web page as an image or PDF.", whyWeLikeIt: "It is useful for research, references and complete visual documentation.", status: "Review before installing" },
-  "fr-008": { category: "Video", secondaryCategories: ["Design"], accessType: "No sign-up", priceType: "Free", shortHook: "Small multimedia jobs, solved.", description: "Tools to create, convert, crop and optimize GIFs, images and short clips.", whyWeLikeIt: "It avoids opening a full editor for a small task.", status: "Verified" },
-  "fr-009": { category: "Coding", secondaryCategories: ["AI"], accessType: "No sign-up", priceType: "Free", shortHook: "Start your website with a better brief.", description: "A prompt library for website builders and AI coding assistants.", whyWeLikeIt: "It gives you a starting point when a blank page stalls the project.", status: "Verified" },
-  "fr-010": { category: "Audio", secondaryCategories: ["Creativity"], accessType: "No sign-up", priceType: "Free access", shortHook: "Explore history through sound.", description: "A Library of Congress project for discovering and remixing historic audio collections.", whyWeLikeIt: "It opens a creative way to research and produce; check the rights for each collection.", status: "Verified" },
-  "fr-011": { category: "Coding", secondaryCategories: ["Web"], accessType: "No sign-up", priceType: "Free", shortHook: "See your website on every screen.", description: "Preview public websites across mobile, tablet and desktop viewport sizes using common device presets and custom dimensions.", whyWeLikeIt: "Paste a URL and spot responsive layout problems immediately.", status: "Verified" },
-  "fr-012": { category: "Coding", secondaryCategories: ["Web"], accessType: "No sign-up", priceType: "Free", shortHook: "Find out what is slowing your website down.", description: "Analyse website performance, loading behaviour, Core Web Vitals and technical issues that affect speed and usability.", whyWeLikeIt: "It shows what is slow and where to start fixing it.", status: "Verified" },
-  "fr-013": { category: "Study", secondaryCategories: ["Writing"], accessType: "No sign-up", priceType: "Free tier", shortHook: "Check before you submit.", description: "Upload or paste an essay and compare it against public web sources to identify matching passages and possible citation issues.", whyWeLikeIt: "Useful for catching obvious web matches before submitting academic work.", status: "Verified" },
-  "fr-014": { category: "Content", secondaryCategories: ["Social"], accessType: "No sign-up", priceType: "Free", shortHook: "Never start from a blank content calendar.", description: "Describe an account, audience, offer and platform to generate tailored content ideas with suggested formats and opening lines.", whyWeLikeIt: "It generates ideas around your actual audience instead of generic topic lists.", status: "Verified" },
-  "fr-015": { category: "Study", secondaryCategories: ["Research"], accessType: "No sign-up", priceType: "Free", shortHook: "Build a bibliography without building an account.", description: "Create citations and bibliographies from URLs, DOIs, ISBNs, titles and academic identifiers across thousands of citation styles.", whyWeLikeIt: "Fast, clean and built by the Zotero team.", status: "Verified" },
-  "fr-016": { category: "Images", secondaryCategories: ["Web"], accessType: "No sign-up", priceType: "Free", shortHook: "Smaller images. Faster websites.", description: "Compress and convert images directly in the browser while comparing quality and file size.", whyWeLikeIt: "Your images stay on your device and you can see the quality difference before exporting.", status: "Verified" },
-  "fr-017": { category: "Writing", secondaryCategories: [], accessType: "No sign-up", priceType: "Free tier", shortHook: "Catch the mistakes your eyes stopped seeing.", description: "Check spelling, grammar, punctuation and basic style across multiple languages and dialects.", whyWeLikeIt: "Useful for essays, emails and everyday writing without forcing you into a document editor.", status: "Verified" },
-  "fr-018": { category: "Maths", secondaryCategories: ["Study"], accessType: "No sign-up", priceType: "Free", shortHook: "See the maths, not just the answer.", description: "Plot functions, explore equations, create tables and visually understand mathematical relationships.", whyWeLikeIt: "It turns abstract maths into something you can actually see and manipulate.", status: "Verified" },
-  "fr-019": { category: "Focus", secondaryCategories: ["Study"], accessType: "No sign-up", priceType: "Free", shortHook: "One task. One timer. Start.", description: "A simple Pomodoro-style study timer designed for focused work sessions and structured breaks.", whyWeLikeIt: "Very little setup between deciding to study and actually starting.", status: "Verified" },
-  "fr-020": { category: "Research", secondaryCategories: ["Study"], accessType: "No sign-up", priceType: "Free", shortHook: "Search beyond normal Google.", description: "Search academic papers, books, theses, conference proceedings and scholarly literature across many disciplines.", whyWeLikeIt: "A much better starting point when normal web search is not academic enough.", status: "Verified" },
+export const resourceEnglish: Record<
+  string,
+  {
+    category: string;
+    secondaryCategories: string[];
+    accessType: string;
+    priceType: string;
+    shortHook: string;
+    description: string;
+    whyWeLikeIt: string;
+    status: string;
+  }
+> = {
+  "fr-001": {
+    category: "Documents",
+    secondaryCategories: ["Study"],
+    accessType: "No sign-up",
+    priceType: "Free",
+    shortHook: "Your PDF toolbox, without the subscription.",
+    description:
+      "Merge, split, compress, convert, sign and edit PDF files in your browser.",
+    whyWeLikeIt: "It solves many everyday PDF problems in one place.",
+    status: "Verified",
+  },
+  "fr-002": {
+    category: "Design",
+    secondaryCategories: [],
+    accessType: "No sign-up",
+    priceType: "Free",
+    shortHook: "Photoshop, without Photoshop.",
+    description:
+      "A browser-based image editor that supports PSD files, layers, masks and professional workflows.",
+    whyWeLikeIt:
+      "You can start editing in seconds without installing anything.",
+    status: "Verified",
+  },
+  "fr-003": {
+    category: "Study",
+    secondaryCategories: ["Coding"],
+    accessType: "No sign-up",
+    priceType: "Free",
+    shortHook: "Turn structured text into diagrams.",
+    description:
+      "Create flows, sequences, timelines and other visual diagrams using Mermaid syntax.",
+    whyWeLikeIt: "It turns organized notes into clear diagrams.",
+    status: "Verified",
+  },
+  "fr-004": {
+    category: "Data",
+    secondaryCategories: ["Design"],
+    accessType: "No sign-up",
+    priceType: "Free",
+    shortHook: "Make your data easier to see.",
+    description:
+      "An open tool for turning tabular data into exportable visualizations.",
+    whyWeLikeIt:
+      "It makes data visualization approachable without a complex platform.",
+    status: "Verified",
+  },
+  "fr-005": {
+    category: "AI",
+    secondaryCategories: ["Study", "Audio"],
+    accessType: "Free download",
+    priceType: "Free",
+    shortHook: "Transcribe locally with Whisper.",
+    description:
+      "An open app for transcribing and translating audio or video on your computer.",
+    whyWeLikeIt:
+      "It is useful for classes and interviews while keeping the workflow local.",
+    status: "Verified",
+  },
+  "fr-006": {
+    category: "Study",
+    secondaryCategories: ["Design"],
+    accessType: "No sign-up",
+    priceType: "Free",
+    shortHook: "Think it. Draw it. Explain it.",
+    description:
+      "A hand-drawn-style whiteboard for ideas, explanations, diagrams and visual notes.",
+    whyWeLikeIt: "It minimizes the distance between an idea and a diagram.",
+    status: "Verified",
+  },
+  "fr-007": {
+    category: "Browser",
+    secondaryCategories: ["Study"],
+    accessType: "Extension",
+    priceType: "Free",
+    shortHook: "Capture the entire page.",
+    description:
+      "An extension for saving a complete web page as an image or PDF.",
+    whyWeLikeIt:
+      "It is useful for research, references and complete visual documentation.",
+    status: "Review before installing",
+  },
+  "fr-008": {
+    category: "Video",
+    secondaryCategories: ["Design"],
+    accessType: "No sign-up",
+    priceType: "Free",
+    shortHook: "Small multimedia jobs, solved.",
+    description:
+      "Tools to create, convert, crop and optimize GIFs, images and short clips.",
+    whyWeLikeIt: "It avoids opening a full editor for a small task.",
+    status: "Verified",
+  },
+  "fr-009": {
+    category: "Coding",
+    secondaryCategories: ["AI"],
+    accessType: "No sign-up",
+    priceType: "Free",
+    shortHook: "Start your website with a better brief.",
+    description:
+      "A prompt library for website builders and AI coding assistants.",
+    whyWeLikeIt:
+      "It gives you a starting point when a blank page stalls the project.",
+    status: "Verified",
+  },
+  "fr-010": {
+    category: "Audio",
+    secondaryCategories: ["Creativity"],
+    accessType: "No sign-up",
+    priceType: "Free access",
+    shortHook: "Explore history through sound.",
+    description:
+      "A Library of Congress project for discovering and remixing historic audio collections.",
+    whyWeLikeIt:
+      "It opens a creative way to research and produce; check the rights for each collection.",
+    status: "Verified",
+  },
+  "fr-011": {
+    category: "Coding",
+    secondaryCategories: ["Web"],
+    accessType: "No sign-up",
+    priceType: "Free",
+    shortHook: "See your website on every screen.",
+    description:
+      "Preview public websites across mobile, tablet and desktop viewport sizes using common device presets and custom dimensions.",
+    whyWeLikeIt: "Paste a URL and spot responsive layout problems immediately.",
+    status: "Verified",
+  },
+  "fr-012": {
+    category: "Coding",
+    secondaryCategories: ["Web"],
+    accessType: "No sign-up",
+    priceType: "Free",
+    shortHook: "Find out what is slowing your website down.",
+    description:
+      "Analyse website performance, loading behaviour, Core Web Vitals and technical issues that affect speed and usability.",
+    whyWeLikeIt: "It shows what is slow and where to start fixing it.",
+    status: "Verified",
+  },
+  "fr-013": {
+    category: "Study",
+    secondaryCategories: ["Writing"],
+    accessType: "No sign-up",
+    priceType: "Free tier",
+    shortHook: "Check before you submit.",
+    description:
+      "Upload or paste an essay and compare it against public web sources to identify matching passages and possible citation issues.",
+    whyWeLikeIt:
+      "Useful for catching obvious web matches before submitting academic work.",
+    status: "Verified",
+  },
+  "fr-014": {
+    category: "Content",
+    secondaryCategories: ["Social"],
+    accessType: "No sign-up",
+    priceType: "Free",
+    shortHook: "Never start from a blank content calendar.",
+    description:
+      "Describe an account, audience, offer and platform to generate tailored content ideas with suggested formats and opening lines.",
+    whyWeLikeIt:
+      "It generates ideas around your actual audience instead of generic topic lists.",
+    status: "Verified",
+  },
+  "fr-015": {
+    category: "Study",
+    secondaryCategories: ["Research"],
+    accessType: "No sign-up",
+    priceType: "Free",
+    shortHook: "Build a bibliography without building an account.",
+    description:
+      "Create citations and bibliographies from URLs, DOIs, ISBNs, titles and academic identifiers across thousands of citation styles.",
+    whyWeLikeIt: "Fast, clean and built by the Zotero team.",
+    status: "Verified",
+  },
+  "fr-016": {
+    category: "Images",
+    secondaryCategories: ["Web"],
+    accessType: "No sign-up",
+    priceType: "Free",
+    shortHook: "Smaller images. Faster websites.",
+    description:
+      "Compress and convert images directly in the browser while comparing quality and file size.",
+    whyWeLikeIt:
+      "Your images stay on your device and you can see the quality difference before exporting.",
+    status: "Verified",
+  },
+  "fr-017": {
+    category: "Writing",
+    secondaryCategories: [],
+    accessType: "No sign-up",
+    priceType: "Free tier",
+    shortHook: "Catch the mistakes your eyes stopped seeing.",
+    description:
+      "Check spelling, grammar, punctuation and basic style across multiple languages and dialects.",
+    whyWeLikeIt:
+      "Useful for essays, emails and everyday writing without forcing you into a document editor.",
+    status: "Verified",
+  },
+  "fr-018": {
+    category: "Maths",
+    secondaryCategories: ["Study"],
+    accessType: "No sign-up",
+    priceType: "Free",
+    shortHook: "See the maths, not just the answer.",
+    description:
+      "Plot functions, explore equations, create tables and visually understand mathematical relationships.",
+    whyWeLikeIt:
+      "It turns abstract maths into something you can actually see and manipulate.",
+    status: "Verified",
+  },
+  "fr-019": {
+    category: "Focus",
+    secondaryCategories: ["Study"],
+    accessType: "No sign-up",
+    priceType: "Free",
+    shortHook: "One task. One timer. Start.",
+    description:
+      "A simple Pomodoro-style study timer designed for focused work sessions and structured breaks.",
+    whyWeLikeIt:
+      "Very little setup between deciding to study and actually starting.",
+    status: "Verified",
+  },
+  "fr-020": {
+    category: "Research",
+    secondaryCategories: ["Study"],
+    accessType: "No sign-up",
+    priceType: "Free",
+    shortHook: "Search beyond normal Google.",
+    description:
+      "Search academic papers, books, theses, conference proceedings and scholarly literature across many disciplines.",
+    whyWeLikeIt:
+      "A much better starting point when normal web search is not academic enough.",
+    status: "Verified",
+  },
 };
 
-export const courseEnglish: Record<string, {
-  title: string;
-  category: string;
-  description: string;
-  longDescription: string;
-  status: string;
-}> = {
-  "car-detailing": { title: "Car Detailing Pro", category: "Automotive", description: "Interiors, polishing and headlights. Step by step, without unnecessary jargon.", longDescription: "Learn to restore interiors, polish paint, recover headlights and use detailing products and machines with purpose. A practical route to improve cars, increase their value or start a service on solid foundations.", status: "Course available" },
-  "academia-del-macrame": { title: "Macramé Academy", category: "Crafts & creativity", description: "Knots, projects and guided practice to turn inspiration into results.", longDescription: "From inspiration to results: knots, projects and guided practice in one place. Learn by doing and turn a handmade idea into a practical skill.", status: "Course available" },
-  "tu-negocio-de-jabones-artesanales": { title: "Your Handmade Soap Business", category: "Trades & skills", description: "A clear route to create, present and sell handmade soap with better judgment.", longDescription: "Learn to create, present and sell handmade soap with a clear, grounded guide. The course remains connected to its official catalogue while we complete the original profile.", status: "Check availability" },
-  "aprenda-a-cantar-con-adrian-lozano": { title: "Learn to Sing with Adrián Lozano", category: "Music & voice", description: "Vocal technique to train your voice with more structure and less chaos.", longDescription: "A practical introduction to what to adjust, how to train and how to work on your voice with more structure. The course remains connected to its official catalogue while we complete the original profile.", status: "Check availability" },
-  "mecanica-de-motos-vip": { title: "VIP Motorcycle Mechanics", category: "Automotive", description: "Maintenance, diagnostics and engines to truly understand a motorcycle.", longDescription: "Training designed to take you from a general understanding to knowing how a motorcycle works and how to work on it more safely: basic maintenance, diagnostics and engines.", status: "Check availability" },
-  "curso-cocteleria-de-autor-online": { title: "Online Signature Cocktail Course", category: "Hobbies", description: "Technique, creativity and a more professional view of the bar.", longDescription: "Learn to create cocktails on stronger foundations by understanding flavours, combinations and the tools needed to develop your own style.", status: "Check availability" },
-  "el-rentable-negocio-de-la-sublimacion": { title: "The Profitable Sublimation Business", category: "Business & hobbies", description: "Sublimation, equipment and clear steps to start with better judgment.", longDescription: "Learn to create, customize and sell products through a clearer route for turning sublimation into a real business. The training combines sublimation, equipment, design and digital marketing step by step.", status: "Course available" },
-  "carpinteria-y-muebles-de-melamina": { title: "Carpentry and Melamine Furniture", category: "Trades & skills", description: "From foundations to finished furniture: learn by doing.", longDescription: "Training to understand the trade, build confidence and create with better judgment through measurement, tools, timber, melamine and real projects.", status: "Course available" },
-  "master-en-miradas-todo-sobre-cejas-y-pestanas": { title: "Eye Mastery: Brows and Lashes", category: "Business & beauty", description: "From beauty technique to a skill with income potential.", longDescription: "A structured route to learn brow and lash techniques from scratch, practise with purpose and begin building your own service.", status: "Course available" },
-  "curso-profesional-de-wrapping-vehicular": { title: "Professional Vehicle Wrapping", category: "Automotive & specialization", description: "Preparation, materials and installation through a professional wrapping process.", longDescription: "You do not need twenty more tutorials. You need the complete process: surface preparation, material handling, installation and professional finishing techniques.", status: "Course available" },
-  "administracion-de-taller": { title: "Workshop Management", category: "Automotive & business", description: "Clients, costs, suppliers and processes for managing the business behind the workshop.", longDescription: "Knowing how to repair vehicles does not automatically mean knowing how to manage a workshop. This training focuses on finances, quotations, clients, suppliers, people and operating processes.", status: "Course available" },
-  "sistemas-de-seguridad-total": { title: "Total Security Systems", category: "Automotive & specialization", description: "Technical training for going deeper into automotive security systems.", longDescription: "A seven-module specialization for studying automotive security systems through a structured technical route, designed for people building professional capability in the automotive sector.", status: "Course available" },
-  "plomeria-profesional": { title: "Professional Plumbing", category: "Trades & skills", description: "Foundations, installation and repair through 59 practical classes.", longDescription: "A practical route from plumbing foundations to installation, repairs and more professional procedures, with around 17 hours of original content and certification.", status: "Course available" },
-  "resina-epoxica": { title: "Epoxy Resin", category: "Crafts & creativity", description: "A practical entry point for creating products, surfaces and projects with resin.", longDescription: "Learn to work with epoxy resin from scratch and apply it to objects, surfaces and your own projects through a practical introduction to materials, mixing and finishing.", status: "Course available" },
-  "depilacion-profesional-con-cera": { title: "Professional Waxing", category: "Beauty & services", description: "Method, hygiene and technique for different body areas and skin types.", longDescription: "Professional waxing requires more than heating and applying wax. Learn what to use, how to apply it, which skin you are working on and which protocol to follow.", status: "Course available" },
+export const courseEnglish: Record<
+  string,
+  {
+    title: string;
+    category: string;
+    description: string;
+    longDescription: string;
+    status: string;
+  }
+> = {
+  "car-detailing": {
+    title: "Car Detailing Pro",
+    category: "Automotive",
+    description:
+      "Interiors, polishing and headlights. Step by step, without unnecessary jargon.",
+    longDescription:
+      "Learn to restore interiors, polish paint, recover headlights and use detailing products and machines with purpose. A practical route to improve cars, increase their value or start a service on solid foundations.",
+    status: "Course available",
+  },
+  "academia-del-macrame": {
+    title: "Macramé Academy",
+    category: "Crafts & creativity",
+    description:
+      "Knots, projects and guided practice to turn inspiration into results.",
+    longDescription:
+      "From inspiration to results: knots, projects and guided practice in one place. Learn by doing and turn a handmade idea into a practical skill.",
+    status: "Course available",
+  },
+  "tu-negocio-de-jabones-artesanales": {
+    title: "Your Handmade Soap Business",
+    category: "Trades & skills",
+    description:
+      "A clear route to create, present and sell handmade soap with better judgment.",
+    longDescription:
+      "Learn to create, present and sell handmade soap with a clear, grounded guide. The course remains connected to its official catalogue while we complete the original profile.",
+    status: "Check availability",
+  },
+  "aprenda-a-cantar-con-adrian-lozano": {
+    title: "Learn to Sing with Adrián Lozano",
+    category: "Music & voice",
+    description:
+      "Vocal technique to train your voice with more structure and less chaos.",
+    longDescription:
+      "A practical introduction to what to adjust, how to train and how to work on your voice with more structure. The course remains connected to its official catalogue while we complete the original profile.",
+    status: "Check availability",
+  },
+  "mecanica-de-motos-vip": {
+    title: "VIP Motorcycle Mechanics",
+    category: "Automotive",
+    description:
+      "Maintenance, diagnostics and engines to truly understand a motorcycle.",
+    longDescription:
+      "Training designed to take you from a general understanding to knowing how a motorcycle works and how to work on it more safely: basic maintenance, diagnostics and engines.",
+    status: "Check availability",
+  },
+  "curso-cocteleria-de-autor-online": {
+    title: "Online Signature Cocktail Course",
+    category: "Hobbies",
+    description:
+      "Technique, creativity and a more professional view of the bar.",
+    longDescription:
+      "Learn to create cocktails on stronger foundations by understanding flavours, combinations and the tools needed to develop your own style.",
+    status: "Check availability",
+  },
+  "el-rentable-negocio-de-la-sublimacion": {
+    title: "The Profitable Sublimation Business",
+    category: "Business & hobbies",
+    description:
+      "Sublimation, equipment and clear steps to start with better judgment.",
+    longDescription:
+      "Learn to create, customize and sell products through a clearer route for turning sublimation into a real business. The training combines sublimation, equipment, design and digital marketing step by step.",
+    status: "Course available",
+  },
+  "carpinteria-y-muebles-de-melamina": {
+    title: "Carpentry and Melamine Furniture",
+    category: "Trades & skills",
+    description: "From foundations to finished furniture: learn by doing.",
+    longDescription:
+      "Training to understand the trade, build confidence and create with better judgment through measurement, tools, timber, melamine and real projects.",
+    status: "Course available",
+  },
+  "master-en-miradas-todo-sobre-cejas-y-pestanas": {
+    title: "Eye Mastery: Brows and Lashes",
+    category: "Business & beauty",
+    description: "From beauty technique to a skill with income potential.",
+    longDescription:
+      "A structured route to learn brow and lash techniques from scratch, practise with purpose and begin building your own service.",
+    status: "Course available",
+  },
+  "curso-profesional-de-wrapping-vehicular": {
+    title: "Professional Vehicle Wrapping",
+    category: "Automotive & specialization",
+    description:
+      "Preparation, materials and installation through a professional wrapping process.",
+    longDescription:
+      "You do not need twenty more tutorials. You need the complete process: surface preparation, material handling, installation and professional finishing techniques.",
+    status: "Course available",
+  },
+  "administracion-de-taller": {
+    title: "Workshop Management",
+    category: "Automotive & business",
+    description:
+      "Clients, costs, suppliers and processes for managing the business behind the workshop.",
+    longDescription:
+      "Knowing how to repair vehicles does not automatically mean knowing how to manage a workshop. This training focuses on finances, quotations, clients, suppliers, people and operating processes.",
+    status: "Course available",
+  },
+  "sistemas-de-seguridad-total": {
+    title: "Total Security Systems",
+    category: "Automotive & specialization",
+    description:
+      "Technical training for going deeper into automotive security systems.",
+    longDescription:
+      "A seven-module specialization for studying automotive security systems through a structured technical route, designed for people building professional capability in the automotive sector.",
+    status: "Course available",
+  },
+  "plomeria-profesional": {
+    title: "Professional Plumbing",
+    category: "Trades & skills",
+    description:
+      "Foundations, installation and repair through 59 practical classes.",
+    longDescription:
+      "A practical route from plumbing foundations to installation, repairs and more professional procedures, with around 17 hours of original content and certification.",
+    status: "Course available",
+  },
+  "resina-epoxica": {
+    title: "Epoxy Resin",
+    category: "Crafts & creativity",
+    description:
+      "A practical entry point for creating products, surfaces and projects with resin.",
+    longDescription:
+      "Learn to work with epoxy resin from scratch and apply it to objects, surfaces and your own projects through a practical introduction to materials, mixing and finishing.",
+    status: "Course available",
+  },
+  "depilacion-profesional-con-cera": {
+    title: "Professional Waxing",
+    category: "Beauty & services",
+    description:
+      "Method, hygiene and technique for different body areas and skin types.",
+    longDescription:
+      "Professional waxing requires more than heating and applying wax. Learn what to use, how to apply it, which skin you are working on and which protocol to follow.",
+    status: "Course available",
+  },
+  "accesorios-en-resina": {
+    title: "Resin Accessories for Entrepreneurs",
+    category: "Crafts & creativity",
+    description:
+      "Materials, process and practice for turning resin into real accessories.",
+    longDescription:
+      "You do not need a huge workshop to begin. This course offers a practical route to understanding resin, creating real accessories and improving each piece through a more structured process.",
+    status: "Course available",
+  },
+  "piezas-decorativas-en-cemento": {
+    title: "Decorative Cement Pieces",
+    category: "Crafts & decoration",
+    description:
+      "From material to finish: create decorative objects through a clear method.",
+    longDescription:
+      "Move from saving references to understanding how a piece is made. The course organizes materials, preparation, moulds and finishing so you can turn a visual idea into a real object.",
+    status: "Course available",
+  },
+  "full-reposteria-desde-cero": {
+    title: "Complete Baking from Scratch",
+    category: "Food & entrepreneurship",
+    description:
+      "Techniques, recipes and execution for learning baking with more structure.",
+    longDescription:
+      "Trying isolated recipes is not the same as learning baking. This course organizes the foundations, preparations and execution so you can understand what you are doing and repeat better results.",
+    status: "Course available",
+  },
+  "velas-artesanales-para-emprender": {
+    title: "Handmade Candles for Entrepreneurs",
+    category: "Crafts & entrepreneurship",
+    description:
+      "Materials, temperature, fragrance and finishing for making candles with purpose.",
+    longDescription:
+      "A candle can seem simple until you try to control materials, temperature, fragrance and results. This course brings those variables into a practical route for creating different candles and your own products.",
+    status: "Course available",
+  },
+  "aprende-costura-industrial": {
+    title: "Learn Industrial Sewing",
+    category: "Trades & specialization",
+    description:
+      "Garment construction, pattern making and method through a professional approach.",
+    longDescription:
+      "This is about more than using a sewing machine. It is a structured route from sewing isolated pieces to understanding pattern making, garment construction and a deeper technical progression.",
+    status: "Course available",
+  },
 };
 
-export const courseDetailEnglish: Record<string, { eyebrow: string; audience: string[]; includes: string[] }> = {
-  "car-detailing": { eyebrow: "Learn every step of the detailing process", audience: ["You want to start a real detailing business from scratch.", "You already work in the industry and want better results and pricing.", "You are frustrated by not knowing which product to use, in what order or with which technique.", "You want a clear method explained step by step."], includes: ["Step-by-step classes covering complete detailing processes.", "Content access so you can progress at your own pace.", "Supporting material and resources.", "A private community for support and questions.", "Extra resources and an automotive window tinting course."] },
-  "academia-del-macrame": { eyebrow: "A step-by-step system for creating with purpose", audience: ["You are motivated to create, decorate or sell your pieces.", "You want to stop improvising and follow a clear method.", "Scattered tutorials do not give you the structure you need.", "You want practical training that is easy to follow."], includes: ["More than 40 projects, from basic knots to complete pieces.", "Lifetime access to the content.", "A completion certificate, subject to availability.", "A support group and creative community.", "Resources to keep creating with confidence."] },
-  "tu-negocio-de-jabones-artesanales": { eyebrow: "From idea to product, and product to business", audience: ["You want to start making handmade soap and need a clear route.", "You want to choose ingredients and manufacture your products.", "You want to learn how to present, package and sell.", "You want to approach the project with a stronger business mindset."], includes: ["Ingredient manual.", "Formulation worksheet.", "Costing template.", "Guide to making silicone moulds.", "Updates and permanent access."] },
-  "aprenda-a-cantar-con-adrian-lozano": { eyebrow: "Improve your voice and sing with more confidence", audience: ["You enjoy singing but feel you lack technique.", "You want to practise with a more structured guide.", "You want to understand your voice and its common challenges.", "You are starting out or want to progress with more purpose."], includes: ["Singing fundamentals explained clearly.", "An introduction to vocal exercises.", "Practical, progressive exercises.", "Correction of common difficulties.", "Practice recommendations and program bonuses."] },
-  "mecanica-de-motos-vip": { eyebrow: "From basic maintenance to diagnostics and engines", audience: ["You love motorcycles and want to depend less on others.", "You want to stop guessing at faults.", "You want something more complete than scattered tips.", "You want a serious, practical technical route."], includes: ["Operation, parts and general maintenance.", "Brakes, drivetrain, wheels, suspension and steering.", "Carburetion, engine, gearbox, injection and electrical systems.", "Diagnostics, disassembly, assembly and fault inspection.", "Business module, support and VIP certificate."] },
-  "curso-cocteleria-de-autor-online": { eyebrow: "Build an experience inside a glass", audience: ["You want to understand what makes a cocktail work.", "You are interested in the technique and logic behind each preparation.", "You want a creative skill with professional potential.", "You want to create with purpose, not just make a pretty drink."], includes: ["Cocktail fundamentals and technique.", "Flavour and ingredient combinations.", "Drink construction and presentation.", "Resources for developing your own style."] },
-  "el-rentable-negocio-de-la-sublimacion": { eyebrow: "Sublimation with a business mindset", audience: ["You want to learn from scratch without getting lost in videos.", "You need to choose equipment and supplies before spending.", "You want to improve technique and presentation.", "You want to turn a skill into a source of income."], includes: ["Step-by-step sublimation technique.", "Equipment, inks, paper and supplies.", "Design and production of personalized products.", "Guidance for pricing and organizing operations.", "Digital marketing and a commercial approach."] },
-  "carpinteria-y-muebles-de-melamina": { eyebrow: "Learn carpentry to build for real", audience: ["You want to make things with your hands and do not know where to begin.", "You need foundations for measuring, cutting and assembly.", "Tutorials show results but not the process.", "You want a useful skill for your home or to generate income."], includes: ["Trade foundations and tool use.", "Measurement, cutting and assembly with purpose.", "Working with timber and melamine.", "Guided projects from start to finish.", "A route to stop improvising."] },
-  "master-en-miradas-todo-sobre-cejas-y-pestanas": { eyebrow: "From beauty technique to a monetizable skill", audience: ["You enjoy beauty and want to begin professionally.", "You want to build something of your own.", "You want to earn income from home with a real skill.", "A lack of experience or a structured path is holding you back."], includes: ["Brow fundamentals and techniques.", "Applied lash techniques.", "Practice focused on professional results.", "Service organization and client care.", "Foundations for turning the skill into a business."] },
-  "curso-profesional-de-wrapping-vehicular": { eyebrow: "Learn the complete process, not a collection of tricks", audience: ["You want to begin wrapping with serious technical foundations.", "You already work with cars and want to add a new service.", "You have tried isolated tutorials but still lack a clear process.", "You want to improve preparation, installation and finishing."], includes: ["Correct surface and workspace preparation.", "Criteria for selecting and handling materials.", "A step-by-step installation process.", "Techniques for curves, edges and finishing.", "A professional approach to offering wrapping as a service."] },
-  "administracion-de-taller": { eyebrow: "Manage the business behind the technical work", audience: ["You own a workshop and need to organize operations.", "You know the technical side but still improvise the management side.", "You are beginning to coordinate clients, suppliers or staff.", "You want to make decisions with better financial information."], includes: ["Workshop finances and income.", "Quotations and client relationships.", "Supplier and resource management.", "People and team organization.", "Tools for organizing administrative processes."] },
-  "sistemas-de-seguridad-total": { eyebrow: "Technical specialization in automotive security", audience: ["You work in the automotive sector and want a deeper specialization.", "You want more than an isolated tutorial.", "You want to understand security systems through a structured route.", "You need stronger technical judgment for professional applications."], includes: ["Seven technical training modules.", "Automotive security system foundations.", "Professional procedures and application criteria.", "Content organized into progressive stages.", "Supporting material from the producer."] },
-  "plomeria-profesional": { eyebrow: "From foundations to professional procedures", audience: ["You want to learn a practical trade from the beginning.", "You need a more complete route than scattered tutorials.", "You want to improve household installations and repairs.", "You want a skill with professional applications."], includes: ["59 step-by-step classes.", "Around 17 hours of original content.", "Foundations, installation and repair.", "More advanced applications and procedures.", "Certification and supporting material."] },
-  "resina-epoxica": { eyebrow: "Start with resin and turn an idea into a real object", audience: ["You want to try a creative skill from scratch.", "You like resin projects but do not know where to start.", "You want to understand materials, mixing and preparation.", "You want to apply the skill to your own objects or surfaces."], includes: ["An introduction to materials and resin types.", "Preparation, mixing and basic safety.", "Application to objects, surfaces and projects.", "Resources for avoiding common mistakes.", "Ideas for continuing to practise from solid foundations."] },
-  "depilacion-profesional-con-cera": { eyebrow: "Technique, hygiene and judgment for a professional service", audience: ["You want to enter the beauty industry through structured training.", "You already work in beauty and want to expand your services.", "You need to understand skin, hair and wax types.", "You want to work with stronger safety and protocol."], includes: ["Correct wax application and removal.", "Skin and hair assessment, hygiene and safety.", "Spanish waxing and disposable roll-on systems.", "Procedures demonstrated on real models.", "PDF material, certification and supporting content."] },
+export const courseDetailEnglish: Record<
+  string,
+  { eyebrow: string; audience: string[]; includes: string[] }
+> = {
+  "car-detailing": {
+    eyebrow: "Learn every step of the detailing process",
+    audience: [
+      "You want to start a real detailing business from scratch.",
+      "You already work in the industry and want better results and pricing.",
+      "You are frustrated by not knowing which product to use, in what order or with which technique.",
+      "You want a clear method explained step by step.",
+    ],
+    includes: [
+      "Step-by-step classes covering complete detailing processes.",
+      "Content access so you can progress at your own pace.",
+      "Supporting material and resources.",
+      "A private community for support and questions.",
+      "Extra resources and an automotive window tinting course.",
+    ],
+  },
+  "academia-del-macrame": {
+    eyebrow: "A step-by-step system for creating with purpose",
+    audience: [
+      "You are motivated to create, decorate or sell your pieces.",
+      "You want to stop improvising and follow a clear method.",
+      "Scattered tutorials do not give you the structure you need.",
+      "You want practical training that is easy to follow.",
+    ],
+    includes: [
+      "More than 40 projects, from basic knots to complete pieces.",
+      "Lifetime access to the content.",
+      "A completion certificate, subject to availability.",
+      "A support group and creative community.",
+      "Resources to keep creating with confidence.",
+    ],
+  },
+  "tu-negocio-de-jabones-artesanales": {
+    eyebrow: "From idea to product, and product to business",
+    audience: [
+      "You want to start making handmade soap and need a clear route.",
+      "You want to choose ingredients and manufacture your products.",
+      "You want to learn how to present, package and sell.",
+      "You want to approach the project with a stronger business mindset.",
+    ],
+    includes: [
+      "Ingredient manual.",
+      "Formulation worksheet.",
+      "Costing template.",
+      "Guide to making silicone moulds.",
+      "Updates and permanent access.",
+    ],
+  },
+  "aprenda-a-cantar-con-adrian-lozano": {
+    eyebrow: "Improve your voice and sing with more confidence",
+    audience: [
+      "You enjoy singing but feel you lack technique.",
+      "You want to practise with a more structured guide.",
+      "You want to understand your voice and its common challenges.",
+      "You are starting out or want to progress with more purpose.",
+    ],
+    includes: [
+      "Singing fundamentals explained clearly.",
+      "An introduction to vocal exercises.",
+      "Practical, progressive exercises.",
+      "Correction of common difficulties.",
+      "Practice recommendations and program bonuses.",
+    ],
+  },
+  "mecanica-de-motos-vip": {
+    eyebrow: "From basic maintenance to diagnostics and engines",
+    audience: [
+      "You love motorcycles and want to depend less on others.",
+      "You want to stop guessing at faults.",
+      "You want something more complete than scattered tips.",
+      "You want a serious, practical technical route.",
+    ],
+    includes: [
+      "Operation, parts and general maintenance.",
+      "Brakes, drivetrain, wheels, suspension and steering.",
+      "Carburetion, engine, gearbox, injection and electrical systems.",
+      "Diagnostics, disassembly, assembly and fault inspection.",
+      "Business module, support and VIP certificate.",
+    ],
+  },
+  "curso-cocteleria-de-autor-online": {
+    eyebrow: "Build an experience inside a glass",
+    audience: [
+      "You want to understand what makes a cocktail work.",
+      "You are interested in the technique and logic behind each preparation.",
+      "You want a creative skill with professional potential.",
+      "You want to create with purpose, not just make a pretty drink.",
+    ],
+    includes: [
+      "Cocktail fundamentals and technique.",
+      "Flavour and ingredient combinations.",
+      "Drink construction and presentation.",
+      "Resources for developing your own style.",
+    ],
+  },
+  "el-rentable-negocio-de-la-sublimacion": {
+    eyebrow: "Sublimation with a business mindset",
+    audience: [
+      "You want to learn from scratch without getting lost in videos.",
+      "You need to choose equipment and supplies before spending.",
+      "You want to improve technique and presentation.",
+      "You want to turn a skill into a source of income.",
+    ],
+    includes: [
+      "Step-by-step sublimation technique.",
+      "Equipment, inks, paper and supplies.",
+      "Design and production of personalized products.",
+      "Guidance for pricing and organizing operations.",
+      "Digital marketing and a commercial approach.",
+    ],
+  },
+  "carpinteria-y-muebles-de-melamina": {
+    eyebrow: "Learn carpentry to build for real",
+    audience: [
+      "You want to make things with your hands and do not know where to begin.",
+      "You need foundations for measuring, cutting and assembly.",
+      "Tutorials show results but not the process.",
+      "You want a useful skill for your home or to generate income.",
+    ],
+    includes: [
+      "Trade foundations and tool use.",
+      "Measurement, cutting and assembly with purpose.",
+      "Working with timber and melamine.",
+      "Guided projects from start to finish.",
+      "A route to stop improvising.",
+    ],
+  },
+  "master-en-miradas-todo-sobre-cejas-y-pestanas": {
+    eyebrow: "From beauty technique to a monetizable skill",
+    audience: [
+      "You enjoy beauty and want to begin professionally.",
+      "You want to build something of your own.",
+      "You want to earn income from home with a real skill.",
+      "A lack of experience or a structured path is holding you back.",
+    ],
+    includes: [
+      "Brow fundamentals and techniques.",
+      "Applied lash techniques.",
+      "Practice focused on professional results.",
+      "Service organization and client care.",
+      "Foundations for turning the skill into a business.",
+    ],
+  },
+  "curso-profesional-de-wrapping-vehicular": {
+    eyebrow: "Learn the complete process, not a collection of tricks",
+    audience: [
+      "You want to begin wrapping with serious technical foundations.",
+      "You already work with cars and want to add a new service.",
+      "You have tried isolated tutorials but still lack a clear process.",
+      "You want to improve preparation, installation and finishing.",
+    ],
+    includes: [
+      "Correct surface and workspace preparation.",
+      "Criteria for selecting and handling materials.",
+      "A step-by-step installation process.",
+      "Techniques for curves, edges and finishing.",
+      "A professional approach to offering wrapping as a service.",
+    ],
+  },
+  "administracion-de-taller": {
+    eyebrow: "Manage the business behind the technical work",
+    audience: [
+      "You own a workshop and need to organize operations.",
+      "You know the technical side but still improvise the management side.",
+      "You are beginning to coordinate clients, suppliers or staff.",
+      "You want to make decisions with better financial information.",
+    ],
+    includes: [
+      "Workshop finances and income.",
+      "Quotations and client relationships.",
+      "Supplier and resource management.",
+      "People and team organization.",
+      "Tools for organizing administrative processes.",
+    ],
+  },
+  "sistemas-de-seguridad-total": {
+    eyebrow: "Technical specialization in automotive security",
+    audience: [
+      "You work in the automotive sector and want a deeper specialization.",
+      "You want more than an isolated tutorial.",
+      "You want to understand security systems through a structured route.",
+      "You need stronger technical judgment for professional applications.",
+    ],
+    includes: [
+      "Seven technical training modules.",
+      "Automotive security system foundations.",
+      "Professional procedures and application criteria.",
+      "Content organized into progressive stages.",
+      "Supporting material from the producer.",
+    ],
+  },
+  "plomeria-profesional": {
+    eyebrow: "From foundations to professional procedures",
+    audience: [
+      "You want to learn a practical trade from the beginning.",
+      "You need a more complete route than scattered tutorials.",
+      "You want to improve household installations and repairs.",
+      "You want a skill with professional applications.",
+    ],
+    includes: [
+      "59 step-by-step classes.",
+      "Around 17 hours of original content.",
+      "Foundations, installation and repair.",
+      "More advanced applications and procedures.",
+      "Certification and supporting material.",
+    ],
+  },
+  "resina-epoxica": {
+    eyebrow: "Start with resin and turn an idea into a real object",
+    audience: [
+      "You want to try a creative skill from scratch.",
+      "You like resin projects but do not know where to start.",
+      "You want to understand materials, mixing and preparation.",
+      "You want to apply the skill to your own objects or surfaces.",
+    ],
+    includes: [
+      "An introduction to materials and resin types.",
+      "Preparation, mixing and basic safety.",
+      "Application to objects, surfaces and projects.",
+      "Resources for avoiding common mistakes.",
+      "Ideas for continuing to practise from solid foundations.",
+    ],
+  },
+  "depilacion-profesional-con-cera": {
+    eyebrow: "Technique, hygiene and judgment for a professional service",
+    audience: [
+      "You want to enter the beauty industry through structured training.",
+      "You already work in beauty and want to expand your services.",
+      "You need to understand skin, hair and wax types.",
+      "You want to work with stronger safety and protocol.",
+    ],
+    includes: [
+      "Correct wax application and removal.",
+      "Skin and hair assessment, hygiene and safety.",
+      "Spanish waxing and disposable roll-on systems.",
+      "Procedures demonstrated on real models.",
+      "PDF material, certification and supporting content.",
+    ],
+  },
+  "accesorios-en-resina": {
+    eyebrow: "A practical technique for making real accessories",
+    audience: [
+      "You want to begin with resin without a high technical barrier.",
+      "You want a visual, hands-on skill you can practise from scratch.",
+      "You want to turn ideas into accessories and your own products.",
+      "You are exploring a small creative business and need a clear route.",
+    ],
+    includes: [
+      "An introduction to materials, tools and preparation.",
+      "A guided process for creating resin accessories.",
+      "Project examples and step-by-step practice.",
+      "Supporting material for the learning route.",
+      "A certificate and support community under the producer's terms.",
+    ],
+  },
+  "piezas-decorativas-en-cemento": {
+    eyebrow: "Turn a visual reference into an object you made",
+    audience: [
+      "You want to begin a creative practice with accessible materials.",
+      "You save decoration ideas but do not know how to make them.",
+      "You want to learn about moulds, mixtures and finishing.",
+      "You want to create objects for your space or products to sell.",
+    ],
+    includes: [
+      "Foundations for working with cement in decorative projects.",
+      "Materials, preparation and the mixing process.",
+      "Using moulds and creating pieces from scratch.",
+      "Ways to improve finishes and details.",
+      "A course overview, supporting material and certificate.",
+    ],
+  },
+  "full-reposteria-desde-cero": {
+    eyebrow: "Stop collecting recipes and start understanding technique",
+    audience: [
+      "You want to learn baking through a structured foundation.",
+      "You bake at home but your results are still inconsistent.",
+      "You want to understand techniques instead of following recipes blindly.",
+      "You want to create products to enjoy or begin selling.",
+    ],
+    includes: [
+      "An introduction and foundations for organizing your learning.",
+      "Cakes, doughs and essential preparations.",
+      "Biscuits, desserts and baking products.",
+      "Practical application in different presentations.",
+      "Guidance for developing your own product offering.",
+    ],
+  },
+  "velas-artesanales-para-emprender": {
+    eyebrow: "Control the process behind a well-finished candle",
+    audience: [
+      "You want to begin a handmade skill from scratch.",
+      "You like candles but need to understand materials and process.",
+      "You want a creative activity that produces real objects.",
+      "You are exploring a line of handmade products.",
+    ],
+    includes: [
+      "Foundations, materials and workspace preparation.",
+      "Managing temperature, mixtures, fragrance and finish.",
+      "Creating different types of candles.",
+      "Guided practice for avoiding common mistakes.",
+      "Supporting material, community and certification under the producer's terms.",
+    ],
+  },
+  "aprende-costura-industrial": {
+    eyebrow: "Move from isolated pieces to garments built with method",
+    audience: [
+      "You want to begin sewing through a complete technical progression.",
+      "You already sew and need to organize pattern making, construction and finishing.",
+      "You want to develop garments or your own clothing projects.",
+      "You want a practical skill with professional and commercial applications.",
+    ],
+    includes: [
+      "More than 90 lessons organized into modules.",
+      "Sewing foundations and progressive technical practice.",
+      "Pattern making, garment construction and assembly.",
+      "Progression from foundations to more advanced applications.",
+      "Guidance for developing projects and your own brand.",
+    ],
+  },
 };
