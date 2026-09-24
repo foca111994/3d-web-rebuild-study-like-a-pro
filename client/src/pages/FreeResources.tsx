@@ -2,6 +2,7 @@ import { ArrowLeft, ArrowUpRight, Search } from "lucide-react";
 import { useMemo, useState } from "react";
 import { freeResources } from "@/data/freeResources";
 import InstagramLink from "@/components/InstagramLink";
+import StudyMethodsLab from "@/components/StudyMethodsLab";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { resourceEnglish } from "@/data/english";
 
@@ -36,6 +37,8 @@ export default function FreeResources() {
         <a href="/" className="resources-brand" aria-label={language === "en" ? "Back to home" : "Volver al inicio"}><img src="/brand/study-like-a-pro-sky.png" alt="Study Like a Pro" /><span>/ Free Resources</span></a>
         <a href="/pilot-3d" className="resources-back"><ArrowLeft size={16} /> Skills?</a>
       </header>
+
+      <StudyMethodsLab />
 
       <section className="resources-hero">
         <p className="resources-eyebrow">02 / {language === "en" ? "Curated library" : "Biblioteca curada"}</p>
