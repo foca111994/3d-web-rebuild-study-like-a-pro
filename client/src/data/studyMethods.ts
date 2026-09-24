@@ -15,6 +15,7 @@ export type StudyMethodSource = {
 export type StudyMethod = {
   id: string;
   order: number;
+  hidden?: boolean;
   title: LocalizedText;
   authors: string;
   initials: string;
@@ -572,6 +573,7 @@ export const studyMethods: StudyMethod[] = [
   {
     id: "spaced-practice",
     order: 5,
+    hidden: true,
     title: { es: "Práctica espaciada", en: "Spaced Practice" },
     authors: "Cepeda, Pashler, Vul, Wixted y Rohrer",
     initials: "CP",
@@ -813,6 +815,7 @@ export const studyMethods: StudyMethod[] = [
   {
     id: "interleaved-practice",
     order: 7,
+    hidden: true,
     title: { es: "Práctica intercalada", en: "Interleaved Practice" },
     authors: "Doug Rohrer y Kelli Taylor",
     initials: "RT",
@@ -1322,3 +1325,7 @@ export const studyMethods: StudyMethod[] = [
     ],
   },
 ];
+
+export const visibleStudyMethods: StudyMethod[] = studyMethods
+  .filter(method => !method.hidden)
+  .map((method, index) => ({ ...method, order: index + 1 }));

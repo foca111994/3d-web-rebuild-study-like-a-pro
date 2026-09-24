@@ -10,7 +10,10 @@ import {
 } from "lucide-react";
 import { useMemo, useState } from "react";
 import "./StudyMethodsLab.css";
-import { studyMethods, type LocalizedText } from "@/data/studyMethods";
+import {
+  visibleStudyMethods,
+  type LocalizedText,
+} from "@/data/studyMethods";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 type MethodsTab = "methods" | "journal" | "archive";
@@ -63,11 +66,13 @@ export default function StudyMethodsLab() {
   const { language } = useLanguage();
   const locale = language === "en" ? "en" : "es";
   const [activeTab, setActiveTab] = useState<MethodsTab>("methods");
-  const [selectedId, setSelectedId] = useState(studyMethods[0].id);
+  const [selectedId, setSelectedId] = useState(visibleStudyMethods[0].id);
   const [copied, setCopied] = useState(false);
 
   const method = useMemo(
-    () => studyMethods.find(item => item.id === selectedId) ?? studyMethods[0],
+    () =>
+      visibleStudyMethods.find(item => item.id === selectedId) ??
+      visibleStudyMethods[0],
     [selectedId]
   );
 
@@ -200,12 +205,12 @@ export default function StudyMethodsLab() {
                   {language === "en" ? "Study methods" : "Métodos de estudio"}
                 </span>
                 <span>
-                  {studyMethods.length}{" "}
+                  {visibleStudyMethods.length}{" "}
                   {language === "en" ? "methods" : "métodos"}
                 </span>
               </div>
               <div className="methods-list">
-                {studyMethods.map(item => (
+                {visibleStudyMethods.map(item => (
                   <button
                     type="button"
                     className={
