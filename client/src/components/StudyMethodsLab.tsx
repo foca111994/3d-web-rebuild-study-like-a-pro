@@ -69,6 +69,12 @@ export default function StudyMethodsLab() {
     [selectedId]
   );
 
+  const openMethod = (id: string) => {
+    setSelectedId(id);
+    setCopied(false);
+    setActiveTab("journal");
+  };
+
   const copyMethod = async () => {
     const markdown = [
       `# ${method.title[locale]}`,
@@ -189,9 +195,7 @@ export default function StudyMethodsLab() {
             >
               <div className="methods-panel-meta">
                 <span>
-                  {language === "en"
-                    ? "Study techniques"
-                    : "Técnicas de estudio"}
+                  {language === "en" ? "Study methods" : "Métodos de estudio"}
                 </span>
                 <span>
                   {studyMethods.length}{" "}
@@ -207,19 +211,33 @@ export default function StudyMethodsLab() {
                         ? "method-list-item is-selected"
                         : "method-list-item"
                     }
-                    onClick={() => setSelectedId(item.id)}
+                    onClick={() => openMethod(item.id)}
                     aria-pressed={item.id === selectedId}
                     key={item.id}
                   >
                     <span className="method-list-number">
                       {String(item.order).padStart(2, "0")}
                     </span>
-                    <span className="method-list-avatar">
+                    <span
+                      className={
+                        item.secondaryImage
+                          ? "method-list-avatar is-pair"
+                          : "method-list-avatar"
+                      }
+                    >
                       {item.image ? (
-                        <img
-                          src={item.image}
-                          alt={item.imageAlt?.[locale] ?? ""}
-                        />
+                        <>
+                          <img
+                            src={item.image}
+                            alt={item.imageAlt?.[locale] ?? ""}
+                          />
+                          {item.secondaryImage && (
+                            <img
+                              src={item.secondaryImage}
+                              alt={item.secondaryImageAlt?.[locale] ?? ""}
+                            />
+                          )}
+                        </>
                       ) : (
                         <span>{item.initials}</span>
                       )}

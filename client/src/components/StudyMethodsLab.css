@@ -1,8 +1,30 @@
 .study-methods-section {
+  position: relative;
+  isolation: isolate;
   width: min(100% - 72px, 1320px);
   margin: 0 auto;
   padding: clamp(72px, 8vw, 118px) 0 clamp(64px, 7vw, 96px);
   border-bottom: 1px solid rgba(23, 23, 23, 0.2);
+}
+.study-methods-section::before {
+  position: absolute;
+  z-index: -1;
+  top: 23%;
+  right: -4%;
+  width: min(52vw, 720px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 33% 36%, rgba(189, 70, 61, 0.2), transparent 37%),
+    radial-gradient(
+      circle at 66% 64%,
+      rgba(236, 180, 169, 0.28),
+      transparent 42%
+    );
+  filter: blur(62px);
+  content: "";
+  opacity: 0.72;
+  pointer-events: none;
 }
 .study-methods-grid {
   display: grid;
@@ -93,24 +115,41 @@
   min-height: 560px;
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
-  border: 1.5px solid #171717;
-  border-radius: 20px;
-  background: rgba(248, 248, 245, 0.98);
-  box-shadow: 0 22px 48px rgba(23, 23, 23, 0.13);
-  overflow: hidden;
+  background: transparent;
+  filter: drop-shadow(0 24px 34px rgba(35, 24, 22, 0.16));
+  overflow: visible;
 }
 .methods-window-tabs {
-  min-height: 61px;
+  position: relative;
+  z-index: 3;
+  min-height: 64px;
   display: grid;
   grid-template-columns: 96px repeat(3, minmax(0, 1fr));
-  align-items: stretch;
-  border-bottom: 1px solid #171717;
+  align-items: end;
+  margin: 0 10px;
+  padding: 0 8px;
 }
 .methods-window-dots {
+  height: 52px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 7px;
+  margin-right: -1px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-bottom: 0;
+  border-radius: 19px 19px 0 0;
+  background:
+    linear-gradient(
+      150deg,
+      rgba(255, 255, 255, 0.68),
+      rgba(238, 232, 227, 0.48)
+    ),
+    rgba(248, 248, 245, 0.42);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.92),
+    inset 1px 0 0 rgba(23, 23, 23, 0.12);
+  backdrop-filter: blur(22px) saturate(1.08);
 }
 .methods-window-dots i {
   width: 10px;
@@ -126,21 +165,37 @@
 }
 .methods-window-tabs button {
   min-width: 0;
+  height: 57px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  margin: -1.5px -1px -1px 0;
+  margin: 0 -1px 0 0;
   padding: 0 14px;
-  border: 1px solid #171717;
-  border-radius: 18px 18px 0 0;
-  background: #efefed;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-bottom: 0;
+  border-radius: 19px 19px 0 0;
+  background:
+    linear-gradient(
+      150deg,
+      rgba(255, 255, 255, 0.62),
+      rgba(236, 228, 224, 0.46)
+    ),
+    rgba(248, 248, 245, 0.38);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 1px 0 0 rgba(23, 23, 23, 0.11);
   color: #171717;
   font:
     720 10px/1 "IBM Plex Mono",
     monospace;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  backdrop-filter: blur(22px) saturate(1.08);
+  transition:
+    height 180ms ease,
+    color 180ms ease,
+    background 180ms ease;
 }
 .methods-window-tabs button svg {
   width: 19px;
@@ -149,16 +204,45 @@
 }
 .methods-window-tabs button.is-active {
   position: relative;
-  z-index: 1;
-  border-bottom-color: #f8f8f5;
-  background: #f8f8f5;
+  z-index: 2;
+  height: 62px;
+  background:
+    linear-gradient(
+      150deg,
+      rgba(255, 255, 255, 0.86),
+      rgba(245, 237, 233, 0.68)
+    ),
+    rgba(248, 248, 245, 0.64);
   color: #bd463d;
 }
+.methods-window-tabs button:focus-visible,
+.method-list-item:focus-visible,
+.journal-copy-bar button:focus-visible {
+  outline: 2px solid #bd463d;
+  outline-offset: 3px;
+}
 .methods-window-body {
+  position: relative;
+  z-index: 1;
   min-height: 0;
+  margin-top: -1px;
+  border: 1px solid rgba(255, 255, 255, 0.76);
+  border-radius: 20px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.76),
+      rgba(239, 234, 230, 0.56)
+    ),
+    rgba(248, 248, 245, 0.5);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.98),
+    inset 0 0 0 1px rgba(23, 23, 23, 0.1),
+    0 1px 0 rgba(255, 255, 255, 0.65);
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: rgba(23, 23, 23, 0.4) transparent;
+  backdrop-filter: blur(28px) saturate(1.08);
 }
 .methods-window-body::-webkit-scrollbar {
   width: 8px;
@@ -174,14 +258,15 @@
   display: flex;
   justify-content: space-between;
   padding: 22px 25px 16px;
-  background: rgba(248, 248, 245, 0.96);
+  border-radius: 19px 19px 0 0;
+  background: rgba(248, 246, 243, 0.76);
   color: rgba(23, 23, 23, 0.48);
   font:
     650 9px/1 "IBM Plex Mono",
     monospace;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  backdrop-filter: blur(9px);
+  backdrop-filter: blur(18px);
 }
 .methods-list {
   padding: 0 25px 18px;
@@ -194,6 +279,7 @@
   align-items: center;
   padding: 14px 12px;
   border: 1px solid transparent;
+  border-radius: 12px;
   border-top-color: rgba(23, 23, 23, 0.16);
   background: transparent;
   color: #171717;
@@ -203,11 +289,13 @@
   border-top-color: transparent;
 }
 .method-list-item:hover {
-  background: #fff;
+  border-color: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.48);
 }
 .method-list-item.is-selected {
-  border-color: #bd463d;
-  background: #fff;
+  border-color: rgba(189, 70, 61, 0.72);
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
 }
 .method-list-number {
   align-self: start;
@@ -220,10 +308,22 @@
 .method-list-avatar {
   width: 84px;
   height: 68px;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
-  background: #deded9;
+  border: 1px solid rgba(255, 255, 255, 0.74);
+  border-radius: 10px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.66),
+      rgba(209, 201, 197, 0.62)
+    ),
+    #deded9;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.88),
+    0 5px 14px rgba(23, 23, 23, 0.08);
   color: #171717;
   font:
     750 17px/1 "IBM Plex Mono",
@@ -234,8 +334,19 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 22%;
-  filter: grayscale(1) contrast(1.04);
+  object-position: center 34%;
+  filter: grayscale(0.46) saturate(0.78) contrast(1.04);
+}
+.method-list-avatar.is-pair img {
+  width: 50%;
+  min-width: 0;
+}
+.method-list-avatar.is-pair img:first-child {
+  object-position: center 28%;
+}
+.method-list-avatar.is-pair img + img {
+  border-left: 1px solid rgba(255, 255, 255, 0.72);
+  object-position: center 28%;
 }
 .method-list-copy {
   min-width: 0;
@@ -372,8 +483,9 @@
   align-items: center;
   padding: 13px 25px;
   border-top: 1px solid #171717;
-  background: rgba(248, 248, 245, 0.97);
-  backdrop-filter: blur(10px);
+  border-radius: 0 0 19px 19px;
+  background: rgba(248, 246, 243, 0.8);
+  backdrop-filter: blur(18px);
 }
 .journal-copy-bar button {
   min-width: 172px;
@@ -533,25 +645,32 @@
   .methods-window {
     height: 670px;
     min-height: 0;
-    border-radius: 14px;
   }
   .methods-window-tabs {
-    min-height: 54px;
+    min-height: 56px;
     grid-template-columns: 38px repeat(3, minmax(0, 1fr));
+    margin: 0 4px;
+    padding: 0 4px;
   }
   .methods-window-dots {
+    height: 46px;
     gap: 3px;
+    border-radius: 12px 12px 0 0;
   }
   .methods-window-dots i {
     width: 5px;
     height: 5px;
   }
   .methods-window-tabs button {
+    height: 50px;
     gap: 5px;
     padding: 0 5px;
     border-radius: 12px 12px 0 0;
     font-size: 7px;
     letter-spacing: 0.035em;
+  }
+  .methods-window-tabs button.is-active {
+    height: 54px;
   }
   .methods-window-tabs button svg {
     width: 14px;
@@ -560,6 +679,9 @@
   .methods-panel-meta {
     padding: 18px 14px 12px;
     font-size: 7px;
+  }
+  .methods-window-body {
+    border-radius: 14px;
   }
   .methods-list {
     padding: 0 14px 14px;

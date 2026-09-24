@@ -29,7 +29,9 @@ export type StudyMethod = {
   journalIntro: LocalizedText;
   archiveNote: LocalizedText;
   image?: string;
+  secondaryImage?: string;
   imageAlt?: LocalizedText;
+  secondaryImageAlt?: LocalizedText;
   imageCredit?: string;
   steps: Array<{
     title: LocalizedText;
@@ -202,6 +204,12 @@ export const studyMethods: StudyMethod[] = [
       es: "El principio de segmentación pertenece a la investigación sobre aprendizaje multimedia de Mayer y otros equipos. Funciona mejor cuando el estudiante controla el ritmo.",
       en: "The segmenting principle comes from multimedia-learning research by Mayer and other teams. It works best when learners control the pace.",
     },
+    image: "/methods/richard-mayer.webp",
+    imageAlt: {
+      es: "Retrato de Richard E. Mayer",
+      en: "Portrait of Richard E. Mayer",
+    },
+    imageCredit: "Richard E. Mayer",
     steps: [
       {
         title: { es: "Define el objetivo", en: "Define the goal" },
@@ -327,6 +335,12 @@ export const studyMethods: StudyMethod[] = [
       es: "Huberman comunica y organiza investigaciones de distintos equipos. No inventó la recuperación activa, el espaciado ni el efecto de evaluación.",
       en: "Huberman communicates and organizes research from several teams. He did not invent retrieval practice, spacing or the testing effect.",
     },
+    image: "/methods/andrew-huberman.webp",
+    imageAlt: {
+      es: "Retrato de Andrew Huberman",
+      en: "Portrait of Andrew Huberman",
+    },
+    imageCredit: "Andrew Huberman",
     steps: [
       {
         title: { es: "Fija un resultado", en: "Set one outcome" },
@@ -449,6 +463,12 @@ export const studyMethods: StudyMethod[] = [
       es: "También se conoce como practice testing. Las pruebas son de bajo riesgo y se usan para aprender, no solo para calificar.",
       en: "Also known as practice testing. The tests are low stakes and used for learning, not only grading.",
     },
+    image: "/methods/roediger-karpicke.webp",
+    imageAlt: {
+      es: "Henry Roediger III y Jeffrey Karpicke",
+      en: "Henry Roediger III and Jeffrey Karpicke",
+    },
+    imageCredit: "Henry Roediger III y Jeffrey Karpicke",
     steps: [
       {
         title: { es: "Estudia una vez", en: "Study once" },
@@ -682,6 +702,17 @@ export const studyMethods: StudyMethod[] = [
       es: "Este flujo combina dos ingredientes con amplio respaldo: recuperación con feedback y práctica distribuida.",
       en: "This workflow combines two well-supported ingredients: retrieval with feedback and distributed practice.",
     },
+    image: "/methods/katherine-rawson.webp",
+    secondaryImage: "/methods/john-dunlosky.webp",
+    imageAlt: {
+      es: "Retrato de Katherine Rawson",
+      en: "Portrait of Katherine Rawson",
+    },
+    secondaryImageAlt: {
+      es: "Retrato de John Dunlosky",
+      en: "Portrait of John Dunlosky",
+    },
+    imageCredit: "Katherine Rawson y John Dunlosky",
     steps: [
       {
         title: {
@@ -925,6 +956,12 @@ export const studyMethods: StudyMethod[] = [
       es: "La autoexplicación es especialmente útil con ejemplos resueltos, textos explicativos y procedimientos técnicos.",
       en: "Self-explanation is especially useful with worked examples, explanatory text and technical procedures.",
     },
+    image: "/methods/michelene-chi.webp",
+    imageAlt: {
+      es: "Retrato de Michelene Chi",
+      en: "Portrait of Michelene Chi",
+    },
+    imageCredit: "Michelene Chi",
     steps: [
       {
         title: { es: "Elige un ejemplo", en: "Choose an example" },
@@ -1042,6 +1079,12 @@ export const studyMethods: StudyMethod[] = [
       es: "La estrategia es más útil para principiantes. A medida que aumenta la experiencia, la ayuda debe retirarse para evitar dependencia.",
       en: "The strategy is most useful for beginners. As expertise grows, support should fade to avoid dependence.",
     },
+    image: "/methods/john-sweller.webp",
+    imageAlt: {
+      es: "Retrato de John Sweller",
+      en: "Portrait of John Sweller",
+    },
+    imageCredit: "John Sweller",
     steps: [
       {
         title: {
@@ -1168,6 +1211,12 @@ export const studyMethods: StudyMethod[] = [
       es: "WOOP ayuda a ejecutar objetivos; no reemplaza las técnicas que fortalecen memoria o comprensión. Su papel es proteger el comportamiento de estudio.",
       en: "WOOP helps execute goals; it does not replace techniques that strengthen memory or understanding. Its role is protecting study behaviour.",
     },
+    image: "/methods/gabriele-oettingen.webp",
+    imageAlt: {
+      es: "Retrato de Gabriele Oettingen",
+      en: "Portrait of Gabriele Oettingen",
+    },
+    imageCredit: "Gabriele Oettingen",
     steps: [
       {
         title: { es: "Deseo", en: "Wish" },
