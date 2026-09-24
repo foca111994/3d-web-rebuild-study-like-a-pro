@@ -1,10 +1,12 @@
 import {
   ArrowUpRight,
   BookOpen,
+  CalendarRange,
   Check,
   Clipboard,
   FileText,
   Folder,
+  Shuffle,
 } from "lucide-react";
 import { useMemo, useState } from "react";
 import "./StudyMethodsLab.css";
@@ -238,6 +240,18 @@ export default function StudyMethodsLab() {
                             />
                           )}
                         </>
+                      ) : item.identityVisual ? (
+                        <span
+                          className={`method-identity is-${item.identityVisual}`}
+                          aria-label={item.identityLabel?.[locale]}
+                        >
+                          {item.identityVisual === "spacing" ? (
+                            <CalendarRange aria-hidden="true" />
+                          ) : (
+                            <Shuffle aria-hidden="true" />
+                          )}
+                          <small>{item.identityLabel?.[locale]}</small>
+                        </span>
                       ) : (
                         <span>{item.initials}</span>
                       )}

@@ -33,6 +33,8 @@ export type StudyMethod = {
   imageAlt?: LocalizedText;
   secondaryImageAlt?: LocalizedText;
   imageCredit?: string;
+  identityVisual?: "spacing" | "interleaving";
+  identityLabel?: LocalizedText;
   steps: Array<{
     title: LocalizedText;
     detail: LocalizedText;
@@ -591,6 +593,8 @@ export const studyMethods: StudyMethod[] = [
       es: "El intervalo ideal depende de cuánto tiempo quieras conservar el conocimiento. La regla segura es evitar concentrarlo todo en un día.",
       en: "The ideal interval depends on how long you need the knowledge. The safe rule is to avoid concentrating everything in one day.",
     },
+    identityVisual: "spacing",
+    identityLabel: { es: "DÍAS 1 · 3 · 7", en: "DAYS 1 · 3 · 7" },
     steps: [
       {
         title: { es: "Define la fecha final", en: "Set the target date" },
@@ -833,6 +837,8 @@ export const studyMethods: StudyMethod[] = [
       es: "Intercalar no significa mezclar temas aleatorios. Los elementos deben estar relacionados y exigir decisiones que valga la pena distinguir.",
       en: "Interleaving does not mean mixing random subjects. Items should be related and require meaningful discrimination.",
     },
+    identityVisual: "interleaving",
+    identityLabel: { es: "MEZCLA A · B · C", en: "MIX A · B · C" },
     steps: [
       {
         title: {

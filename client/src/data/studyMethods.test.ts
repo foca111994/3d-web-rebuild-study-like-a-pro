@@ -36,4 +36,10 @@ describe("study methods catalogue", () => {
       expect(new URL(source.url).protocol).toBe("https:");
     }
   });
+
+  it("gives every method a visual identity", () => {
+    for (const method of studyMethods) {
+      expect(method.image || method.identityVisual).toBeTruthy();
+    }
+  });
 });
