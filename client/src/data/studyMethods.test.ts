@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { studyMethods } from "./studyMethods";
+import { studyMethods, visibleStudyMethods } from "./studyMethods";
 
 describe("study methods catalogue", () => {
   it("keeps the approved ten-method order", () => {
@@ -17,6 +17,22 @@ describe("study methods catalogue", () => {
     ]);
     expect(studyMethods.map(method => method.order)).toEqual([
       1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+    ]);
+  });
+
+  it("temporarily hides spacing and interleaving and renumbers the public list", () => {
+    expect(visibleStudyMethods.map(method => method.id)).toEqual([
+      "feynman",
+      "multimedia-segmented",
+      "huberman-study-protocol",
+      "retrieval-practice",
+      "successive-relearning",
+      "self-explanation",
+      "worked-examples",
+      "woop-mcii",
+    ]);
+    expect(visibleStudyMethods.map(method => method.order)).toEqual([
+      1, 2, 3, 4, 5, 6, 7, 8,
     ]);
   });
 
