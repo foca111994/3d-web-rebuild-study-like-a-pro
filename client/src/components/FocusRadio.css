@@ -76,10 +76,10 @@
 
 .focus-player {
   position: relative;
-  min-height: 470px;
+  min-height: 268px;
   display: flex;
   flex-direction: column;
-  padding: clamp(25px, 4vw, 48px);
+  padding: clamp(18px, 2.5vw, 30px);
   border: 1.5px solid #171717;
   border-radius: 20px;
   background: #f8f8f5;
@@ -89,11 +89,11 @@
 
 .focus-player::after {
   position: absolute;
-  right: -105px;
-  bottom: -118px;
-  width: 280px;
-  height: 280px;
-  border: 56px solid rgba(189, 70, 61, 0.08);
+  right: -92px;
+  bottom: -108px;
+  width: 220px;
+  height: 220px;
+  border: 44px solid rgba(189, 70, 61, 0.08);
   border-radius: 50%;
   content: "";
   pointer-events: none;
@@ -120,8 +120,8 @@
 .focus-track-copy {
   position: relative;
   z-index: 1;
-  min-height: 113px;
-  margin-top: clamp(48px, 7vw, 78px);
+  min-height: 72px;
+  margin-top: clamp(24px, 3vw, 38px);
 }
 
 .focus-track-copy h3 {
@@ -143,11 +143,11 @@
 .focus-waveform {
   position: relative;
   z-index: 1;
-  height: 52px;
+  height: 34px;
   display: flex;
   align-items: center;
   gap: 5px;
-  margin: 26px 0 20px;
+  margin: 15px 0 12px;
   overflow: hidden;
 }
 
@@ -212,8 +212,8 @@
 }
 
 .focus-controls .focus-play-button {
-  width: 58px;
-  height: 58px;
+  width: 48px;
+  height: 48px;
   border-color: #bd463d;
   background: #bd463d;
   color: #fff;
@@ -230,7 +230,7 @@
   grid-template-columns: 38px minmax(0, 1fr) 38px;
   gap: 12px;
   align-items: center;
-  margin: 25px 0 22px;
+  margin: 16px 0 14px;
   color: rgba(23, 23, 23, 0.48);
   font: 650 9px/1 "IBM Plex Mono", monospace;
 }
@@ -377,18 +377,18 @@
   }
 
   .focus-player {
-    min-height: 430px;
-    padding: 23px 18px;
+    min-height: 246px;
+    padding: 18px 14px;
     border-radius: 14px;
   }
 
   .focus-track-copy {
-    min-height: 118px;
-    margin-top: 48px;
+    min-height: 76px;
+    margin-top: 28px;
   }
 
   .focus-track-copy h3 {
-    font-size: clamp(1.85rem, 10vw, 2.7rem);
+    font-size: clamp(1.7rem, 9vw, 2.35rem);
   }
 
   .focus-track-copy p {
@@ -397,7 +397,7 @@
 
   .focus-waveform {
     gap: 3px;
-    margin: 18px 0;
+    margin: 12px 0;
   }
 
   .focus-progress-row {
