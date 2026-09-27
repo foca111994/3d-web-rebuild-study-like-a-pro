@@ -350,12 +350,16 @@ export const COURSES: Course[] = [
     longDescription: "Aprender una herramienta puede durar meses; integrar IA en tu forma de trabajar puede acompañar muchos proyectos. Digital Profit Lab Academy recorre flujos de trabajo con IA para crear productos digitales, contenido y sitios, y para apoyar marketing, automatización y productividad.",
     officialUrl: "https://go.hotmart.com/E107732386E",
     status: "Curso disponible",
+    image: "/courses/digital-profit-lab-v20260927.webp",
     catalog: { title: "Digital Profit Lab Academy", category: "IA · Negocios digitales", description: "IA aplicada a workflows profesionales, productos digitales, marketing y operaciones." },
   },
 ];
 
 export const MODE_ONE = COURSES.filter((course) => course.level === "start-smart");
-export const MODE_TWO = COURSES.filter((course) => course.level === "war-mode");
+export const MODE_TWO = [
+  ...COURSES.filter((course) => course.slug === "digital-profit-lab-academy"),
+  ...COURSES.filter((course) => course.level === "war-mode" && course.slug !== "digital-profit-lab-academy"),
+];
 
 export function getCourseBySlug(slug: string) {
   return COURSES.find((course) => course.slug === slug);
