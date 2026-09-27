@@ -12,6 +12,9 @@ const categories = [
   ["Documentos", "Documents"], ["Datos", "Data"], ["Audio", "Audio"], ["Video", "Video"], ["Navegador", "Browser"],
   ["Escritura", "Writing"], ["Contenido", "Content"], ["Social", "Social"], ["Web", "Web"],
   ["Investigación", "Research"], ["Matemáticas", "Maths"], ["Enfoque", "Focus"], ["Imágenes", "Images"],
+  ["Productividad", "Productivity"], ["Archivos", "Files"], ["Formularios", "Forms"], ["Diagramas", "Diagrams"],
+  ["Visualización", "Visualisation"], ["Assets", "Assets"], ["Mockups", "Mockups"], ["Negocios", "Business"],
+  ["Freelance", "Freelance"], ["Código abierto", "Open source"], ["Notas", "Notes"],
 ] as const;
 const accessOptions = [
   ["Todos", "All"], ["Sin registro", "No sign-up"], ["Cuenta gratuita", "Free account"],
