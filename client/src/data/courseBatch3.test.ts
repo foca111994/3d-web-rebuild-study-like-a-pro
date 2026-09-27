@@ -32,6 +32,7 @@ const expected = [
     mode: MODE_TWO,
     landing: "https://go.hotmart.com/E107732386E",
     final: "https://go.hotmart.com/E107732386E",
+    image: "/courses/digital-profit-lab-v20260927.webp",
   },
 ];
 
@@ -58,6 +59,10 @@ describe("Batch 3 course integration", () => {
         item.mode === MODE_TWO
       );
     }
+  });
+
+  it("places Digital Profit Lab first in its mode section", () => {
+    expect(MODE_TWO[0]?.slug).toBe("digital-profit-lab-academy");
   });
 
   it("keeps landing, final CTA, and preview assets tied to their own course", () => {
