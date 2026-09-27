@@ -160,7 +160,7 @@ export const COURSES: Course[] = [
     officialUrl: "https://go.hotmart.com/N104872993F",
     checkoutUrl: "https://go.hotmart.com/N104872993F?ap=bfbe",
     status: "Curso disponible",
-    image: "/courses/wrapping-vehicular.webp",
+    image: "/courses/wrapping-vehicular-v20260927.webp",
     catalog: { title: "Curso Profesional de Wrapping Vehicular", category: "Automotor · Especialización", description: "Del material a la terminación: aprendé el proceso completo del wrapping vehicular." },
   },
   {
@@ -173,7 +173,7 @@ export const COURSES: Course[] = [
     longDescription: "Saber reparar vehículos no significa automáticamente saber administrar un taller. Esta formación pone el foco en la operación del negocio: finanzas, presupuestos, clientes, proveedores, equipo y herramientas de gestión.",
     officialUrl: "https://go.hotmart.com/E106993767F",
     status: "Curso disponible",
-    image: "/courses/administracion-taller.webp",
+    image: "/courses/administracion-taller-v20260927.webp",
     catalog: { title: "Administración de Taller", category: "Automotor · Negocios", description: "Ordená la gestión del taller con más control sobre clientes, costos, equipo y procesos." },
   },
   {
@@ -187,7 +187,7 @@ export const COURSES: Course[] = [
     officialUrl: "https://go.hotmart.com/D106993769O",
     checkoutUrl: "https://go.hotmart.com/D106993769O?ap=2bad",
     status: "Curso disponible",
-    image: "/courses/seguridad-automotriz.webp",
+    image: "/courses/seguridad-automotriz-v20260927.webp",
     catalog: { title: "Sistemas de Seguridad Total", category: "Automotor · Especialización", description: "Una ruta técnica de siete módulos sobre seguridad automotriz." },
   },
   {
@@ -240,7 +240,7 @@ export const COURSES: Course[] = [
     officialUrl: "https://go.hotmart.com/E104803410I",
     orderBumpUrl: "https://go.hotmart.com/E104803410I?ap=12f7",
     status: "Curso disponible",
-    image: "/courses/accesorios-resina.webp",
+    image: "/courses/accesorios-resina-v20260927.webp",
     catalog: { title: "Accesorios en Resina para Emprender", category: "Manualidades · Creatividad", description: "Una ruta inicial para crear accesorios con resina y desarrollar productos propios." },
   },
   {
@@ -254,7 +254,7 @@ export const COURSES: Course[] = [
     officialUrl: "https://go.hotmart.com/I104803402L",
     orderBumpUrl: "https://go.hotmart.com/I104803402L?ap=81f2",
     status: "Curso disponible",
-    image: "/courses/piezas-cemento.webp",
+    image: "/courses/piezas-cemento-v20260927.webp",
     catalog: { title: "Piezas Decorativas en Cemento", category: "Manualidades · Decoración", description: "Aprendé a crear piezas de cemento desde cero, con atención al proceso y los acabados." },
   },
   {
@@ -268,7 +268,7 @@ export const COURSES: Course[] = [
     officialUrl: "https://go.hotmart.com/H107130583U",
     orderBumpUrl: "https://go.hotmart.com/H107130583U?ap=1e1c",
     status: "Curso disponible",
-    image: "/courses/full-reposteria.webp",
+    image: "/courses/full-reposteria-v20260927.webp",
     catalog: { title: "Full Repostería desde Cero", category: "Gastronomía · Emprendimiento", description: "Una puerta de entrada ordenada a técnicas y productos de repostería." },
   },
   {
@@ -282,7 +282,7 @@ export const COURSES: Course[] = [
     officialUrl: "https://go.hotmart.com/R104803400E",
     orderBumpUrl: "https://go.hotmart.com/R104803400E?ap=ec9e",
     status: "Curso disponible",
-    image: "/courses/velas-artesanales.webp",
+    image: "/courses/velas-artesanales-v20260927.webp",
     catalog: { title: "Velas Artesanales para Emprender", category: "Manualidades · Emprendimiento", description: "Aprendé el proceso detrás de una vela y convertí la práctica en productos propios." },
   },
   {
