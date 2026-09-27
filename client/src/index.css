@@ -43,6 +43,7 @@
 .mode-course-number, .mode-course-category { color: var(--mode-accent); font: 700 9px/1 "IBM Plex Mono", monospace; letter-spacing: .12em; text-transform: uppercase; }
 .mode-course-number { align-self: start; }
 .mode-course-row img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border: 1px solid var(--mode-line); filter: saturate(.82); }
+.mode-course-image-placeholder { display: grid; width: 100%; aspect-ratio: 16 / 10; place-items: center; border: 1px solid var(--mode-line); background: rgba(255,255,255,.035); color: var(--mode-soft); font: 700 9px/1.5 "IBM Plex Mono", monospace; letter-spacing: .1em; text-align: center; text-transform: uppercase; }
 .mode-course-row h2 { max-width: 670px; margin: 22px 0 15px; font: 620 clamp(2.2rem, 4.7vw, 5rem)/.88 "Space Grotesk", sans-serif; letter-spacing: -.07em; }
 .mode-course-row p { max-width: 610px; margin: 0 0 30px; color: var(--mode-soft); font-size: 14px; line-height: 1.55; }
 .mode-course-row a { display: inline-flex; align-items: center; gap: 38px; padding-bottom: 10px; border-bottom: 2px solid currentColor; font: 750 9px/1 "IBM Plex Mono", monospace; letter-spacing: .11em; text-transform: uppercase; }
@@ -59,7 +60,7 @@
   .mode-courses-hero > img { position: absolute; right: 0; bottom: 0; width: 92%; height: 390px; }
   .mode-courses-intro { align-items: flex-start; flex-direction: column; padding: 48px 0; }
   .mode-course-row { grid-template-columns: 30px 1fr; gap: 14px; padding: 24px 0 38px; }
-  .mode-course-row img, .mode-course-row > div { grid-column: 2; }
+  .mode-course-row img, .mode-course-image-placeholder, .mode-course-row > div { grid-column: 2; }
   .mode-course-number { grid-row: 1 / span 2; }
   .mode-course-row h2 { font-size: 2.55rem; }
   .mode-courses-footer { grid-template-columns: 1fr auto; padding: 28px 16px; }
@@ -747,6 +748,7 @@ button { cursor: pointer; }
 .course-catalog-card { display: grid; grid-template-columns: 55px minmax(280px, .9fr) minmax(320px, 1.1fr); gap: clamp(22px, 4vw, 72px); align-items: center; padding: 34px 0; border-bottom: 1px solid #171717; }
 .course-catalog-number { align-self: start; color: #bd463d; font: 700 10px/1 "IBM Plex Mono", monospace; letter-spacing: .12em; }
 .course-catalog-card img { width: 100%; aspect-ratio: 16 / 9.6; object-fit: cover; background: #ddd; filter: saturate(.92) contrast(1.02); }
+.course-catalog-image-placeholder { display: grid; width: 100%; aspect-ratio: 16 / 9.6; place-items: center; border: 1px solid rgba(23,23,23,.18); background: #e9e7e2; color: rgba(23,23,23,.6); font: 700 9px/1.5 "IBM Plex Mono", monospace; letter-spacing: .1em; text-align: center; text-transform: uppercase; }
 .course-catalog-copy > span { color: #bd463d; font: 700 9px/1 "IBM Plex Mono", monospace; letter-spacing: .1em; text-transform: uppercase; }
 .course-catalog-copy h2 { max-width: 640px; margin: 22px 0 14px; font: 620 clamp(2rem, 4vw, 4.5rem)/.9 "Space Grotesk", sans-serif; letter-spacing: -.065em; }
 .course-catalog-copy p { max-width: 550px; margin: 0 0 30px; color: rgba(23,23,23,.68); font-size: 14px; line-height: 1.55; }
@@ -782,7 +784,7 @@ button { cursor: pointer; }
   .courses-hero h1 { font-size: clamp(4.2rem, 22vw, 6.2rem); }
   .courses-filter, .courses-list { width: calc(100% - 32px); }
   .course-catalog-card { grid-template-columns: 34px 1fr; gap: 14px; padding: 24px 0 34px; }
-  .course-catalog-card img, .course-catalog-copy { grid-column: 2; }
+  .course-catalog-card img, .course-catalog-image-placeholder, .course-catalog-copy { grid-column: 2; }
   .course-catalog-number { grid-row: 1 / span 2; }
   .course-catalog-copy h2 { font-size: 2.45rem; }
   .courses-footer, .resources-footer { grid-template-columns: 1fr auto; }

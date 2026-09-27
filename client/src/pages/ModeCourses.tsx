@@ -9,7 +9,7 @@ function ModeRow({ course, index, language }: { course: Course; index: number; l
   return (
     <article className="mode-course-row">
       <span className="mode-course-number">{String(index + 1).padStart(2, "0")}</span>
-      <img src={course.image} alt={language === "en" ? `Cover of ${localized.title}` : `Portada de ${localized.title}`} loading={index < 2 ? "eager" : "lazy"} />
+      {course.image ? <img src={course.image} alt={language === "en" ? `Cover of ${localized.title}` : `Portada de ${localized.title}`} loading={index < 2 ? "eager" : "lazy"} /> : <div className="mode-course-image-placeholder" role="img" aria-label={language === "en" ? "Official course preview unavailable" : "Vista previa oficial no disponible"}><span>{language === "en" ? "Official preview pending" : "Vista previa oficial pendiente"}</span></div>}
       <div>
         <span className="mode-course-category">{localized.category}</span>
         <h2>{localized.title}</h2>

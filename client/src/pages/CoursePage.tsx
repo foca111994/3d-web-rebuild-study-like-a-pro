@@ -28,8 +28,8 @@ export default function CoursePage() {
         <Link href="/courses" className="course-catalog-link">{language === "en" ? "All courses" : "Todos los cursos"} <ExternalLink size={13} /></Link>
       </header>
       <section className="course-hero">
-        <img className="course-hero-image" src={detail.image} alt={language === "en" ? `Cover of ${localizedCourse.title}` : `Portada de ${localizedCourse.title}`} />
-        <div className="course-hero-shade" />
+        {detail.image && <img className="course-hero-image" src={detail.image} alt={language === "en" ? `Cover of ${localizedCourse.title}` : `Portada de ${localizedCourse.title}`} />}
+        {detail.image && <div className="course-hero-shade" />}
         <div className="course-hero-copy"><p className="mono-label">{modeName} / {modeLabel}</p><p className="course-detail-category">{localizedCourse.category}</p><h1>{localizedCourse.title}</h1><p>{localizedDetail.eyebrow}</p><a href={course.officialUrl} target="_blank" rel="noreferrer" className="detail-cta">{language === "en" ? "More about this skill" : "Más de este skill"} <ArrowUpRight size={17} /></a></div>
         <span className="course-hero-number">{course.number}</span>
       </section>
