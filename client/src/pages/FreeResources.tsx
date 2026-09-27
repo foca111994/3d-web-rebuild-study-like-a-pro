@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import { freeResources } from "@/data/freeResources";
 import InstagramLink from "@/components/InstagramLink";
 import StudyMethodsLab from "@/components/StudyMethodsLab";
+import FocusRadio from "@/components/FocusRadio";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { resourceEnglish } from "@/data/english";
 
@@ -40,8 +41,10 @@ export default function FreeResources() {
 
       <StudyMethodsLab />
 
+      <FocusRadio />
+
       <section className="resources-hero">
-        <p className="resources-eyebrow">02 / {language === "en" ? "Curated library" : "Biblioteca curada"}</p>
+        <p className="resources-eyebrow">03 / {language === "en" ? "Curated library" : "Biblioteca curada"}</p>
         <h1>{language === "en" ? "Free" : "Recursos"}<br /><em>{language === "en" ? "resources." : "gratuitos."}</em></h1>
         <div className="resources-intro">
           <p>{language === "en" ? "Useful tools to study, create and work better. We prioritize free access and no sign-up." : "Herramientas útiles para estudiar, crear y trabajar mejor. Priorizamos acceso gratuito y sin registro."}</p>
