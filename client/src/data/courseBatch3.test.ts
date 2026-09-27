@@ -36,13 +36,13 @@ const expected = [
 ];
 
 const replacedCovers = [
-  ["piezas-decorativas-en-cemento", "/courses/piezas-cemento.webp"],
-  ["full-reposteria-desde-cero", "/courses/full-reposteria.webp"],
-  ["velas-artesanales-para-emprender", "/courses/velas-artesanales.webp"],
-  ["curso-profesional-de-wrapping-vehicular", "/courses/wrapping-vehicular.webp"],
-  ["administracion-de-taller", "/courses/administracion-taller.webp"],
-  ["sistemas-de-seguridad-total", "/courses/seguridad-automotriz.webp"],
-  ["accesorios-en-resina", "/courses/accesorios-resina.webp"],
+  ["piezas-decorativas-en-cemento", "/courses/piezas-cemento-v20260927.webp"],
+  ["full-reposteria-desde-cero", "/courses/full-reposteria-v20260927.webp"],
+  ["velas-artesanales-para-emprender", "/courses/velas-artesanales-v20260927.webp"],
+  ["curso-profesional-de-wrapping-vehicular", "/courses/wrapping-vehicular-v20260927.webp"],
+  ["administracion-de-taller", "/courses/administracion-taller-v20260927.webp"],
+  ["sistemas-de-seguridad-total", "/courses/seguridad-automotriz-v20260927.webp"],
+  ["accesorios-en-resina", "/courses/accesorios-resina-v20260927.webp"],
 ] as const;
 
 describe("Batch 3 course integration", () => {
