@@ -5,7 +5,7 @@
   gap: clamp(46px, 7vw, 112px);
   align-items: start;
   margin: 0 auto;
-  padding: clamp(76px, 9vw, 132px) 0;
+  padding: clamp(76px, 9vw, 132px) 0 clamp(56px, 6vw, 84px);
   border-bottom: 1px solid rgba(23, 23, 23, 0.2);
 }
 
