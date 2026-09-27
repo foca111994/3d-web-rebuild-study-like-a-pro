@@ -6,7 +6,7 @@ export type CatalogCourse = {
   title: string;
   category: string;
   description: string;
-  image: string;
+  image?: string;
   url: string;
 };
 

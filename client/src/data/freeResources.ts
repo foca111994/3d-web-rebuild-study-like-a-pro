@@ -12,7 +12,7 @@ export type FreeResource = {
   description: string;
   whyWeLikeIt: string;
   status: "Verificado" | "Revisar antes de instalar";
-  batch: "01" | "02";
+  batch: "01" | "02" | "03";
   dateAdded?: string;
   lastVerified: string;
   notes?: string;

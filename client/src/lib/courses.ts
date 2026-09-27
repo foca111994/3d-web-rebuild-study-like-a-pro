@@ -17,7 +17,7 @@ export type Course = {
   checkoutUrl?: string;
   orderBumpUrl?: string;
   status: string;
-  image: string;
+  image?: string;
   catalog: {
     title: string;
     category: string;
@@ -298,6 +298,59 @@ export const COURSES: Course[] = [
     status: "Curso disponible",
     image: "/courses/costura-industrial.webp",
     catalog: { title: "Aprende Costura Industrial", category: "Oficios · Especialización", description: "Una formación técnica para comprender y producir prendas con método." },
+  },
+  {
+    number: "21",
+    level: "war-mode",
+    category: "Oficios / skills",
+    title: "Soy Barbero",
+    slug: "soy-barbero",
+    description: "Técnica de barbería, práctica y mirada profesional desde los fundamentos.",
+    longDescription: "De un corte prolijo a un servicio profesional hay técnica, práctica y atención al detalle. Soy Barbero reúne fundamentos y trabajo con cortes para quienes empiezan y para quienes buscan mejorar su ejecución y construir una práctica más profesional.",
+    officialUrl: "https://go.hotmart.com/C107732309U",
+    orderBumpUrl: "https://go.hotmart.com/C107732309U?ap=5fb6",
+    status: "Curso disponible",
+    image: "/courses/soy-barbero-corte.webp",
+    catalog: { title: "Soy Barbero", category: "Oficios · Skills", description: "Una formación de barbería que conecta técnica, práctica y desarrollo profesional." },
+  },
+  {
+    number: "22",
+    level: "start-smart",
+    category: "Idiomas",
+    title: "Japonés Básico",
+    slug: "japones-basico",
+    description: "Empezá a entender el idioma japonés y sus sistemas de escritura con una ruta ordenada.",
+    longDescription: "El japonés deja de parecer un muro de símbolos cuando empezás a entender cómo está construido. Esta formación presenta sus sistemas de escritura, lecciones para principiantes y contenidos culturales en un recorrido pensado para empezar desde cero.",
+    officialUrl: "https://go.hotmart.com/S107732338D",
+    status: "Curso disponible",
+    image: "https://img.youtube.com/vi/pB_542j0gP4/hqdefault.jpg",
+    catalog: { title: "Japonés Básico", category: "Idiomas", description: "Una entrada guiada al japonés: escritura, idioma y cultura desde las bases." },
+  },
+  {
+    number: "23",
+    level: "start-smart",
+    category: "Comunicación",
+    title: "Oratoria desde Casa",
+    slug: "oratoria-desde-casa",
+    description: "Aprendé a organizar y comunicar tus ideas con más seguridad e impacto.",
+    longDescription: "Podés saber muchísimo y aun así perder impacto si no sabés explicar lo que sabés. Oratoria desde Casa trabaja herramientas para estructurar ideas, manejar los nervios y comunicarte mejor en presentaciones, entrevistas, reuniones y otras situaciones profesionales.",
+    officialUrl: "https://go.hotmart.com/H107732434N?ap=6b54",
+    orderBumpUrl: "https://go.hotmart.com/H107732434N?ap=6db9",
+    status: "Curso disponible",
+    image: "/courses/oratoria-desde-casa.webp",
+    catalog: { title: "Oratoria desde Casa", category: "Comunicación", description: "Una skill de vida y trabajo: claridad, estructura y presencia al comunicar." },
+  },
+  {
+    number: "24",
+    level: "war-mode",
+    category: "IA / negocios digitales",
+    title: "Digital Profit Lab Academy",
+    slug: "digital-profit-lab-academy",
+    description: "Aplicá IA a la creación, el marketing y la operación de proyectos digitales.",
+    longDescription: "Aprender una herramienta puede durar meses; integrar IA en tu forma de trabajar puede acompañar muchos proyectos. Digital Profit Lab Academy recorre flujos de trabajo con IA para crear productos digitales, contenido y sitios, y para apoyar marketing, automatización y productividad.",
+    officialUrl: "https://go.hotmart.com/E107732386E",
+    status: "Curso disponible",
+    catalog: { title: "Digital Profit Lab Academy", category: "IA · Negocios digitales", description: "IA aplicada a workflows profesionales, productos digitales, marketing y operaciones." },
   },
 ];
 

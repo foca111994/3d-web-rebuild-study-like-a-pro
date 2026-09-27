@@ -14,6 +14,7 @@ import {
   visibleStudyMethods,
   type LocalizedText,
 } from "@/data/studyMethods";
+import { buildStudyMethodCopy } from "@/data/studyMethodClipboard";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 type MethodsTab = "methods" | "journal" | "archive";
@@ -83,18 +84,7 @@ export default function StudyMethodsLab() {
   };
 
   const copyMethod = async () => {
-    const markdown = [
-      `# ${method.title[locale]}`,
-      "",
-      `**${language === "en" ? "Attribution" : "Atribución"}:** ${method.attribution[locale]}`,
-      "",
-      method.journalIntro[locale],
-      "",
-      ...method.steps.flatMap((step, index) => [
-        `${index + 1}. **${step.title[locale]}**`,
-        `   ${step.detail[locale]}`,
-      ]),
-    ].join("\n");
+    const markdown = buildStudyMethodCopy(method, locale);
 
     try {
       if (navigator.clipboard?.writeText)

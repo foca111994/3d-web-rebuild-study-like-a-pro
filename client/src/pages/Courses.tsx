@@ -39,7 +39,7 @@ export default function Courses() {
           return (
           <article className="course-catalog-card" key={course.id}>
             <div className="course-catalog-number">{String(courses.indexOf(course) + 1).padStart(2, "0")}</div>
-            <img src={course.image} alt={language === "en" ? `Cover of ${localized.title}` : `Portada de ${localized.title}`} loading={index < 2 ? "eager" : "lazy"} />
+            {course.image ? <img src={course.image} alt={language === "en" ? `Cover of ${localized.title}` : `Portada de ${localized.title}`} loading={index < 2 ? "eager" : "lazy"} /> : <div className="course-catalog-image-placeholder" role="img" aria-label={language === "en" ? "Official course preview unavailable" : "Vista previa oficial no disponible"}><span>{language === "en" ? "Official preview pending" : "Vista previa oficial pendiente"}</span></div>}
             <div className="course-catalog-copy">
               <span>{localized.category}</span>
               <h2>{localized.title}</h2>
