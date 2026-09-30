@@ -173,7 +173,7 @@ export const COURSES: Course[] = [
     longDescription: "Saber reparar vehículos no significa automáticamente saber administrar un taller. Esta formación pone el foco en la operación del negocio: finanzas, presupuestos, clientes, proveedores, equipo y herramientas de gestión.",
     officialUrl: "https://go.hotmart.com/E106993767F",
     status: "Curso disponible",
-    image: "/courses/administracion-taller-v20260927.webp",
+    image: "/courses/administracion-taller-v20260930.webp",
     catalog: { title: "Administración de Taller", category: "Automotor · Negocios", description: "Ordená la gestión del taller con más control sobre clientes, costos, equipo y procesos." },
   },
   {
@@ -187,7 +187,7 @@ export const COURSES: Course[] = [
     officialUrl: "https://go.hotmart.com/D106993769O",
     checkoutUrl: "https://go.hotmart.com/D106993769O?ap=2bad",
     status: "Curso disponible",
-    image: "/courses/seguridad-automotriz-v20260927.webp",
+    image: "/courses/seguridad-automotriz-v20260930.webp",
     catalog: { title: "Sistemas de Seguridad Total", category: "Automotor · Especialización", description: "Una ruta técnica de siete módulos sobre seguridad automotriz." },
   },
   {
@@ -226,7 +226,7 @@ export const COURSES: Course[] = [
     longDescription: "No alcanza con calentar cera y aplicarla. La diferencia profesional está en saber qué usar, cómo aplicarlo, sobre qué piel y con qué protocolo. La formación reúne dos sistemas de depilación, práctica sobre modelos reales y criterios de higiene y seguridad.",
     officialUrl: "https://go.hotmart.com/J104803489M",
     status: "Curso disponible",
-    image: "/courses/depilacion-cera.webp",
+    image: "/courses/depilacion-cera-v20260930.webp",
     catalog: { title: "Depilación Profesional con Cera", category: "Estética · Servicios", description: "Aprendé depilación con método, higiene y aplicación profesional." },
   },
   {
@@ -268,7 +268,7 @@ export const COURSES: Course[] = [
     officialUrl: "https://go.hotmart.com/H107130583U",
     orderBumpUrl: "https://go.hotmart.com/H107130583U?ap=1e1c",
     status: "Curso disponible",
-    image: "/courses/full-reposteria-v20260927.webp",
+    image: "/courses/full-reposteria-v20260930.webp",
     catalog: { title: "Full Repostería desde Cero", category: "Gastronomía · Emprendimiento", description: "Una puerta de entrada ordenada a técnicas y productos de repostería." },
   },
   {
