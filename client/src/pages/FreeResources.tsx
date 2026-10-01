@@ -51,7 +51,7 @@ export default function FreeResources() {
         <h1>{language === "en" ? "Free" : "Recursos"}<br /><em>{language === "en" ? "resources." : "gratuitos."}</em></h1>
         <div className="resources-intro">
           <p>{language === "en" ? "Useful tools to study, create and work better. We prioritize free access and no sign-up." : "Herramientas útiles para estudiar, crear y trabajar mejor. Priorizamos acceso gratuito y sin registro."}</p>
-          <span>30 {language === "en" ? "resources · Reviewed" : "recursos · Revisados"} · 27.09.2026</span>
+          <span>{freeResources.length} {language === "en" ? "resources · Reviewed" : "recursos · Revisados"} · 27.09.2026</span>
         </div>
       </section>
 
