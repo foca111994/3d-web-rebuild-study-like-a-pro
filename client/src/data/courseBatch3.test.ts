@@ -21,13 +21,6 @@ const expected = [
     image: "https://img.youtube.com/vi/pB_542j0gP4/hqdefault.jpg",
   },
   {
-    slug: "oratoria-desde-casa",
-    mode: MODE_ONE,
-    landing: "https://go.hotmart.com/H107732434N?ap=6b54",
-    final: "https://go.hotmart.com/H107732434N?ap=6db9",
-    image: "/courses/oratoria-desde-casa.webp",
-  },
-  {
     slug: "digital-profit-lab-academy",
     mode: MODE_TWO,
     landing: "https://go.hotmart.com/E107732386E",
